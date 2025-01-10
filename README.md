@@ -2,6 +2,8 @@
 
 SENTINEL (Secure Enterprise Network Transformation and Intelligent Layered Network) es una solución de ciberseguridad de vanguardia diseñada para proteger y monitorear infraestructuras de red empresariales.
 
+![Estado del Proyecto](https://img.shields.io/badge/estado-en%20desarrollo-yellow) ![Versión](https://img.shields.io/badge/version-1.0.0-blue)
+
 ## Características principales:
 
 - 🛡️ Arquitectura de red segmentada con VLANs
