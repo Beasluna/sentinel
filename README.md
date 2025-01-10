@@ -1,4 +1,6 @@
 # Proyecto SENTINEL
+![Sentinels](SENTINELS/ASSETS/Sentinels.gif)
+
 
 SENTINEL (Secure Enterprise Network Transformation and Intelligent Layered Network) es una solución de ciberseguridad de vanguardia diseñada para proteger y monitorear infraestructuras de red empresariales.
 
