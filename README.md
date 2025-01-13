@@ -36,6 +36,25 @@ SENTINEL combina tecnologías de punta con prácticas de seguridad innovadoras p
 ## 🚀 Instrucciones de Instalación
 
 ## 📘 Guía de Uso
+### Implementación del Servicio FTP con Certificado SSL
+Esta guía describe cómo configurar un servicio FTP seguro utilizando un certificado SSL. Esto asegurá que las transferencias de archivos sean cifradas, protegiendo así la información sensible durante el tránsito de estos archivos.
+##### Paso 1: Instalación de vsftpd
+1. Actualiza los repositorios, instalamos vsftpd y habilitamos para que se iniciese al arrancar el sistema:
+    ```bash
+    sudo apt update
+    sudo apt install vsftpd
+    sudo systemctl enable vsftpd
+    ```
+2. Verifica que el servicio esté corriendo:
+    ```bash
+    sudo systemctl status vsftpd
+    ```
+##### Paso 2: Generación del Certificado SSL
+1. Genera el certificado SSL/TLS utilizando OpenSSL:
+    ```bash
+    sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
+    ```
+Después, nos pide información extra que nosotros vamos rellenando
 
 ## 🤝 Contribución
 
