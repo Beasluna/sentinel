@@ -31,7 +31,27 @@ SENTINEL es una solución de ciberseguridad de vanguardia diseñada para protege
 
 
 SENTINEL combina tecnologías de punta con prácticas de seguridad innovadoras para ofrecer una solución integral de protección de redes empresariales.
+## 📋 Requisitos del Sistema
 
-## Estado del proyecto: En desarrollo activo
+## 🚀 Instrucciones de Instalación
+
+## 📘 Guía de Uso
+
+## 🤝 Contribución
+
+## 📄 Licencia
+
+## 🙋 Soporte
+Para soporte, por favor abrir un issue en el repositorio o contactar a nuestro equipo de soporte en support@sentinel-project.com.
+
+## 🌟 Equipo
+- Leonardo: Arquitecto de Red
+- Joel: Especialista en Virtualización
+- Beatriz: Experta en Seguridad Perimetral
+- Marc: Analista de Amenazas
+
+## 📊 Estado del Proyecto
+
+## Estado del proyecto: En desarrollo activo Versión actual: 0.9.0-beta
 
 Contribuciones y feedback son bienvenidos. Para más información, consulta nuestra documentación.
