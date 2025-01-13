@@ -61,7 +61,7 @@ Después, nos pide información extra que nosotros vamos rellenando.
     ```bash
     sudo nano /etc/vsftpd.conf
     ```
-2. Nos aseguramos de que las siguientes líneas estén presentes y configuradas correctamente:
+2. Nos aseguramos de que las siguientes líneas estén presentes y configuradas correctamente, incluyendo en el, los directorios de los certificados anteriores:
 
     ```plaintext
     listen=YES
