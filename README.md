@@ -54,8 +54,49 @@ Esta guía describe cómo configurar un servicio FTP seguro utilizando un certif
     ```bash
     sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
     ```
-Después, nos pide información extra que nosotros vamos rellenando
+Después, nos pide información extra que nosotros vamos rellenando.
+##### Paso 3: Configuración de vsftpd
 
+1. Abre el archivo de configuración de vsftpd:
+    ```bash
+    sudo nano /etc/vsftpd.conf
+    ```
+2. Nos aseguramos de que las siguientes líneas estén presentes y configuradas correctamente:
+
+    ```plaintext
+    listen=YES
+    anonymous_enable=NO
+    local_enable=YES
+    write_enable=YES
+    chroot_local_user=YES
+    ssl_enable=YES
+    allow_anon_ssl=NO
+    force_local_data_ssl=YES
+    force_local_logins_ssl=YES
+    ssl_tlsv1=YES
+    ssl_sslv2=NO
+    ssl_sslv3=NO
+    rsa_cert_file=/etc/ssl/private/vsftpd.pem
+    rsa_private_key_file=/etc/ssl/private/vsftpd.pem
+    ```
+3. Guardamos y cerramos el archivo.
+
+##### Paso 4: Ajuste del Firewall
+
+1. Permite el tráfico FTP y FTP sobre SSL (FTPS):
+    ```bash
+    sudo ufw allow 20/tcp
+    sudo ufw allow 21/tcp
+    sudo ufw allow 990/tcp
+    sudo ufw reload
+    ```
+
+##### Paso 5: Reinicio del Servicio vsftpd
+
+1. Reiniciamos el servicio vsftpd para que los cambios sean aplicados:
+    ```bash
+    sudo systemctl restart vsftpd
+    ```
 ## 🤝 Contribución
 
 ## 📄 Licencia
