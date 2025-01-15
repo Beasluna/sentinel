@@ -9,109 +9,214 @@ SENTINEL (Secure Enterprise Network Transformation and Intelligent Layered Netwo
 ## 🚀 Descripción del Proyecto
 SENTINEL es una solución de ciberseguridad de vanguardia diseñada para proteger y monitorear infraestructuras de red empresariales. Combina tecnologías avanzadas con prácticas de seguridad innovadoras para ofrecer una protección integral contra amenazas cibernéticas modernas.
 
-## ✨ Características Principales
-- 🛡️ Arquitectura de red segmentada con VLANs
-- 🖥️ Virtualización avanzada con Proxmox VE
-- 🔒 Seguridad perimetral robusta (firewall pfSense, IDS/IPS)
-- 🔍 Monitorización en tiempo real con análisis de amenazas
-- 🐳 Implementación de microservicios con Docker
-- 🕵️ Capacidades de sandboxing y análisis de malware
-- 🍯 Tecnología de honeypots para detección proactiva de amenazas
-- 🔐 Gestión avanzada de bases de datos con MySQL
-- 📊 Dashboards personalizados para visualización de seguridad
+<details>
+  <summary>✨ Características Principales</summary>
+  <ul>
+    <li>🛡️ Arquitectura de red segmentada con VLANs</li>
+    <li>🖥️ Virtualización avanzada con Proxmox VE</li>
+    <li>🔒 Seguridad perimetral robusta (firewall pfSense, IDS/IPS)</li>
+    <li>🔍 Monitorización en tiempo real con análisis de amenazas</li>
+    <li>🐳 Implementación de microservicios con Docker</li>
+    <li>🕵️ Capacidades de sandboxing y análisis de malware</li>
+    <li>🍯 Tecnología de honeypots para detección proactiva de amenazas</li>
+    <li>🔐 Gestión avanzada de bases de datos con MySQL</li>
+    <li>📊 Dashboards personalizados para visualización de seguridad</li>
+  </ul>
+</details>
 
-## 🛠️ Tecnologías y Herramientas
-- Proxmox VE para virtualización
-- pfSense como firewall principal
-- Suricata/Snort para IDS/IPS
-- Docker para contenerización
-- MySQL para gestión de bases de datos
-- Python y Bash para scripting y automatización
-- Ansible para gestión de configuraciones
+<details>
+  <summary>🏗️ Componentes Clave</summary>
+  <ul>
+    <li>Arquitectura de Red Segmentada
+      <ul>
+        <li>Diseño de topología con VLANs y zonas de seguridad</li>
+        <li>Implementación de modelo de zonas y conductos</li>
+      </ul>
+    </li>
+    <li>Virtualización y Servicios Core
+      <ul>
+        <li>Plataforma Proxmox VE</li>
+        <li>Servidores virtuales para servicios esenciales</li>
+      </ul>
+    </li>
+    <li>Seguridad Perimetral y de Red
+      <ul>
+        <li>Firewall pfSense</li>
+        <li>IDS/IPS (Suricata o Snort)</li>
+        <li>Filtrado DNS con Pi-hole</li>
+      </ul>
+    </li>
+    <li>Gestión y Seguridad de Datos
+      <ul>
+        <li>MySQL con configuraciones de seguridad avanzadas</li>
+        <li>Sistema de copias de seguridad y RAID</li>
+      </ul>
+    </li>
+    <li>Monitorización y Administración
+      <ul>
+        <li>Sistema de monitorización en tiempo real (Zabbix o Nagios)</li>
+        <li>Administración remota con Webmin</li>
+      </ul>
+    </li>
+    <li>Contenedores y Microservicios
+      <ul>
+        <li>Implementación de Docker</li>
+      </ul>
+    </li>
+    <li>Técnicas Avanzadas de Seguridad
+      <ul>
+        <li>Port Knocking</li>
+        <li>Gestión de secretos con SOPS y AGE</li>
+        <li>VPN para acceso remoto seguro</li>
+      </ul>
+    </li>
+    <li>Automatización y Scripting
+      <ul>
+        <li>Scripts en Bash y Python para mantenimiento y seguridad</li>
+      </ul>
+    </li>
+    <li>Análisis de Malware y Sandboxing
+      <ul>
+        <li>Cuckoo Sandbox</li>
+        <li>Laboratorio aislado para análisis manual</li>
+      </ul>
+    </li>
+    <li>Honeypots y Deception Technology
+      <ul>
+        <li>T-Pot para simulación de servicios</li>
+        <li>Señuelos y trampas en la red</li>
+      </ul>
+    </li>
+    <li>Pruebas de Seguridad y Hardening
+      <ul>
+        <li>Pentesting</li>
+        <li>Hardening de sistemas y servicios</li>
+      </ul>
+    </li>
+  </ul>
+</details>
 
 
-SENTINEL combina tecnologías de punta con prácticas de seguridad innovadoras para ofrecer una solución integral de protección de redes empresariales.
-## 📋 Requisitos del Sistema
+<details>
+  <summary>🛠️ Tecnologías y Herramientas</summary>
+<ul>- Proxmox VE para virtualización</ul>
+<ul>- pfSense como firewall principal</ul>
+<ul>- Suricata/Snort para IDS/IPS</ul>
+<ul>- Docker para contenerización</ul>
+<ul>- MySQL para gestión de bases de datos</ul>
+<ul>- Python y Bash para scripting y automatización</ul>
+<ul>- Ansible para gestión de configuraciones</ul>
+</details>
 
-## 🚀 Instrucciones de Instalación
+<details>
+  <summary>📋 Requisitos del Sistema</summary>
+</details>
 
-## 📘 Guía de Uso
-### Implementación del Servicio FTP con Certificado SSL
-Esta guía describe cómo configurar un servicio FTP seguro utilizando un certificado SSL. Esto asegurá que las transferencias de archivos sean cifradas, protegiendo así la información sensible durante el tránsito de estos archivos.
-##### Paso 1: Instalación de vsftpd
-1. Actualizamos los repositorios, instalamos vsftpd y habilitamos para que se iniciese al arrancar el sistema:
-    ```bash
-    sudo apt update
-    sudo apt install vsftpd
-    sudo systemctl enable vsftpd
-    ```
-2. Verificamos que el servicio esté corriendo:
-    ```bash
-    sudo systemctl status vsftpd
-    ```
-##### Paso 2: Generación del Certificado SSL
-1. Generamos el certificado SSL/TLS utilizando OpenSSL:
-    ```bash
-    sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
-    ```
-Después, nos pide información extra que nosotros vamos rellenando.
-##### Paso 3: Configuración de vsftpd
+<details>
+  <summary>🚀 Instrucciones de Instalación</summary>
+</details>
 
-1. Abrimos el archivo de configuración de vsftpd:
-    ```bash
-    sudo nano /etc/vsftpd.conf
-    ```
-2. Nos aseguramos de que las siguientes líneas estén presentes y configuradas correctamente, incluyendo en el, los directorios de los certificados anteriores:
+<details>
+  <summary>📘 Guía de Uso</summary>
+  <ul>
+    <li>Implementación del Servicio FTP con Certificado SSL
+      <ul>
+        <li>Esta guía describe cómo configurar un servicio FTP seguro utilizando un certificado SSL. Esto asegurará que las transferencias de archivos sean cifradas, protegiendo así la información sensible durante el tránsito de estos archivos.</li>
+      </ul>
+    </li>
+    <li>Paso 1: Instalación de vsftpd
+      <ul>
+        <li>Actualizamos los repositorios, instalamos vsftpd y habilitamos para que se inicie al arrancar el sistema:
+          <pre><code>sudo apt update
+sudo apt install vsftpd
+sudo systemctl enable vsftpd</code></pre>
+        </li>
+        <li>Verificamos que el servicio esté corriendo:
+          <pre><code>sudo systemctl status vsftpd</code></pre>
+        </li>
+      </ul>
+    </li>
+    <li>Paso 2: Generación del Certificado SSL
+      <ul>
+        <li>Generamos el certificado SSL/TLS utilizando OpenSSL:
+          <pre><code>sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem</code></pre>
+        </li>
+        <li>Después, nos pide información adicional que debemos rellenar.</li>
+      </ul>
+    </li>
+    <li>Paso 3: Configuración de vsftpd
+      <ul>
+        <li>Abrimos el archivo de configuración de vsftpd:
+          <pre><code>sudo nano /etc/vsftpd.conf</code></pre>
+        </li>
+        <li>Aseguramos que las siguientes líneas estén presentes y configuradas correctamente, incluyendo los directorios de los certificados anteriores:
+          <pre><code>listen=YES
+anonymous_enable=NO
+local_enable=YES
+write_enable=YES
+chroot_local_user=YES
+ssl_enable=YES
+allow_anon_ssl=NO
+force_local_data_ssl=YES
+force_local_logins_ssl=YES
+ssl_tlsv1=YES
+ssl_sslv2=NO
+ssl_sslv3=NO
+rsa_cert_file=/etc/ssl/private/vsftpd.pem
+rsa_private_key_file=/etc/ssl/private/vsftpd.pem</code></pre>
+        </li>
+        <li>Guardamos y cerramos el archivo.</li>
+      </ul>
+    </li>
+    <li>Paso 4: Ajuste del Firewall
+      <ul>
+        <li>Permitimos el tráfico FTP y FTP sobre SSL (FTPS):
+          <pre><code>sudo ufw allow 20/tcp
+sudo ufw allow 21/tcp
+sudo ufw allow 990/tcp
+sudo ufw reload</code></pre>
+        </li>
+      </ul>
+    </li>
+    <li>Paso 5: Reinicio del Servicio vsftpd
+      <ul>
+        <li>Reiniciamos el servicio vsftpd para que los cambios sean aplicados:
+          <pre><code>sudo systemctl restart vsftpd</code></pre>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</details>
 
-    ```plaintext
-    listen=YES
-    anonymous_enable=NO
-    local_enable=YES
-    write_enable=YES
-    chroot_local_user=YES
-    ssl_enable=YES
-    allow_anon_ssl=NO
-    force_local_data_ssl=YES
-    force_local_logins_ssl=YES
-    ssl_tlsv1=YES
-    ssl_sslv2=NO
-    ssl_sslv3=NO
-    rsa_cert_file=/etc/ssl/private/vsftpd.pem
-    rsa_private_key_file=/etc/ssl/private/vsftpd.pem
-    ```
-3. Guardamos y cerramos el archivo.
+<details>
+  <summary>🤝 Contribución</summary>
+</details>
 
-##### Paso 4: Ajuste del Firewall
+<details>
+  <summary>📄 Licencia</summary>
+</details>
 
-1. Permitimos el tráfico FTP y FTP sobre SSL (FTPS):
-    ```bash
-    sudo ufw allow 20/tcp
-    sudo ufw allow 21/tcp
-    sudo ufw allow 990/tcp
-    sudo ufw reload
-    ```
+<details>
+  <summary>🙋 Soporte</summary>
+<ul>Para soporte, por favor abrir un issue en el repositorio o contactar a nuestro equipo de soporte en support@sentinel-project.com.</ul>
+</details>
 
-##### Paso 5: Reinicio del Servicio vsftpd
 
-1. Reiniciamos el servicio vsftpd para que los cambios sean aplicados:
-    ```bash
-    sudo systemctl restart vsftpd
-    ```
-## 🤝 Contribución
+<details>
+  <summary>🌟 Equipo </summary>
+<ul>- Leonardo: Arquitecto de Red </ul>
+<ul>- Joel: Especialista en Virtualización </ul>
+<ul>- Beatriz: Experta en Seguridad Perimetral </ul>
+<ul>- Marc: Analista de Amenazas </ul>
 
-## 📄 Licencia
+<details>
+  <summary>📊 Estado del Proyecto </summary>
+</details>
 
-## 🙋 Soporte
-Para soporte, por favor abrir un issue en el repositorio o contactar a nuestro equipo de soporte en support@sentinel-project.com.
+<details>
+  <summary>Estado del proyecto: En desarrollo activo Versión actual: 0.9.0-beta
+</details>
 
-## 🌟 Equipo
-- Leonardo: Arquitecto de Red
-- Joel: Especialista en Virtualización
-- Beatriz: Experta en Seguridad Perimetral
-- Marc: Analista de Amenazas
-
-## 📊 Estado del Proyecto
-
-## Estado del proyecto: En desarrollo activo Versión actual: 0.9.0-beta
-
+<details>
 Contribuciones y feedback son bienvenidos. Para más información, consulta nuestra documentación.
+</details>
