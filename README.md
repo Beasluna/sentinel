@@ -22,7 +22,17 @@ SENTINEL es una solución de ciberseguridad de vanguardia diseñada para protege
     <li>🔐 Gestión avanzada de bases de datos con MySQL</li>
     <li>📊 Dashboards personalizados para visualización de seguridad</li>
   </ul>
-</details>
+
+ <details>
+  <summary>🛠️ Tecnologías y Herramientas</summary>
+<ul>- Proxmox VE para virtualización</ul>
+<ul>- pfSense como firewall principal</ul>
+<ul>- Suricata/Snort para IDS/IPS</ul>
+<ul>- Docker para contenerización</ul>
+<ul>- MySQL para gestión de bases de datos</ul>
+<ul>- Python y Bash para scripting y automatización</ul>
+<ul>- Ansible para gestión de configuraciones</ul>
+ </details>
 
 <details>
   <summary>🏗️ Componentes Clave</summary>
@@ -96,26 +106,26 @@ SENTINEL es una solución de ciberseguridad de vanguardia diseñada para protege
   </ul>
 </details>
 
-
 <details>
-  <summary>🛠️ Tecnologías y Herramientas</summary>
-<ul>- Proxmox VE para virtualización</ul>
-<ul>- pfSense como firewall principal</ul>
-<ul>- Suricata/Snort para IDS/IPS</ul>
-<ul>- Docker para contenerización</ul>
-<ul>- MySQL para gestión de bases de datos</ul>
-<ul>- Python y Bash para scripting y automatización</ul>
-<ul>- Ansible para gestión de configuraciones</ul>
+  <summary>📋 Resumen de Recursos</summary>
+  
+  | Componente            | Almacenamiento | CPU | RAM     | IP               |
+  |-----------------------|----------------|-----|---------|-------------------|
+  | Máquina Host          | 510GB          | 4   | 8GB     | 100.77.20.132     |
+  | VM Windows            | 50GB           | 2   | 4GB     | 192.168.1.10/24   |
+  | VM Linux              | 50GB           | 2   | 4GB     | 192.168.1.20/24   |
+  | VM Mac                | 50GB           | 2   | 4GB     | 192.168.1.30/24   |
+  | Máquina Contenedores  | 50GB           | 2   | 4GB     | 192.168.1.40/24   |
+  | pfSense (Firewall)    | 20GB           | 1   | 2GB     | 192.168.1.1/24    |
+  | Suricata/Snort (IDS/IPS)| 20GB         | 1   | 2GB     | 192.168.1.50/24   |
+  | MySQL (en Proxmox)    | 20GB           | 1   | 2GB     | 192.168.1.60/24   |
+  | Raspberry Pi (MySQL)   | 20GB          | 1   | 2GB     | 192.168.1.70/24   |
+
 </details>
 
-<details>
-  <summary>📋 Requisitos del Sistema</summary>
-</details>
 
-<details>
-  <summary>🚀 Instrucciones de Instalación</summary>
-</details>
 
+ ## 🚀 Instrucciones de Instalación</summary>
 <details>
   <summary>📘 Guía de Uso</summary>
   <ul>
@@ -210,6 +220,45 @@ sudo ufw reload</code></pre>
 <ul>- Marc: Analista de Amenazas </ul>
 </details>
 
+
+<details>
+  <summary> Definiciones de Roles en la Matriz RACI </summary>
+
+  | Símbolo | Rol          | Descripción                                                   |
+  |---------|--------------|---------------------------------------------------------------|
+  | R       | Responsable  | La persona o personas encargadas de realizar la tarea.       |
+  | A       | Aprobador    | La persona que debe aprobar el trabajo realizado.            |
+  | C       | Consultado   | Personas que deben ser consultadas antes de tomar decisiones.|
+  | I       | Informado    | Personas que deben ser informadas sobre el progreso o resultados.|
+</details>
+
+<details>
+  <summary>📊 Matriz RACI</summary>
+
+  | Actividad                                 | Leonardo | Joel    | Beatriz | Marc    |
+  |-------------------------------------------|----------|---------|---------|---------|
+  | Diseño de arquitectura de red             | R, A    | C       | C       | C       |
+  | Implementación de VLANs                   | R        | C       | C       | I       |
+  | Configuración de Proxmox VE               | C        | R, A    | I       | I       |
+  | Despliegue de servidores virtuales        | C        | R       | C       | C       |
+  | Implementación de firewall pfSense        | C        | I       | R, A    | C       |
+  | Configuración de IDS/IPS                  | C        | I       | R       | C       |
+  | Gestión de bases de datos                 | I        | C       | R, A    | I       |
+  | Implementación de Docker                   | I        | R, A    | C       | C       |
+  | Sistema de monitorización en tiempo real   | C        | C       | C       | R, A    |
+  | Análisis de malware y sandboxing          | I        | C       | C       | R, A    |
+  | Implementación de honeypots               | C        | C       | C       | R, A    |
+  | Configuración de VPN                       | C        | C       | R       | C       |
+  | Pruebas de penetración                    | C        | C       | C       | R       |
+  | Documentación técnica                      | R        | R       | R       | R       |
+  | Presentación final del proyecto            | R        | R       | R       | R       |
+
+</details>
+
+
+
+
+
 <details>
   <summary>📊 Estado del Proyecto </summary>
 </details>
@@ -219,5 +268,6 @@ sudo ufw reload</code></pre>
 </details>
 
 <details>
-Contribuciones y feedback son bienvenidos. Para más información, consulta nuestra documentación.
+<ul>Contribuciones y feedback son bienvenidos. Para más información, consulta nuestra documentación. </ul>
+</details>
 </details>
