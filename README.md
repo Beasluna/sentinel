@@ -208,6 +208,7 @@ sudo ufw reload</code></pre>
 <ul>- Joel: Especialista en Virtualización </ul>
 <ul>- Beatriz: Experta en Seguridad Perimetral </ul>
 <ul>- Marc: Analista de Amenazas </ul>
+</details>
 
 <details>
   <summary>📊 Estado del Proyecto </summary>
