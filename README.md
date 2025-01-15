@@ -202,15 +202,6 @@ sudo ufw reload</code></pre>
   <summary>🤝 Contribución</summary>
 </details>
 
-<details>
-  <summary>📄 Licencia</summary>
-</details>
-
-<details>
-  <summary>🙋 Soporte</summary>
-<ul>Para soporte, por favor abrir un issue en el repositorio o contactar a nuestro equipo de soporte en support@sentinel-project.com.</ul>
-</details>
-
 
 <details>
   <summary>🌟 Equipo </summary>
@@ -256,15 +247,34 @@ sudo ufw reload</code></pre>
 </details>
 
 
-
-
-
 <details>
-  <summary>📊 Estado del Proyecto </summary>
-</details>
+  <summary>📊 Diagrama de Gantt de Responsabilidades del Equipo </summary>
 
-<details>
-  <summary>Estado del proyecto: En desarrollo activo Versión actual: 0.9.0-beta
+| Semana      | Actividades de Leonardo (Arquitecto de Red)                                   | Actividades de Joel (Especialista en Virtualización)                       | Actividades de Beatriz (Experta en Seguridad Perimetral)                 | Actividades de Marc (Analista de Amenazas)                               |
+|-------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------|---------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| **1-4**     | 🟦 **Diseño de la arquitectura de red**                                      | 🟩 **Planificación de Proxmox VE**                                     | 🟨 **Configuración del firewall pfSense**                                  | 🟪 **Diseño del sistema de monitorización**                               |
+|             | - Segmentación con VLANs                                                      | - Estructura de contenedores Docker                                     | - Planificación del IDS/IPS                                                | - Implementación de honeypots                                            |
+|             | - Definición de zonas de seguridad                                            | - Requisitos para servidores virtuales                                   | - Políticas de seguridad para bases de datos                              | - Procedimientos para análisis de malware                                 |
+|             | - Diagramas detallados de la topología                                       |                                                                          |                                                                           |                                                                         |
+| **5-8**     | 🟦 **Implementación de la segmentación**                                      | 🟩 **Instalación y configuración**                                      | 🟨 **Implementación del firewall pfSense**                                 | 🟪 **Implementación del sistema básico**                                  |
+|             | - Configuración de VLANs                                                      | - Proxmox VE y servidores virtuales                                     | - Primeras políticas de seguridad                                          | - Herramientas iniciales para análisis                                    |
+|             | - Conductos de comunicación entre zonas                                        |                                                                          |                                                                           |                                                                         |
+| **9-12**    | 🟦 **Optimización y técnicas avanzadas**                                      | 🟩 **Despliegue y configuración**                                       | 🟨 **Implementación del IDS/IPS**                                         | 🟪 **Implementación avanzada**                                            |
+|             | - Port Knocking                                                               | - Contenedores Docker                                                   | - Filtrado DNS con Pi-hole                                                | - Cuckoo Sandbox para análisis                                           |
+|             |                                                                              |                                                                          |                                                                           | - Honeypots (T-Pot)                                                    |
+| **13**      | 🟥 **Pruebas integrales del sistema**                                         | 🟥 **Pruebas integrales del sistema**                                   | 🟥 **Pruebas integrales del sistema**                                     | 🟥 **Pruebas integrales del sistema**                                   |
+|             | - Ajustes basados en resultados                                               | - Ajustes basados en resultados                                         | - Ajustes basados en resultados                                           | - Ajustes basados en resultados                                         |
+|             | - Colaboración en resolución de problemas interdepartamentales                | - Colaboración en resolución de problemas interdepartamentales          | - Colaboración en resolución de problemas interdepartamentales            | - Colaboración en resolución de problemas interdepartamentales          |
+
+### Leyenda
+- **🟦 Leonardo**: Arquitecto de Red
+- **🟩 Joel**: Especialista en Virtualización
+- **🟨 Beatriz**: Experta en Seguridad Perimetral
+- **🟪 Marc**: Analista de Amenazas
+- **🟥 Todos**: Actividades colaborativas al final del proyecto
+
+
+
 </details>
 
 <details>
