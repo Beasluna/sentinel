@@ -130,7 +130,7 @@ SENTINEL es una solución de ciberseguridad de vanguardia diseñada para protege
   <summary>📘 Guía de Uso</summary>
   <ul>
      <summary>📘 Implementación del Servicio FTP con Certificado SSL</summary>
-    <li>Implementación del Servicio FTP con Certificado SSL
+          <li>Implementación del Servicio FTP con Certificado SSL
       <ul>
         <li>Esta guía describe cómo configurar un servicio FTP seguro utilizando un certificado SSL. Esto asegurará que las transferencias de archivos sean cifradas, protegiendo así la información sensible durante el tránsito de estos archivos.</li>
       </ul>
