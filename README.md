@@ -199,7 +199,6 @@ sudo ufw reload</code></pre>
     </li>
   </ul>
 </details>
-  </details>
 <details>
   <summary>🤝 Contribución</summary>
 </details>
