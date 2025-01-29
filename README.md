@@ -111,7 +111,7 @@ SENTINEL es una solución de ciberseguridad de vanguardia diseñada para protege
   
   | Componente            | Almacenamiento | CPU | RAM     | IP               |
   |-----------------------|----------------|-----|---------|-------------------|
-  | Máquina Host          | 510GB          | 4   | 8GB     | 100.77.20.132     |
+  | Máquina Host (x2)     | 510GB          | 4   | 8GB     | 100.77.20.132     |
   | VM Windows            | 50GB           | 2   | 4GB     | 192.168.1.10/24   |
   | VM Linux              | 50GB           | 2   | 4GB     | 192.168.1.20/24   |
   | VM Mac                | 50GB           | 2   | 4GB     | 192.168.1.30/24   |
