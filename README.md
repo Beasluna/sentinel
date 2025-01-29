@@ -130,6 +130,56 @@ SENTINEL es una solución de ciberseguridad de vanguardia diseñada para protege
   <summary>📘 Guía de Uso</summary>
   <ul>
     <details>
+  <summary>📘 Clúster Proxmox</summary>
+  <ul>
+    <li>Implementación de un Clúster en Proxmox
+      <ul>
+        <li>Esta guía detalla cómo unir dos nodos Proxmox para formar un clúster, permitiendo la administración centralizada y la migración en vivo de máquinas virtuales.</li>
+      </ul>
+    </li>
+    <li>Paso 1: Configuración de Red
+      <ul>
+        <li>Verificamos que ambos nodos tengan nombres de host y direcciones IP estáticas:</li>
+        <pre><code>hostnamectl set-hostname proxmox-node1
+echo "192.168.1.101 proxmox-node1" | sudo tee -a /etc/hosts
+echo "192.168.1.102 proxmox-node2" | sudo tee -a /etc/hosts</code></pre>
+      </ul>
+    </li>
+    <li>Paso 2: Creación del Clúster en el Primer Nodo
+      <ul>
+        <li>En el nodo principal, ejecutamos:</li>
+        <pre><code>pvecm create my-cluster</code></pre>
+        <li>Verificamos que el clúster se haya creado correctamente:</li>
+        <pre><code>pvecm status</code></pre>
+      </ul>
+    </li>
+    <li>Paso 3: Unir el Segundo Nodo al Clúster
+      <ul>
+        <li>En el nodo que queremos agregar, ejecutamos:</li>
+        <pre><code>pvecm add 192.168.1.101</code></pre>
+        <li>Verificamos que ambos nodos estén en el clúster:</li>
+        <pre><code>pvecm nodes</code></pre>
+      </ul>
+    </li>
+    <li>Paso 4: Configuración Adicional
+      <ul>
+        <li>Habilitamos la migración sin contraseña entre nodos:</li>
+        <pre><code>ssh-copy-id root@proxmox-node2</code></pre>
+        <li>Probamos la migración en vivo:</li>
+        <pre><code>qm migrate 100 proxmox-node2 --online</code></pre>
+      </ul>
+    </li>
+    <li>Paso 5: Verificación del Clúster
+      <ul>
+        <li>Verificamos el estado general del clúster:</li>
+        <pre><code>pvecm status
+pvecm nodes
+pvesh get /cluster/config/nodes</code></pre>
+      </ul>
+    </li>
+  </ul>
+</details>
+<details>
      <summary>📘 Implementación del Servicio FTP con Certificado SSL</summary>
           <li>Implementación del Servicio FTP con Certificado SSL
       <ul>
@@ -195,56 +245,6 @@ sudo ufw reload</code></pre>
         <li>Reiniciamos el servicio vsftpd para que los cambios sean aplicados:
           <pre><code>sudo systemctl restart vsftpd</code></pre>
         </li>
-      </ul>
-    </li>
-  </ul>
-</details>
-<details>
-  <summary>📘 Clúster Proxmox</summary>
-  <ul>
-    <li>Implementación de un Clúster en Proxmox
-      <ul>
-        <li>Esta guía detalla cómo unir dos nodos Proxmox para formar un clúster, permitiendo la administración centralizada y la migración en vivo de máquinas virtuales.</li>
-      </ul>
-    </li>
-    <li>Paso 1: Configuración de Red
-      <ul>
-        <li>Verificamos que ambos nodos tengan nombres de host y direcciones IP estáticas:</li>
-        <pre><code>hostnamectl set-hostname proxmox-node1
-echo "192.168.1.101 proxmox-node1" | sudo tee -a /etc/hosts
-echo "192.168.1.102 proxmox-node2" | sudo tee -a /etc/hosts</code></pre>
-      </ul>
-    </li>
-    <li>Paso 2: Creación del Clúster en el Primer Nodo
-      <ul>
-        <li>En el nodo principal, ejecutamos:</li>
-        <pre><code>pvecm create my-cluster</code></pre>
-        <li>Verificamos que el clúster se haya creado correctamente:</li>
-        <pre><code>pvecm status</code></pre>
-      </ul>
-    </li>
-    <li>Paso 3: Unir el Segundo Nodo al Clúster
-      <ul>
-        <li>En el nodo que queremos agregar, ejecutamos:</li>
-        <pre><code>pvecm add 192.168.1.101</code></pre>
-        <li>Verificamos que ambos nodos estén en el clúster:</li>
-        <pre><code>pvecm nodes</code></pre>
-      </ul>
-    </li>
-    <li>Paso 4: Configuración Adicional
-      <ul>
-        <li>Habilitamos la migración sin contraseña entre nodos:</li>
-        <pre><code>ssh-copy-id root@proxmox-node2</code></pre>
-        <li>Probamos la migración en vivo:</li>
-        <pre><code>qm migrate 100 proxmox-node2 --online</code></pre>
-      </ul>
-    </li>
-    <li>Paso 5: Verificación del Clúster
-      <ul>
-        <li>Verificamos el estado general del clúster:</li>
-        <pre><code>pvecm status
-pvecm nodes
-pvesh get /cluster/config/nodes</code></pre>
       </ul>
     </li>
   </ul>
