@@ -129,6 +129,7 @@ SENTINEL es una solución de ciberseguridad de vanguardia diseñada para protege
 <details>
   <summary>📘 Guía de Uso</summary>
   <ul>
+    <details>
      <summary>📘 Implementación del Servicio FTP con Certificado SSL</summary>
           <li>Implementación del Servicio FTP con Certificado SSL
       <ul>
@@ -198,7 +199,7 @@ sudo ufw reload</code></pre>
     </li>
   </ul>
 </details>
-
+  </details>
 <details>
   <summary>🤝 Contribución</summary>
 </details>
