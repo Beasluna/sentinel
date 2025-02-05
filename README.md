@@ -250,6 +250,12 @@ sudo ufw reload</code></pre>
   </ul>
 </details>
 <details>
+  <summary>📖 Documentación de Grafana </summary>
+  Para más información sobre Grafana, consulta la <a href="https://grafana.com/docs/grafana/latest/">documentación oficial</a>.
+</details>
+
+    
+<details>
   <summary>🤝 Contribución</summary>
 </details>
 
