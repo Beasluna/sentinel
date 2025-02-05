@@ -251,15 +251,40 @@ sudo ufw reload</code></pre>
       </ul>
     </details>
     <details>
+    <details>
       <summary>📖 Documentación de Grafana</summary>
       Para más información sobre Grafana, consulta la  
       <a href="https://grafana.com/docs/grafana/latest/">documentación oficial</a>.
     </details>
 
-  <details>
+   <details>
       <summary>📖 Documentación de Prometheus</summary>
       Para más información sobre Prometheus, consulta la  
       <a href="https://prometheus.io/docs/introduction/overview/">documentación oficial</a>.
+    </details>
+
+   <details>
+      <summary>📖 Documentación de Proxmox</summary>
+      Para más información sobre Proxmox y sus servicios de soporte, consulta la  
+      <a href="https://www.proxmox.com/en/services/support-services/support#support-resources">documentación oficial</a>.
+    </details>
+
+   <details>
+      <summary>📖 Documentación de Snort</summary>
+      Para más información sobre Snort, consulta la  
+      <a href="https://www.snort.org/documents">documentación oficial</a>.
+    </details>
+
+   <details>
+      <summary>📖 Documentación de Docker</summary>
+      Para más información sobre Docker, consulta la  
+      <a href="https://docs.docker.com/manuals/">documentación oficial</a>.
+    </details>
+
+   <details>
+      <summary>📖 Documentación de MySQL</summary>
+      Para más información sobre MySQL, consulta la  
+      <a href="https://dev.mysql.com/doc/refman/8.4/en/">documentación oficial</a>.
     </details>
   </ul>
 </details>
