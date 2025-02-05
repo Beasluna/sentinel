@@ -130,89 +130,90 @@ SENTINEL es una solución de ciberseguridad de vanguardia diseñada para protege
   <summary>📘 Guía de Uso</summary>
   <ul>
     <details>
-  <summary>📘 Clúster Proxmox</summary>
-  <ul>
-    <li>Implementación de un Clúster en Proxmox
+      <summary>📘 Clúster Proxmox</summary>
       <ul>
-        <li>Esta guía detalla cómo unir dos nodos Proxmox para formar un clúster, permitiendo la administración centralizada y la migración en vivo de máquinas virtuales.</li>
-      </ul>
-    </li>
-    <li>Paso 1: Configuración de Red
-      <ul>
-        <li>Verificamos que ambos nodos tengan nombres de host y direcciones IP estáticas:</li>
-        <pre><code>hostnamectl set-hostname proxmox-node1
+        <li>Implementación de un Clúster en Proxmox
+          <ul>
+            <li>Esta guía detalla cómo unir dos nodos Proxmox para formar un clúster, permitiendo la administración centralizada y la migración en vivo de máquinas virtuales.</li>
+          </ul>
+        </li>
+        <li>Paso 1: Configuración de Red
+          <ul>
+            <li>Verificamos que ambos nodos tengan nombres de host y direcciones IP estáticas:</li>
+            <pre><code>hostnamectl set-hostname proxmox-node1
 echo "192.168.1.101 proxmox-node1" | sudo tee -a /etc/hosts
 echo "192.168.1.102 proxmox-node2" | sudo tee -a /etc/hosts</code></pre>
-      </ul>
-    </li>
-    <li>Paso 2: Creación del Clúster en el Primer Nodo
-      <ul>
-        <li>En el nodo principal, ejecutamos:</li>
-        <pre><code>pvecm create my-cluster</code></pre>
-        <li>Verificamos que el clúster se haya creado correctamente:</li>
-        <pre><code>pvecm status</code></pre>
-      </ul>
-    </li>
-    <li>Paso 3: Unir el Segundo Nodo al Clúster
-      <ul>
-        <li>En el nodo que queremos agregar, ejecutamos:</li>
-        <pre><code>pvecm add 192.168.1.101</code></pre>
-        <li>Verificamos que ambos nodos estén en el clúster:</li>
-        <pre><code>pvecm nodes</code></pre>
-      </ul>
-    </li>
-    <li>Paso 4: Configuración Adicional
-      <ul>
-        <li>Habilitamos la migración sin contraseña entre nodos:</li>
-        <pre><code>ssh-copy-id root@proxmox-node2</code></pre>
-        <li>Probamos la migración en vivo:</li>
-        <pre><code>qm migrate 100 proxmox-node2 --online</code></pre>
-      </ul>
-    </li>
-    <li>Paso 5: Verificación del Clúster
-      <ul>
-        <li>Verificamos el estado general del clúster:</li>
-        <pre><code>pvecm status
+          </ul>
+        </li>
+        <li>Paso 2: Creación del Clúster en el Primer Nodo
+          <ul>
+            <li>En el nodo principal, ejecutamos:</li>
+            <pre><code>pvecm create my-cluster</code></pre>
+            <li>Verificamos que el clúster se haya creado correctamente:</li>
+            <pre><code>pvecm status</code></pre>
+          </ul>
+        </li>
+        <li>Paso 3: Unir el Segundo Nodo al Clúster
+          <ul>
+            <li>En el nodo que queremos agregar, ejecutamos:</li>
+            <pre><code>pvecm add 192.168.1.101</code></pre>
+            <li>Verificamos que ambos nodos estén en el clúster:</li>
+            <pre><code>pvecm nodes</code></pre>
+          </ul>
+        </li>
+        <li>Paso 4: Configuración Adicional
+          <ul>
+            <li>Habilitamos la migración sin contraseña entre nodos:</li>
+            <pre><code>ssh-copy-id root@proxmox-node2</code></pre>
+            <li>Probamos la migración en vivo:</li>
+            <pre><code>qm migrate 100 proxmox-node2 --online</code></pre>
+          </ul>
+        </li>
+        <li>Paso 5: Verificación del Clúster
+          <ul>
+            <li>Verificamos el estado general del clúster:</li>
+            <pre><code>pvecm status
 pvecm nodes
 pvesh get /cluster/config/nodes</code></pre>
+          </ul>
+        </li>
       </ul>
-    </li>
-  </ul>
-</details>
-<details>
-     <summary>📘 Implementación del Servicio FTP con Certificado SSL</summary>
-          <li>Implementación del Servicio FTP con Certificado SSL
+    </details>
+    <details>
+      <summary>📘 Implementación del Servicio FTP con Certificado SSL</summary>
       <ul>
-        <li>Esta guía describe cómo configurar un servicio FTP seguro utilizando un certificado SSL. Esto asegurará que las transferencias de archivos sean cifradas, protegiendo así la información sensible durante el tránsito de estos archivos.</li>
-      </ul>
-    </li>
-    <li>Paso 1: Instalación de vsftpd
-      <ul>
-        <li>Actualizamos los repositorios, instalamos vsftpd y habilitamos para que se inicie al arrancar el sistema:
-          <pre><code>sudo apt update
+        <li>Implementación del Servicio FTP con Certificado SSL
+          <ul>
+            <li>Esta guía describe cómo configurar un servicio FTP seguro utilizando un certificado SSL. Esto asegurará que las transferencias de archivos sean cifradas, protegiendo así la información sensible durante el tránsito de estos archivos.</li>
+          </ul>
+        </li>
+        <li>Paso 1: Instalación de vsftpd
+          <ul>
+            <li>Actualizamos los repositorios, instalamos vsftpd y habilitamos para que se inicie al arrancar el sistema:
+              <pre><code>sudo apt update
 sudo apt install vsftpd
 sudo systemctl enable vsftpd</code></pre>
+            </li>
+            <li>Verificamos que el servicio esté corriendo:
+              <pre><code>sudo systemctl status vsftpd</code></pre>
+            </li>
+          </ul>
         </li>
-        <li>Verificamos que el servicio esté corriendo:
-          <pre><code>sudo systemctl status vsftpd</code></pre>
+        <li>Paso 2: Generación del Certificado SSL
+          <ul>
+            <li>Generamos el certificado SSL/TLS utilizando OpenSSL:
+              <pre><code>sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem</code></pre>
+            </li>
+            <li>Después, nos pide información adicional que debemos rellenar.</li>
+          </ul>
         </li>
-      </ul>
-    </li>
-    <li>Paso 2: Generación del Certificado SSL
-      <ul>
-        <li>Generamos el certificado SSL/TLS utilizando OpenSSL:
-          <pre><code>sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem</code></pre>
-        </li>
-        <li>Después, nos pide información adicional que debemos rellenar.</li>
-      </ul>
-    </li>
-    <li>Paso 3: Configuración de vsftpd
-      <ul>
-        <li>Abrimos el archivo de configuración de vsftpd:
-          <pre><code>sudo nano /etc/vsftpd.conf</code></pre>
-        </li>
-        <li>Aseguramos que las siguientes líneas estén presentes y configuradas correctamente, incluyendo los directorios de los certificados anteriores:
-          <pre><code>listen=YES
+        <li>Paso 3: Configuración de vsftpd
+          <ul>
+            <li>Abrimos el archivo de configuración de vsftpd:
+              <pre><code>sudo nano /etc/vsftpd.conf</code></pre>
+            </li>
+            <li>Aseguramos que las siguientes líneas estén presentes y configuradas correctamente, incluyendo los directorios de los certificados anteriores:
+              <pre><code>listen=YES
 anonymous_enable=NO
 local_enable=YES
 write_enable=YES
@@ -226,33 +227,43 @@ ssl_sslv2=NO
 ssl_sslv3=NO
 rsa_cert_file=/etc/ssl/private/vsftpd.pem
 rsa_private_key_file=/etc/ssl/private/vsftpd.pem</code></pre>
+            </li>
+            <li>Guardamos y cerramos el archivo.</li>
+          </ul>
         </li>
-        <li>Guardamos y cerramos el archivo.</li>
-      </ul>
-    </li>
-    <li>Paso 4: Ajuste del Firewall
-      <ul>
-        <li>Permitimos el tráfico FTP y FTP sobre SSL (FTPS):
-          <pre><code>sudo ufw allow 20/tcp
+        <li>Paso 4: Ajuste del Firewall
+          <ul>
+            <li>Permitimos el tráfico FTP y FTP sobre SSL (FTPS):
+              <pre><code>sudo ufw allow 20/tcp
 sudo ufw allow 21/tcp
 sudo ufw allow 990/tcp
 sudo ufw reload</code></pre>
+            </li>
+          </ul>
+        </li>
+        <li>Paso 5: Reinicio del Servicio vsftpd
+          <ul>
+            <li>Reiniciamos el servicio vsftpd para que los cambios sean aplicados:
+              <pre><code>sudo systemctl restart vsftpd</code></pre>
+            </li>
+          </ul>
         </li>
       </ul>
-    </li>
-    <li>Paso 5: Reinicio del Servicio vsftpd
-      <ul>
-        <li>Reiniciamos el servicio vsftpd para que los cambios sean aplicados:
-          <pre><code>sudo systemctl restart vsftpd</code></pre>
-        </li>
-      </ul>
-    </li>
+    </details>
+    <details>
+      <summary>📖 Documentación de Grafana</summary>
+      Para más información sobre Grafana, consulta la  
+      <a href="https://grafana.com/docs/grafana/latest/">documentación oficial</a>.
+    </details>
+
+  <details>
+      <summary>📖 Documentación de Prometheus</summary>
+      Para más información sobre Prometheus, consulta la  
+      <a href="https://prometheus.io/docs/introduction/overview/">documentación oficial</a>.
+    </details>
   </ul>
 </details>
-<details>
-  <summary>📖 Documentación de Grafana </summary>
-  Para más información sobre Grafana, consulta la <a href="https://grafana.com/docs/grafana/latest/">documentación oficial</a>.
-</details>
+
 
     
 <details>
