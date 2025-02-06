@@ -52,7 +52,7 @@ SENTINEL es una solución de ciberseguridad de vanguardia diseñada para protege
     <li>Seguridad Perimetral y de Red
       <ul>
         <li>Firewall pfSense</li>
-        <li>IDS/IPS (Suricata o Snort)</li>
+        <li>IDS/IPS (Snort)</li>
         <li>Filtrado DNS con Pi-hole</li>
       </ul>
     </li>
