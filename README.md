@@ -253,9 +253,31 @@ sudo ufw reload</code></pre>
     <details>
     <details>
       <summary>📖 Documentación de Grafana</summary>
-      Para más información sobre Grafana, consulta la  
-      <a href="https://grafana.com/docs/grafana/latest/">documentación oficial</a>.
-    </details>
+  
+  1. **Actualiza el sistema**
+     ```bash
+     sudo apt update && sudo apt upgrade -y
+     ```
+  2. **Agregamos el reposititorio oficial de Grafana**
+     ```bash
+     wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+     ```
+  3. **Creamos el archivo de la lista del repositorio***
+     ```bash
+     echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
+     ```
+  4. **Instalamos grafana y lo habilitamos**
+     ```bash
+     sudo systemctl start grafana-server
+     sudo systemctl enable grafana-server
+     ```
+  6. **Verificacion del servicio**
+     ```bash
+     sudo systemctl status grafana-server
+     ```
+        Para más información sobre Grafana, consulta la  
+        <a href="https://grafana.com/docs/grafana/latest/">documentación oficial</a>.
+     </details>
 
    <details>
       <summary>📖 Documentación de Prometheus</summary>
