@@ -123,7 +123,12 @@ SENTINEL es una solución de ciberseguridad de vanguardia diseñada para protege
 
 </details>
 
+<details>
+  <summary>🛜  DIAGRAMA DE RED SENTINEL</summary>
 
+  ![Diagrama de red](SENTINELS/ASSETS/Diagramasentinel.gif)
+
+</details>
 
  ## 🚀 Instrucciones de Instalación</summary>
 <details>
@@ -315,7 +320,9 @@ sudo ufw reload</code></pre>
     
 <details>
   <summary>🤝 Contribución</summary>
+
 </details>
+
 
 
 <details>
@@ -356,8 +363,8 @@ sudo ufw reload</code></pre>
   | Implementación de honeypots               | C        | C       | C       | R, A    |
   | Configuración de VPN                       | C        | C       | R       | C       |
   | Pruebas de penetración                    | C        | C       | C       | R       |
-  | Documentación técnica                      | R        | R       | R       | R       |
-  | Presentación final del proyecto            | R        | R       | R       | R       |
+  | Documentación técnica                      | H        | H       | H       | H       |
+  | Presentación final del proyecto            | H        | H       | H       | H       |
 
 </details>
 
