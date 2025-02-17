@@ -142,17 +142,36 @@ Esta documentación ofrece una visión general, incluyendo su arquitectura, comp
  ## 🚀 Instrucciones de Instalación</summary>
 
 <details>
-  <summary>🚀 HIPERVISOR: DEFINICIÓN </summary>
+    <summary>🚀 HIPERVISOR: DEFINICIÓN </summary>
+Los hipervisores, o monitores de máquinas virtuales, son sistemas de software que crean y ejecutan máquinas virtuales. Estos hipervisores separan el sistema operativo y los recursos de las máquinas virtuales para crearlas y gestionarlas. El hardware físico que funciona como hipervisor se llama "host", mientras que las máquinas virtuales que utilizan estos recursos se llaman "huéspedes".
 
-Los hipervisores, o monitores de máquinas virtuales, **son sistemas de software que crean y ejecutan máquinas virtuales.** Estos hipervisores separan el sistema operativo y los recursos de las máquinas virtuales para crearlas y gestionarlas. El hardware físico que funciona como hipervisor se llama **"host"**, mientras que las máquinas virtuales que utilizan estos recursos se llaman **"huéspedes".**
+El hipervisor trata los recursos como un pool que se puede redistribuir fácilmente entre las máquinas virtuales existentes o las nuevas. Todos los hipervisores requieren algunos elementos del sistema operativo para ejecutar las máquinas virtuales, como el gestor de memoria, el programador de procesos, los controladores de dispositivos, etc.
 
-El hipervisor trata los recursos como un pool que se puede redistribuir fácilmente entre las máquinas virtuales existentes o las nuevas. Todos los hipervisores requieren algunos elementos del sistema operativo para ejecutar las máquinas virtuales, como el **gestor de memoria, el programador de procesos, los controladores de dispositivos, etc.**
-
-El hipervisor asigna los recursos a cada máquina virtual y gestiona su programación en función de los recursos físicos disponibles. Con un hipervisor, es posible ejecutar varios sistemas operativos al mismo tiempo, compartiendo los mismos recursos de hardware virtualizados. Algunas opciones populares de hipervisor son VMware ESXi y vSphere, KVM, Xen y Microsoft Hyper-V y Proxmox VE.
+El hipervisor asigna los recursos a cada máquina virtual y gestiona su programación en función de los recursos físicos disponibles. Con un hipervisor, es posible ejecutar varios sistemas operativos al mismo tiempo, compartiendo los mismos recursos de hardware virtualizados. Algunas opciones populares de hipervisor son VMware ESXi y vSphere, KVM, Xen y Microsoft Hyper-V.
 
 En otras palabras, un hipervisor permite que varias instancias de sistema operativo trabajen juntas y compartan los mismos recursos físicos de la computadora. Esto se conoce como virtualización, y estas instancias se llaman máquinas virtuales. El hipervisor, también conocido como monitor de máquina virtual, administra estas máquinas virtuales mientras se ejecutan simultáneamente, separándolas lógicamente y asignando recursos de manera individual. Esto evita que una máquina virtual afecte a las demás, asegurando que si una de ellas se bloquea o tiene problemas, las demás sigan funcionando correctamente.
 
 </details>
+
+  <details>
+    
+  <summary>📘 PROXMOX</summary>
+
+  Proxmox Virtual Environment (Proxmox VE) es una solución de código abierto para la virtualización empresarial, basada en Debian GNU/Linux. Su objetivo es optimizar el uso de los recursos existentes, minimizar el coste del hardware y el tiempo empleado.
+  
+  **Características principales:**
+  
+  *   **Virtualización:** Utiliza KVM para máquinas virtuales y LXC para contenedores.
+  *   **Gestión Centralizada:** Interfaz web intuitiva para administrar VMs y contenedores.
+  *   **Almacenamiento y Redes:** Soporta diversos tipos de almacenamiento y SDN.
+  *   **Alta Disponibilidad y Clusterización:** Permite crear clústeres para redundancia.
+  *   **Seguridad y Respaldo:** Actualizaciones regulares y herramientas integradas de backup.
+  
+  Proxmox VE se distribuye bajo la licencia GNU AGPLv3, permitiendo su uso gratuito y la inspección del código fuente.
+
+</details>
+
+
  
 <details>
   <summary>📘 Guía de Uso</summary>
