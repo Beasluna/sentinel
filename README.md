@@ -2,12 +2,20 @@
 ![Sentinels](SENTINELS/ASSETS/Sentinels.gif)
 
 
-SENTINEL (Secure Enterprise Network Transformation and Intelligent Layered Network) es una solución de ciberseguridad de vanguardia diseñada para proteger y monitorear infraestructuras de red empresariales.
+**SENTINEL (Secure Enterprise Network Transformation and Intelligent Layered Network)** es una solución de ciberseguridad de vanguardia diseñada para proteger y monitorear infraestructuras de red empresariales.
+Combina tecnologías avanzadas con prácticas de seguridad innovadoras para ofrecer una protección integral contra amenazas cibernéticas modernas.
 
 ![Estado del Proyecto](https://img.shields.io/badge/estado-en%20desarrollo-yellow) ![Versión](https://img.shields.io/badge/version-1.0.0-blue)
 
-## 🚀 Descripción del Proyecto
-SENTINEL es una solución de ciberseguridad de vanguardia diseñada para proteger y monitorear infraestructuras de red empresariales. Combina tecnologías avanzadas con prácticas de seguridad innovadoras para ofrecer una protección integral contra amenazas cibernéticas modernas.
+## 🚀 Introducción del Proyecto
+
+En el contexto actual de crecientes ciberamenazas, **SENTINEL emerge como una solución de ciberseguridad integral a la vanguardia.** Está diseñada para proteger y monitorizar infraestructuras de redes, combinando tecnologías de avanzada y practicas innovadoras para ofrecer una defense sólida contra amenazadas modernas.
+
+- Desde segmentación de red con VLANs hasta el uso de virtualización con Proxmox VE, configurando la seguridad perimetral con firewall (pFSense) y la monitorización en tiempo real con analisis de amenazas y prevensión de ellas, cada elemento de SENTINEL está pensado para hacer un trabajo en sintonia y proporcionar una defensa exhaustiva.
+- SENTINEL incorpora la implementación de microservicios con Docker, capacidades de sandboxing y análisis de malware, y la utilización de honeypots para la detección proactiva de amenazas. Todo esto se complementa con una gestión avanzada de bases de datos con MySQL y dashboards personalizados para la visualización de la seguridad.
+
+Esta documentación ofrece una visión general, incluyendo su arquitectura, componentes clave, las instrucciones de implementación y sus guias de usos. **Nuestro objetivo es ofrecer una solución que sea no solo eficaz, sino también flexible y adaptable a las necesidades específicas de cada organización**. Acompáñanos en este recorrido por el mundo de la ciberseguridad de vanguardia con SENTINEL.
+
 
 <details>
   <summary>✨ Características Principales</summary>
