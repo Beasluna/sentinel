@@ -301,41 +301,182 @@ Un hipervisor permite que varias instancias de sistema operativo trabajen juntas
       </ul>
     </details>
     <details>
-      <summary>📚 Docker y Docker Compose</summary>
+  <summary>📚 Docker y Docker Compose</summary>
+  <ul>
+    <li><strong>Docker</strong>
       <ul>
-        <li><strong>Docker</strong>
-          <ul>
-            <li>Docker es una plataforma de código abierto que automatiza el despliegue de aplicaciones dentro de contenedores de software.</li>
-            <li>Permite a los desarrolladores empaquetar aplicaciones con todas sus dependencias en contenedores ligeros, portátiles y consistentes.</li>
-          </ul>
-        </li>
-        <li><strong>Componentes Clave</strong>
-          <ul>
-            <li><strong>Motor Docker</strong>: Aplicación cliente-servidor que incluye:
-              <ul>
-                <li><strong>Daemon (dockerd)</strong>: Proceso que gestiona contenedores, imágenes y redes.</li>
-                <li><strong>API de Docker</strong>: Interfaz RESTful que permite la comunicación entre el cliente Docker y el daemon.</li>
-                <li><strong>Cliente CLI (docker)</strong>: Herramienta de línea de comandos para interactuar con Docker.</li>
-              </ul>
-            </li>
-            <li><strong>Imágenes</strong>: Plantillas de solo lectura que se utilizan para crear contenedores.</li>
-            <li><strong>Contenedores</strong>: Instancias ejecutables de imágenes que ejecutan aplicaciones y sus dependencias.</li>
-            <li><strong>Registros</strong>: Repositorios para almacenar y distribuir imágenes (ej. Docker Hub, Google Container Registry).</li>
-          </ul>
-        </li>
-        <li><strong>Docker Compose</strong>
-          <ul>
-            <li>Docker Compose es una herramienta para definir y ejecutar aplicaciones Docker multi-contenedor.</li>
-            <li>Utiliza un archivo YAML llamado <code>docker-compose.yml</code> para definir servicios.</li>
-            <li>Se usa <code>docker compose up</code> para iniciar los contenedores.</li>
-          </ul>
-        </li>
+        <li>Docker es una plataforma de código abierto que automatiza el despliegue de aplicaciones dentro de contenedores de software.</li>
+        <li>Permite a los desarrolladores empaquetar aplicaciones con todas sus dependencias en contenedores ligeros, portátiles y consistentes.</li>
       </ul>
-    </details>
+    </li>
+    <li><strong>Componentes Clave</strong>
+      <ul>
+        <li><strong>Motor Docker</strong>: Aplicación cliente-servidor que incluye:
+          <ul>
+            <li><strong>Daemon (dockerd)</strong>: Proceso que gestiona contenedores, imágenes y redes.</li>
+            <li><strong>API de Docker</strong>: Interfaz RESTful que permite la comunicación entre el cliente Docker y el daemon.</li>
+            <li><strong>Cliente CLI (docker)</strong>: Herramienta de línea de comandos para interactuar con Docker.</li>
+          </ul>
+        </li>
+        <li><strong>Imágenes</strong>: Plantillas de solo lectura que se utilizan para crear contenedores.</li>
+        <li><strong>Contenedores</strong>: Instancias ejecutables de imágenes que ejecutan aplicaciones y sus dependencias.</li>
+        <li><strong>Registros</strong>: Repositorios para almacenar y distribuir imágenes (ej. Docker Hub, Google Container Registry).</li>
+      </ul>
+    </li>
+    <li><strong>Docker Compose</strong>
+      <ul>
+        <li>Docker Compose es una herramienta para definir y ejecutar aplicaciones Docker multi-contenedor.</li>
+        <li>Utiliza un archivo YAML llamado <code>docker-compose.yml</code> para definir servicios.</li>
+        <li>Se usa <code>docker compose up</code> para iniciar los contenedores.</li>
+        <ul>
+          <li><strong>Estructura básica del archivo docker-compose.yml:</strong>
+            <pre><code>
+version: "3.8"
+services:
+  web:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./web:/usr/share/nginx/html
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: example_password
+            </code></pre>
+          </li>
+          <li><strong>Comandos principales:</strong>
+            <ul>
+              <li><code>docker compose up -d</code>: Inicia los servicios definidos en el archivo docker-compose.yml.</li>
+              <li><code>docker compose down</code>: Detiene los servicios y elimina los contenedores creados.</li>
+              <li><code>docker compose logs</code>: Muestra los logs de los servicios en ejecución.</li>
+            </ul>
+          </li>
+        </ul>
+      </ul>
+    </li>
   </ul>
-</details>
-    <details>
-      <summary>📘 Clúster Proxmox</summary>
+
+ ## Instalación de Docker y Docker Compose
+
+  1. **Instalar Docker y Docker Compose**:
+     ```bash
+     apk add docker
+     apk add docker-compose
+     ```
+
+  2. **Iniciar el servicio Docker**:
+     ```bash
+     service docker start
+     ```
+
+  3. **Verificar la instalación**:
+     ```bash
+     docker --version
+     docker-compose --version
+     ```
+
+  ## Descarga de Imágenes Docker
+
+  1. **Descargar imágenes necesarias**:
+     - Para descargar la imagen de Nginx:
+       ```bash
+       docker pull nginx
+       ```
+     - Para descargar la imagen de Portainer:
+       ```bash
+       docker pull portainer/portainer-ce
+       ```
+
+  ## Ejecución de Contenedores
+
+  1. **Ejecutar un contenedor Nginx**:
+     ```bash
+     docker run --name mi-nginx -d -p 80:80 nginx
+     ```
+
+  2. **Ejecutar un contenedor Portainer**:
+     ```bash
+     docker run -d -p 9000:9000 --name mi-portainer portainer/portainer-ce
+     ```
+
+  3. **Listar contenedores activos e imágenes descargadas**:
+     ```bash
+     docker ps -a
+     docker images
+     ```
+
+  ## Uso de Docker Compose
+
+  1. **Crear un archivo `docker-compose.yml`**:
+     Este archivo define los servicios que deseas desplegar. Un ejemplo básico podría ser:
+
+     ```yaml
+     version: "3.8"
+     services:
+       app:
+         image: php:8-fpm
+         volumes:
+           - ./app:/var/www/html
+       db:
+         image: mysql:8.0
+         environment:
+           MYSQL_ROOT_PASSWORD: example_password
+       web:
+         image: nginx
+         ports:
+           - "80:80"
+         volumes:
+           - ./nginx.conf:/etc/nginx/nginx.conf
+     ```
+
+  2. **Ejecutar los servicios definidos en `docker-compose.yml`**:
+     ```bash
+     docker compose up -d
+     ```
+
+  3. **Detener los servicios**:
+     ```bash
+     docker compose down
+     ```
+
+  4. **Ver logs de los servicios**:
+     ```bash
+     docker compose logs
+     ```
+
+  ## Gestión con Portainer
+
+  1. **Acceder a Portainer**:
+     - Una vez que el contenedor de Portainer esté en ejecución, accede a través del navegador en `http://localhost:9000`.
+
+  2. **Crear un stack desde Portainer**:
+     - Ve a la sección "Stacks" y selecciona "Add Stack".
+     - Copia el contenido del archivo `docker-compose.yml` en el editor web.
+     - Haz clic en "Deploy the Stack".
+
+  ## Verificación del Despliegue
+
+  1. **Verificar contenedores activos**:
+     ```bash
+     docker ps -a
+     ```
+
+  2. **Acceso a la aplicación web**:
+     - Accede a tu aplicación web en `http://localhost`.
+
+  3. **Acceso a phpMyAdmin (si está configurado)**:
+     - Accede a phpMyAdmin en `http://localhost:8080`.
+
+  4. **Estado del entorno desplegado (ejemplo)**:
+     - Contenedores activos dentro del stack (ejemplo):
+       - `miAppMySQL` (MySQL 8.0) → Escuchando en el puerto `3306:3306`.
+       - `miAppNginx` (Servidor web Nginx) → Escuchando en `80:80`.
+       - `miAppPHP` (PHP-FPM) → Sin puerto expuesto directamente.
+       - `miAppPhpMyAdmin` (phpMyAdmin) → Accesible en `8080:80`.
+ </details>
+ <details>
+  <summary>📘 Clúster Proxmox</summary>
       <h2>Clúster de Proxmox con 2 Nodos</h2>
 
   <p>Un <strong>Clúster de Proxmox</strong> es un conjunto de servidores (nodos) que trabajan de manera coordinada, gestionados desde una única interfaz. La principal ventaja de un clúster es que permite compartir recursos, como máquinas virtuales y almacenamiento, entre los nodos.</p>
