@@ -305,6 +305,61 @@ Un hipervisor permite que varias instancias de sistema operativo trabajen juntas
   </details>
     <details>
       <summary>📘 Clúster Proxmox</summary>
+      <h2>Clúster de Proxmox con 2 Nodos</h2>
+
+  <p>Un <strong>Clúster de Proxmox</strong> es un conjunto de servidores (nodos) que trabajan de manera coordinada, gestionados desde una única interfaz. La principal ventaja de un clúster es que permite compartir recursos, como máquinas virtuales y almacenamiento, entre los nodos.</p>
+
+  <p>En SENTINEL, hemos implementado la configuración de un clúster de dos nodos en <strong>Proxmox VE</strong>. El Cluster nos permite: la gestión centralizada de varios nodos, facilitando tareas como la migración de máquinas virtuales (VM), alta disponibilidad y administración de recursos.</p>
+
+  <h4>Funcionalidades Clave:</h4>
+  <ul>
+    <li><strong>Migración de VMs</strong>: Las máquinas virtuales pueden ser movidas entre los nodos del clúster sin interrumpir su funcionamiento.</li>
+    <li><strong>Alta Disponibilidad</strong>: Las máquinas virtuales pueden reiniciarse en otros nodos en caso de que uno de los nodos falle.</li>
+    <li><strong>Gestión Centralizada</strong>: Los nodos pueden ser gestionados desde una sola interfaz web o por línea de comandos.</li>
+    <li><strong>Escalabilidad</strong>: Es posible añadir más nodos al clúster conforme se necesiten más recursos.</li>
+  </ul>
+
+  <h4>Palabras claves de un Clúster Proxmox</h4>
+  <ul>
+    <li><strong>Nodos</strong>: Los servidores físicos o virtuales que forman parte del clúster. Cada nodo ejecuta una instancia de <strong>Proxmox VE</strong> (Virtual Environment) y puede contener máquinas virtuales o contenedores.</li>
+    <li><strong>Corosync</strong>: Un sistema de comunicación entre nodos que garantiza que todos los nodos tengan la misma información y estado. <strong>Corosync</strong> es el encargado de la sincronización y comunicación en tiempo real, asegurando que los nodos estén siempre actualizados y evitando inconsistencias, como un estado de "split-brain" donde ambos nodos creen que son el principal.</li>
+    <li><strong>Quorum</strong>: El quorum es el número mínimo de nodos que deben estar activos para que el clúster funcione correctamente. En un clúster de dos nodos, el quorum es crítico, ya que si un nodo se apaga, el clúster podría quedar sin consenso. Esto se soluciona añadiendo un <strong>nodo de votación</strong> (un tercer nodo virtual), que actúa como árbitro y garantiza que el clúster siempre tenga un consenso válido.</li>
+    <li><strong>Cluster Manager (pvecm)</strong>: Herramienta utilizada para crear, gestionar y mantener la configuración del clúster desde la línea de comandos.</li>
+  </ul>
+
+  <h4>Beneficios de un Clúster de Dos Nodos:</h4>
+  <ul>
+    <li><strong>Alta Disponibilidad (HA)</strong>: Si un nodo falla, las máquinas virtuales pueden ser automáticamente reiniciadas en el otro nodo.</li>
+    <li><strong>Migración en vivo</strong>: Las VMs pueden ser migradas de un nodo a otro sin causar tiempo de inactividad.</li>
+    <li><strong>Redundancia de recursos</strong>: Los recursos (almacenamiento, CPU, memoria) están distribuidos entre los nodos, aumentando la tolerancia a fallos. Además, la distribución de recursos permite un balanceo de carga entre los nodos.</li>
+  </ul>
+
+  <h4>Redundancia de Almacenamiento</h4>
+  <p>Para que las máquinas virtuales puedan ser movidas entre los nodos sin interrumpir el servicio, es crucial contar con un <strong>almacenamiento compartido</strong> (NFS, Ceph o iSCSI). Este almacenamiento es accesible desde ambos nodos y asegura que las VMs tengan acceso a los mismos discos, independientemente del nodo en el que se encuentren.</p>
+
+  <h4>Monitoreo y Mantenimiento del Clúster</h4>
+  <p>Es importante mantener el clúster funcionando de manera eficiente. Algunas herramientas útiles para monitorear el estado del clúster incluyen:</p>
+  <ul>
+    <li><code>pvecm status</code>: Muestra el estado general del clúster.</li>
+    <li><code>pvecm nodes</code>: Verifica los nodos conectados.</li>
+    <li><code>pvesh get /cluster/config/nodes</code>: Proporciona una vista detallada de la configuración de los nodos.</li>
+  </ul>
+
+  <h4>Consideraciones de Seguridad</h4>
+  <p>Para proteger el clúster, se deben seguir buenas prácticas de seguridad, tales como:</p>
+  <ul>
+    <li>Configurar <strong>SSH seguro</strong> con claves robustas para la autenticación entre nodos.</li>
+    <li>Utilizar <strong>firewalls</strong> para restringir el acceso a puertos específicos del clúster.</li>
+    <li>Asegurar que la comunicación entre nodos sea privada, especialmente si el clúster se distribuye a través de redes públicas. Se recomienda el uso de <strong>VPNs</strong> o redes privadas para la comunicación entre los nodos.</li>
+  </ul>
+
+  <h3>Requisitos Previos</h3>
+  <ul>
+    <li><strong>Proxmox VE</strong> instalado en ambos nodos.</li>
+    <li><strong>Acceso SSH</strong> entre los nodos.</li>
+    <li><strong>Red de comunicación estable</strong> entre los nodos.</li>
+    <li><strong>Almacenamiento compartido (opcional)</strong>: Para alta disponibilidad y migración de VMs sin interrupciones, se recomienda tener un almacenamiento compartido accesible desde ambos nodos (NFS, Ceph, iSCSI).</li>
+  </ul>
       <ul>
         <li>Implementación de un Clúster en Proxmox
           <ul>
