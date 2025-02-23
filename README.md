@@ -170,84 +170,130 @@ Un hipervisor permite que varias instancias de sistema operativo trabajen juntas
 </details>
 
 <details>
-  <summary>📘 Guía de Uso</summary>
-  <ul>
- <details>
-         <summary>📘 Proxmox</summary>
+<summary>📘 Guía de Uso</summary>
+<ul>
+  <details>
+    <summary>📘 Proxmox</summary>
     <ul>
       <li><strong>Proxmox Virtual Environment (Proxmox VE)</strong>
         <ul>
-          <li>Proxmox VE es una plataforma de virtualización de código abierto basada en Debian GNU/Linux. Permite gestionar máquinas virtuales (VMs), contenedores y almacenamiento definido por software.</li>
-          <li>Combina tecnologías como <strong>KVM</strong> para la virtualización de hardware y <strong>LXC</strong> para la virtualización a nivel de sistema operativo.</li>
+          <li>Proxmox VE es una plataforma de virtualización basada en Debian GNU/Linux que permite gestionar máquinas virtuales (VMs), contenedores y almacenamiento definido por software.</li>
+          <li>Utiliza tecnologías como <strong>KVM</strong> para virtualización de hardware y <strong>LXC</strong> para virtualización a nivel de sistema operativo.</li>
         </ul>
       </li>
       <li><strong>Tecnologías de Virtualización: QEMU y KVM</strong>
         <ul>
-          <li><strong>QEMU (Quick Emulator):</strong>
-            <ul>
-              <li>QEMU es un emulador de hardware y máquina virtual de código abierto. Puede emular arquitecturas como x86, ARM y MIPS, permitiendo ejecutar sistemas operativos y aplicaciones diseñados para diferentes arquitecturas.</li>
-              <li>Usado junto con KVM, QEMU proporciona virtualización acelerada por hardware, optimizando el rendimiento.</li>
-              <li>Es compatible con múltiples sistemas operativos (Linux, Windows, macOS), y puede operar en modo usuario o sistema completo.</li>
-              <li>Soporta la migración en vivo de máquinas virtuales y se integra con herramientas como Libvirt y OpenStack.</li>
-            </ul>
-          </li>
-          <li><strong>KVM (Kernel-based Virtual Machine):</strong>
-            <ul>
-              <li>KVM es una tecnología de virtualización basada en el kernel de Linux, que convierte al sistema en un hipervisor de tipo 1, permitiendo la ejecución de máquinas virtuales con alto rendimiento.</li>
-              <li>Aprovecha las tecnologías de virtualización por hardware, como Intel VT-x y AMD-V, para ofrecer virtualización completa y de alto rendimiento.</li>
-              <li>Es compatible con herramientas como Libvirt, Virt-Manager y Proxmox VE, y permite la migración en vivo de máquinas virtuales.</li>
-              <li>Es ideal para entornos empresariales y de nube, proporcionando eficiencia y escalabilidad.</li>
-            </ul>
-          </li>
+          <li><strong>QEMU (Quick Emulator):</strong> Emulador de hardware y máquina virtual que puede operar con diferentes arquitecturas (x86, ARM, MIPS) y admite migración en vivo de VMs.</li>
+          <li><strong>KVM (Kernel-based Virtual Machine):</strong> Hipervisor de tipo 1 basado en el kernel de Linux que permite ejecutar máquinas virtuales de alto rendimiento aprovechando las tecnologías de virtualización por hardware (Intel VT-x, AMD-V).</li>
         </ul>
       </li>
       <li><strong>Características clave de Proxmox VE:</strong>
         <ul>
-          <li>Optimiza el uso de recursos existentes, minimizando costos de hardware y tiempo.</li>
-          <li>Interfaz web intuitiva para gestión centralizada de todas las operaciones de virtualización.</li>
-          <li>Soporta diversos tipos de almacenamiento (local, NFS, CIFS, iSCSI, etc.).</li>
-          <li>Permite crear clústeres para redundancia y alta disponibilidad.</li>
-          <li>Herramientas integradas para copias de seguridad y restauración.</li>
-          <li>Gestión de usuarios y permisos para control de acceso seguro.</li>
+          <li>Optimización de recursos y costos mediante virtualización eficiente.</li>
+          <li>Interfaz web intuitiva para gestión centralizada de VMs, contenedores y almacenamiento.</li>
+          <li>Soporte para diferentes tipos de almacenamiento (local, NFS, CIFS, iSCSI).</li>
+          <li>Posibilidad de crear clústeres para redundancia y alta disponibilidad.</li>
+          <li>Herramientas integradas para copias de seguridad, restauración y migración en vivo.</li>
+          <li>Gestión avanzada de usuarios y permisos de acceso.</li>
           <li>Actualizaciones regulares con parches de seguridad y nuevas funciones.</li>
-          <li>Instalación flexible: sobre un sistema Debian existente o como sistema completo desde una imagen ISO.</li>
         </ul>
       </li>
-      <li><strong>CEPH</strong>
+      <li><strong>CEPH: Almacenamiento Distribuido</strong>
         <ul>
-          <li><strong>¿Qué es CEPH?</strong>
-            <ul>
-              <li>CEPH es un sistema de almacenamiento distribuido, escalable, confiable y de alto rendimiento.</li>
-              <li>Combina almacenamiento de objetos, bloques y archivos en una sola arquitectura de código abierto.</li>
-              <li>Ideal para entornos de nube y big data, puede escalar hasta exabytes de datos y miles de clientes gracias a su base en el Reliable Autonomic Distributed Object Store (RADOS).</li>
-            </ul>
-          </li>
+          <li><strong>¿Qué es CEPH?</strong> Un sistema de almacenamiento distribuido, escalable y confiable que combina almacenamiento de objetos, bloques y archivos.</li>
           <li><strong>Componentes principales de CEPH:</strong>
             <ul>
-              <li><strong>Monitores:</strong> Controlan el mapa del clúster.</li>
-              <li><strong>Dispositivos de almacenamiento de objetos:</strong> Guardan los datos.</li>
-              <li><strong>Gestores:</strong> Gestionan métricas e interfaces.</li>
-              <li><strong>Servidores de metadatos:</strong> Se encargan de los metadatos para CephFS.</li>
-            </ul>
-          </li>
-          <li><strong>Interfaz de almacenamiento de CEPH:</strong>
-            <ul>
-              <li><strong>RADOS Gateway (RGW):</strong> Compatible con objetos S3/Swift.</li>
-              <li><strong>RADOS Block Device (RBD):</strong> Para bloques de almacenamiento.</li>
-              <li><strong>CephFS:</strong> Sistema de archivos POSIX compatible.</li>
+              <li><strong>Monitores:</strong> Controlan el estado del clúster.</li>
+              <li><strong>Dispositivos de almacenamiento de objetos:</strong> Guardan los datos distribuidos.</li>
+              <li><strong>Gestores:</strong> Gestionan las métricas y las interfaces del sistema.</li>
+              <li><strong>Servidores de metadatos:</strong> Manejan el sistema de archivos CephFS.</li>
             </ul>
           </li>
           <li><strong>Ventajas de CEPH:</strong>
             <ul>
-              <li>Alta disponibilidad gracias a replicación y codificación de borrado para protección de datos.</li>
-              <li>Distribución inteligente de información mediante el algoritmo CRUSH.</li>
-              <li>Eliminación de puntos únicos de fallo sin la necesidad de hardware especializado.</li>
-              <li>Popular en entornos empresariales por su versatilidad y capacidad de gestión de diferentes cargas de trabajo de almacenamiento.</li>
+              <li>Alta disponibilidad gracias a la replicación y codificación de borrado.</li>
+              <li>Escalabilidad masiva sin puntos de fallo únicos.</li>
+              <li>Soporta múltiples tipos de almacenamiento (objetos, bloques y archivos).</li>
             </ul>
           </li>
         </ul>
       </li>
-      <li><strong>Licencia:</strong>
+      <li><strong>Roles de Usuarios y Grupos en Proxmox:</strong>
+        <table>
+          <thead>
+            <tr>
+              <th>Rol</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Administrator</strong></td>
+              <td>Total control sobre el sistema.</td>
+            </tr>
+            <tr>
+              <td><strong>NoAccess</strong></td>
+              <td>Sin privilegios para acceder.</td>
+            </tr>
+            <tr>
+              <td><strong>PVEAdmin</strong></td>
+              <td>Permite realizar muchas tareas, pero no puede cambiar la configuración del sistema.</td>
+            </tr>
+            <tr>
+              <td><strong>PVEAuditor</strong></td>
+              <td>Solo puede leer la información, no modificarla.</td>
+            </tr>
+            <tr>
+              <td><strong>PVEDatastoreAdmin</strong></td>
+              <td>Permite crear y gestionar espacio de backup y plantillas.</td>
+            </tr>
+            <tr>
+              <td><strong>PVEDatastore</strong></td>
+              <td>Permite asignar espacio de backup y visualizar el almacenamiento disponible.</td>
+            </tr>
+            <tr>
+              <td><strong>PVEPoolAdmin</strong></td>
+              <td>Administra pools de recursos.</td>
+            </tr>
+            <tr>
+              <td><strong>PVEPoolUser</strong></td>
+              <td>Acceso solo para visualizar pools.</td>
+            </tr>
+            <tr>
+              <td><strong>PVESysAdmin</strong></td>
+              <td>Acceso a auditoría, consola del sistema y registros.</td>
+            </tr>
+            <tr>
+              <td><strong>PVEVMAdmin</strong></td>
+              <td>Permite administrar todas las máquinas virtuales.</td>
+            </tr>
+            <tr>
+              <td><strong>PVEVM</strong></td>
+              <td>Permite ver, realizar copias de seguridad, configurar CD-ROM, acceder a la consola de máquinas virtuales y gestionar la energía de las VMs.</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul>
+          <li>Proxmox permite la creación de roles personalizados con privilegios adaptados a necesidades específicas.</li>
+          <li>Los grupos de usuarios pueden ser creados para asignar permisos de forma más eficiente.</li>
+        </ul>
+      </li>
+      <li><strong>Almacenamiento de ISOs y Plantillas en Proxmox:</strong>
+        <ul>
+          <li><strong>Imágenes ISO:</strong> Por defecto se almacenan en: <code>/var/lib/vz/template/iso</code></li>
+          <li><strong>Plantillas de contenedores:</strong> Se almacenan por defecto en: <code>/var/lib/vz/template/cache</code></li>
+          <li><strong>Imágenes de discos y plantillas de VMs:</strong> Usualmente se almacenan en: <code>/var/lib/vz/images/</code></li>
+        </ul>
+        <p>Proxmox permite configurar y crear repositorios dedicados para ISOs y plantillas. Para hacerlo, sigue estos pasos:</p>
+        <ol>
+          <li>En la interfaz web de Proxmox, selecciona el objeto "Datacenter" en la barra lateral.</li>
+          <li>Abre la pestaña "Storage".</li>
+          <li>Haz clic en "Add" y selecciona "Directory".</li>
+          <li>Especifica un ID para el almacenamiento y la ruta donde deseas guardar los archivos.</li>
+          <li>Selecciona los tipos de contenido a almacenar (ISO Images, Container Templates, etc.).</li>
+        </ol>
+      </li>
+      <li><strong>Licencia de Proxmox:</strong>
         <ul>
           <li>Proxmox VE se distribuye bajo la licencia <strong>GNU AGPLv3</strong>, lo que permite su uso gratuito y la inspección de su código fuente.</li>
         </ul>
@@ -255,6 +301,8 @@ Un hipervisor permite que varias instancias de sistema operativo trabajen juntas
     </ul>
   </details>
 </ul>
+    </ul>
+  </details>
     <details>
       <summary>📘 Clúster Proxmox</summary>
       <ul>
