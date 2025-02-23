@@ -170,139 +170,170 @@ Un hipervisor permite que varias instancias de sistema operativo trabajen juntas
 </details>
 
 <details>
-<summary>📘 Guía de Uso</summary>
-<ul>
-  <details>
-    <summary>📘 Proxmox</summary>
-    <ul>
-      <li><strong>Proxmox Virtual Environment (Proxmox VE)</strong>
-        <ul>
-          <li>Proxmox VE es una plataforma de virtualización basada en Debian GNU/Linux que permite gestionar máquinas virtuales (VMs), contenedores y almacenamiento definido por software.</li>
-          <li>Utiliza tecnologías como <strong>KVM</strong> para virtualización de hardware y <strong>LXC</strong> para virtualización a nivel de sistema operativo.</li>
-        </ul>
-      </li>
-      <li><strong>Tecnologías de Virtualización: QEMU y KVM</strong>
-        <ul>
-          <li><strong>QEMU (Quick Emulator):</strong> Emulador de hardware y máquina virtual que puede operar con diferentes arquitecturas (x86, ARM, MIPS) y admite migración en vivo de VMs.</li>
-          <li><strong>KVM (Kernel-based Virtual Machine):</strong> Hipervisor de tipo 1 basado en el kernel de Linux que permite ejecutar máquinas virtuales de alto rendimiento aprovechando las tecnologías de virtualización por hardware (Intel VT-x, AMD-V).</li>
-        </ul>
-      </li>
-      <li><strong>Características clave de Proxmox VE:</strong>
-        <ul>
-          <li>Optimización de recursos y costos mediante virtualización eficiente.</li>
-          <li>Interfaz web intuitiva para gestión centralizada de VMs, contenedores y almacenamiento.</li>
-          <li>Soporte para diferentes tipos de almacenamiento (local, NFS, CIFS, iSCSI).</li>
-          <li>Posibilidad de crear clústeres para redundancia y alta disponibilidad.</li>
-          <li>Herramientas integradas para copias de seguridad, restauración y migración en vivo.</li>
-          <li>Gestión avanzada de usuarios y permisos de acceso.</li>
-          <li>Actualizaciones regulares con parches de seguridad y nuevas funciones.</li>
-        </ul>
-      </li>
-      <li><strong>CEPH: Almacenamiento Distribuido</strong>
-        <ul>
-          <li><strong>¿Qué es CEPH?</strong> Un sistema de almacenamiento distribuido, escalable y confiable que combina almacenamiento de objetos, bloques y archivos.</li>
-          <li><strong>Componentes principales de CEPH:</strong>
-            <ul>
-              <li><strong>Monitores:</strong> Controlan el estado del clúster.</li>
-              <li><strong>Dispositivos de almacenamiento de objetos:</strong> Guardan los datos distribuidos.</li>
-              <li><strong>Gestores:</strong> Gestionan las métricas y las interfaces del sistema.</li>
-              <li><strong>Servidores de metadatos:</strong> Manejan el sistema de archivos CephFS.</li>
-            </ul>
-          </li>
-          <li><strong>Ventajas de CEPH:</strong>
-            <ul>
-              <li>Alta disponibilidad gracias a la replicación y codificación de borrado.</li>
-              <li>Escalabilidad masiva sin puntos de fallo únicos.</li>
-              <li>Soporta múltiples tipos de almacenamiento (objetos, bloques y archivos).</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li><strong>Roles de Usuarios y Grupos en Proxmox:</strong>
-        <table>
-          <thead>
-            <tr>
-              <th>Rol</th>
-              <th>Descripción</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Administrator</strong></td>
-              <td>Total control sobre el sistema.</td>
-            </tr>
-            <tr>
-              <td><strong>NoAccess</strong></td>
-              <td>Sin privilegios para acceder.</td>
-            </tr>
-            <tr>
-              <td><strong>PVEAdmin</strong></td>
-              <td>Permite realizar muchas tareas, pero no puede cambiar la configuración del sistema.</td>
-            </tr>
-            <tr>
-              <td><strong>PVEAuditor</strong></td>
-              <td>Solo puede leer la información, no modificarla.</td>
-            </tr>
-            <tr>
-              <td><strong>PVEDatastoreAdmin</strong></td>
-              <td>Permite crear y gestionar espacio de backup y plantillas.</td>
-            </tr>
-            <tr>
-              <td><strong>PVEDatastore</strong></td>
-              <td>Permite asignar espacio de backup y visualizar el almacenamiento disponible.</td>
-            </tr>
-            <tr>
-              <td><strong>PVEPoolAdmin</strong></td>
-              <td>Administra pools de recursos.</td>
-            </tr>
-            <tr>
-              <td><strong>PVEPoolUser</strong></td>
-              <td>Acceso solo para visualizar pools.</td>
-            </tr>
-            <tr>
-              <td><strong>PVESysAdmin</strong></td>
-              <td>Acceso a auditoría, consola del sistema y registros.</td>
-            </tr>
-            <tr>
-              <td><strong>PVEVMAdmin</strong></td>
-              <td>Permite administrar todas las máquinas virtuales.</td>
-            </tr>
-            <tr>
-              <td><strong>PVEVM</strong></td>
-              <td>Permite ver, realizar copias de seguridad, configurar CD-ROM, acceder a la consola de máquinas virtuales y gestionar la energía de las VMs.</td>
-            </tr>
-          </tbody>
-        </table>
-        <ul>
-          <li>Proxmox permite la creación de roles personalizados con privilegios adaptados a necesidades específicas.</li>
-          <li>Los grupos de usuarios pueden ser creados para asignar permisos de forma más eficiente.</li>
-        </ul>
-      </li>
-      <li><strong>Almacenamiento de ISOs y Plantillas en Proxmox:</strong>
-        <ul>
-          <li><strong>Imágenes ISO:</strong> Por defecto se almacenan en: <code>/var/lib/vz/template/iso</code></li>
-          <li><strong>Plantillas de contenedores:</strong> Se almacenan por defecto en: <code>/var/lib/vz/template/cache</code></li>
-          <li><strong>Imágenes de discos y plantillas de VMs:</strong> Usualmente se almacenan en: <code>/var/lib/vz/images/</code></li>
-        </ul>
-        <p>Proxmox permite configurar y crear repositorios dedicados para ISOs y plantillas. Para hacerlo, sigue estos pasos:</p>
-        <ol>
-          <li>En la interfaz web de Proxmox, selecciona el objeto "Datacenter" en la barra lateral.</li>
-          <li>Abre la pestaña "Storage".</li>
-          <li>Haz clic en "Add" y selecciona "Directory".</li>
-          <li>Especifica un ID para el almacenamiento y la ruta donde deseas guardar los archivos.</li>
-          <li>Selecciona los tipos de contenido a almacenar (ISO Images, Container Templates, etc.).</li>
-        </ol>
-      </li>
-      <li><strong>Licencia de Proxmox:</strong>
-        <ul>
-          <li>Proxmox VE se distribuye bajo la licencia <strong>GNU AGPLv3</strong>, lo que permite su uso gratuito y la inspección de su código fuente.</li>
-        </ul>
-      </li>
-    </ul>
-  </details>
-</ul>
-    </ul>
-  </details>
+  <summary>📘 Guía de Uso</summary>
+  <ul>
+    <details>
+      <summary>📘 Proxmox</summary>
+      <ul>
+        <li><strong>Proxmox Virtual Environment (Proxmox VE)</strong>
+          <ul>
+            <li>Proxmox VE es una plataforma de virtualización basada en Debian GNU/Linux que permite gestionar máquinas virtuales (VMs), contenedores y almacenamiento definido por software.</li>
+            <li>Utiliza tecnologías como <strong>KVM</strong> para virtualización de hardware y <strong>LXC</strong> para virtualización a nivel de sistema operativo.</li>
+          </ul>
+        </li>
+        <li><strong>Tecnologías de Virtualización: QEMU y KVM</strong>
+          <ul>
+            <li><strong>QEMU (Quick Emulator):</strong> Emulador de hardware y máquina virtual que puede operar con diferentes arquitecturas (x86, ARM, MIPS) y admite migración en vivo de VMs.</li>
+            <li><strong>KVM (Kernel-based Virtual Machine):</strong> Hipervisor de tipo 1 basado en el kernel de Linux que permite ejecutar máquinas virtuales de alto rendimiento aprovechando las tecnologías de virtualización por hardware (Intel VT-x, AMD-V).</li>
+          </ul>
+        </li>
+        <li><strong>Características clave de Proxmox VE:</strong>
+          <ul>
+            <li>Optimización de recursos y costos mediante virtualización eficiente.</li>
+            <li>Interfaz web intuitiva para gestión centralizada de VMs, contenedores y almacenamiento.</li>
+            <li>Soporte para diferentes tipos de almacenamiento (local, NFS, CIFS, iSCSI).</li>
+            <li>Posibilidad de crear clústeres para redundancia y alta disponibilidad.</li>
+            <li>Herramientas integradas para copias de seguridad, restauración y migración en vivo.</li>
+            <li>Gestión avanzada de usuarios y permisos de acceso.</li>
+            <li>Actualizaciones regulares con parches de seguridad y nuevas funciones.</li>
+          </ul>
+        </li>
+        <li><strong>CEPH: Almacenamiento Distribuido</strong>
+          <ul>
+            <li><strong>¿Qué es CEPH?</strong> Un sistema de almacenamiento distribuido, escalable y confiable que combina almacenamiento de objetos, bloques y archivos.</li>
+            <li><strong>Componentes principales de CEPH:</strong>
+              <ul>
+                <li><strong>Monitores:</strong> Controlan el estado del clúster.</li>
+                <li><strong>Dispositivos de almacenamiento de objetos:</strong> Guardan los datos distribuidos.</li>
+                <li><strong>Gestores:</strong> Gestionan las métricas y las interfaces del sistema.</li>
+                <li><strong>Servidores de metadatos:</strong> Manejan el sistema de archivos CephFS.</li>
+              </ul>
+            </li>
+            <li><strong>Ventajas de CEPH:</strong>
+              <ul>
+                <li>Alta disponibilidad gracias a la replicación y codificación de borrado.</li>
+                <li>Escalabilidad masiva sin puntos de fallo únicos.</li>
+                <li>Soporta múltiples tipos de almacenamiento (objetos, bloques y archivos).</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><strong>Roles de Usuarios y Grupos en Proxmox:</strong>
+          <table>
+            <thead>
+              <tr>
+                <th>Rol</th>
+                <th>Descripción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Administrator</strong></td>
+                <td>Total control sobre el sistema.</td>
+              </tr>
+              <tr>
+                <td><strong>NoAccess</strong></td>
+                <td>Sin privilegios para acceder.</td>
+              </tr>
+              <tr>
+                <td><strong>PVEAdmin</strong></td>
+                <td>Permite realizar muchas tareas, pero no puede cambiar la configuración del sistema.</td>
+              </tr>
+              <tr>
+                <td><strong>PVEAuditor</strong></td>
+                <td>Solo puede leer la información, no modificarla.</td>
+              </tr>
+              <tr>
+                <td><strong>PVEDatastoreAdmin</strong></td>
+                <td>Permite crear y gestionar espacio de backup y plantillas.</td>
+              </tr>
+              <tr>
+                <td><strong>PVEDatastore</strong></td>
+                <td>Permite asignar espacio de backup y visualizar el almacenamiento disponible.</td>
+              </tr>
+              <tr>
+                <td><strong>PVEPoolAdmin</strong></td>
+                <td>Administra pools de recursos.</td>
+              </tr>
+              <tr>
+                <td><strong>PVEPoolUser</strong></td>
+                <td>Acceso solo para visualizar pools.</td>
+              </tr>
+              <tr>
+                <td><strong>PVESysAdmin</strong></td>
+                <td>Acceso a auditoría, consola del sistema y registros.</td>
+              </tr>
+              <tr>
+                <td><strong>PVEVMAdmin</strong></td>
+                <td>Permite administrar todas las máquinas virtuales.</td>
+              </tr>
+              <tr>
+                <td><strong>PVEVM</strong></td>
+                <td>Permite ver, realizar copias de seguridad, configurar CD-ROM, acceder a la consola de máquinas virtuales y gestionar la energía de las VMs.</td>
+              </tr>
+            </tbody>
+          </table>
+          <ul>
+            <li>Proxmox permite la creación de roles personalizados con privilegios adaptados a necesidades específicas.</li>
+            <li>Los grupos de usuarios pueden ser creados para asignar permisos de forma más eficiente.</li>
+          </ul>
+        </li>
+        <li><strong>Almacenamiento de ISOs y Plantillas en Proxmox:</strong>
+          <ul>
+            <li><strong>Imágenes ISO:</strong> Por defecto se almacenan en: <code>/var/lib/vz/template/iso</code></li>
+            <li><strong>Plantillas de contenedores:</strong> Se almacenan por defecto en: <code>/var/lib/vz/template/cache</code></li>
+            <li><strong>Imágenes de discos y plantillas de VMs:</strong> Usualmente se almacenan en: <code>/var/lib/vz/images/</code></li>
+          </ul>
+          <p>Proxmox permite configurar y crear repositorios dedicados para ISOs y plantillas. Para hacerlo, sigue estos pasos:</p>
+          <ol>
+            <li>En la interfaz web de Proxmox, selecciona el objeto "Datacenter" en la barra lateral.</li>
+            <li>Abre la pestaña "Storage".</li>
+            <li>Haz clic en "Add" y selecciona "Directory".</li>
+            <li>Especifica un ID para el almacenamiento y la ruta donde deseas guardar los archivos.</li>
+            <li>Selecciona los tipos de contenido a almacenar (ISO Images, Container Templates, etc.).</li>
+          </ol>
+        </li>
+        <li><strong>Licencia de Proxmox:</strong>
+          <ul>
+            <li>Proxmox VE se distribuye bajo la licencia <strong>GNU AGPLv3</strong>, lo que permite su uso gratuito y la inspección de su código fuente.</li>
+          </ul>
+        </li>
+      </ul>
+    </details>
+    <details>
+      <summary>📚 Docker y Docker Compose</summary>
+      <ul>
+        <li><strong>Docker</strong>
+          <ul>
+            <li>Docker es una plataforma de código abierto que automatiza el despliegue de aplicaciones dentro de contenedores de software.</li>
+            <li>Permite a los desarrolladores empaquetar aplicaciones con todas sus dependencias en contenedores ligeros, portátiles y consistentes.</li>
+          </ul>
+        </li>
+        <li><strong>Componentes Clave</strong>
+          <ul>
+            <li><strong>Motor Docker</strong>: Aplicación cliente-servidor que incluye:
+              <ul>
+                <li><strong>Daemon (dockerd)</strong>: Proceso que gestiona contenedores, imágenes y redes.</li>
+                <li><strong>API de Docker</strong>: Interfaz RESTful que permite la comunicación entre el cliente Docker y el daemon.</li>
+                <li><strong>Cliente CLI (docker)</strong>: Herramienta de línea de comandos para interactuar con Docker.</li>
+              </ul>
+            </li>
+            <li><strong>Imágenes</strong>: Plantillas de solo lectura que se utilizan para crear contenedores.</li>
+            <li><strong>Contenedores</strong>: Instancias ejecutables de imágenes que ejecutan aplicaciones y sus dependencias.</li>
+            <li><strong>Registros</strong>: Repositorios para almacenar y distribuir imágenes (ej. Docker Hub, Google Container Registry).</li>
+          </ul>
+        </li>
+        <li><strong>Docker Compose</strong>
+          <ul>
+            <li>Docker Compose es una herramienta para definir y ejecutar aplicaciones Docker multi-contenedor.</li>
+            <li>Utiliza un archivo YAML llamado <code>docker-compose.yml</code> para definir servicios.</li>
+            <li>Se usa <code>docker compose up</code> para iniciar los contenedores.</li>
+          </ul>
+        </li>
+      </ul>
+    </details>
+  </ul>
+</details>
     <details>
       <summary>📘 Clúster Proxmox</summary>
       <h2>Clúster de Proxmox con 2 Nodos</h2>
