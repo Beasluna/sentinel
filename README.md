@@ -173,58 +173,88 @@ Un hipervisor permite que varias instancias de sistema operativo trabajen juntas
   <summary>📘 Guía de Uso</summary>
   <ul>
  <details>
-      <summary>📘 Proxmox</summary>
-      <ul>
-        <li><strong>Proxmox Virtual Environment (Proxmox VE)</strong>
-          <ul>
-            <li>Proxmox VE es una plataforma de virtualización de código abierto basada en Debian GNU/Linux. Permite gestionar máquinas virtuales (VMs), contenedores y almacenamiento definido por software.</li>
-            <li>Combina tecnologías como <strong>KVM</strong> para la virtualización de hardware y <strong>LXC</strong> para la virtualización a nivel de sistema operativo.</li>
-            <li>Proxmox VE soporta tanto virtualización completa a través de KVM como virtualización basada en contenedores con LXC:</li>
+         <summary>📘 Proxmox</summary>
+    <ul>
+      <li><strong>Proxmox Virtual Environment (Proxmox VE)</strong>
+        <ul>
+          <li>Proxmox VE es una plataforma de virtualización de código abierto basada en Debian GNU/Linux. Permite gestionar máquinas virtuales (VMs), contenedores y almacenamiento definido por software.</li>
+          <li>Combina tecnologías como <strong>KVM</strong> para la virtualización de hardware y <strong>LXC</strong> para la virtualización a nivel de sistema operativo.</li>
+        </ul>
+      </li>
+      <li><strong>Tecnologías de Virtualización: QEMU y KVM</strong>
+        <ul>
+          <li><strong>QEMU (Quick Emulator):</strong>
             <ul>
-              <li><strong>Virtualización completa a través de KVM:</strong> Permite ejecutar máquinas virtuales con sistemas operativos completos, como Windows y Linux, con funciones avanzadas como instantáneas, replicación y plantillas. Utiliza paravirtualización mediante VirtIO.</li>
-              <li><strong>Virtualización basada en contenedores con LXC:</strong> Permite correr múltiples sistemas operativos Linux de manera eficiente y ligera, ideal para tareas simples y conexiones en línea. Los contenedores LXC permiten ajustar la memoria y el espacio en disco sin necesidad de reiniciar.</li>
+              <li>QEMU es un emulador de hardware y máquina virtual de código abierto. Puede emular arquitecturas como x86, ARM y MIPS, permitiendo ejecutar sistemas operativos y aplicaciones diseñados para diferentes arquitecturas.</li>
+              <li>Usado junto con KVM, QEMU proporciona virtualización acelerada por hardware, optimizando el rendimiento.</li>
+              <li>Es compatible con múltiples sistemas operativos (Linux, Windows, macOS), y puede operar en modo usuario o sistema completo.</li>
+              <li>Soporta la migración en vivo de máquinas virtuales y se integra con herramientas como Libvirt y OpenStack.</li>
             </ul>
-          </ul>
-        </li>
-        <li><strong>Tecnologías de Virtualización: QEMU y KVM</strong>
-          <ul>
-            <li><strong>QEMU (Quick Emulator)</strong>
-              <ul>
-                <li>QEMU es un emulador de hardware y máquina virtual de código abierto. Puede emular arquitecturas como x86, ARM y MIPS, permitiendo ejecutar sistemas operativos y aplicaciones diseñados para diferentes arquitecturas.</li>
-                <li>Usado junto con KVM, QEMU proporciona virtualización acelerada por hardware, optimizando el rendimiento.</li>
-                <li>Es compatible con múltiples sistemas operativos (Linux, Windows, macOS), y puede operar en modo usuario o sistema completo.</li>
-                <li>Soporta la migración en vivo de máquinas virtuales y se integra con herramientas como Libvirt y OpenStack.</li>
-              </ul>
-            </li>
-            <li><strong>KVM (Kernel-based Virtual Machine)</strong>
-              <ul>
-                <li>KVM es una tecnología de virtualización basada en el kernel de Linux, que convierte al sistema en un hipervisor de tipo 1, permitiendo la ejecución de máquinas virtuales con alto rendimiento.</li>
-                <li>Aprovecha las tecnologías de virtualización por hardware, como Intel VT-x y AMD-V, para ofrecer virtualización completa y de alto rendimiento.</li>
-                <li>Es compatible con herramientas como Libvirt, Virt-Manager y Proxmox VE, y permite la migración en vivo de máquinas virtuales.</li>
-                <li>Es ideal para entornos empresariales y de nube, proporcionando eficiencia y escalabilidad.</li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><strong>Características clave de Proxmox VE:</strong>
-          <ul>
-            <li>Optimiza el uso de recursos existentes, minimizando costos de hardware y tiempo.</li>
-            <li>Interfaz web intuitiva para gestión centralizada de todas las operaciones de virtualización.</li>
-            <li>Soporta diversos tipos de almacenamiento (local, NFS, CIFS, iSCSI, etc.).</li>
-            <li>Permite crear clústeres para redundancia y alta disponibilidad.</li>
-            <li>Herramientas integradas para copias de seguridad y restauración.</li>
-            <li>Gestión de usuarios y permisos para control de acceso seguro.</li>
-            <li>Actualizaciones regulares con parches de seguridad y nuevas funciones.</li>
-            <li>Instalación flexible: sobre un sistema Debian existente o como sistema completo desde una imagen ISO.</li>
-          </ul>
-        </li>
-        <li><strong>Licencia</strong>
-          <ul>
-            <li>Proxmox VE se distribuye bajo la licencia <strong>GNU AGPLv3</strong>, lo que permite su uso gratuito y la inspección de su código fuente.</li>
-          </ul>
-        </li>
-      </ul>
-    </details>
+          </li>
+          <li><strong>KVM (Kernel-based Virtual Machine):</strong>
+            <ul>
+              <li>KVM es una tecnología de virtualización basada en el kernel de Linux, que convierte al sistema en un hipervisor de tipo 1, permitiendo la ejecución de máquinas virtuales con alto rendimiento.</li>
+              <li>Aprovecha las tecnologías de virtualización por hardware, como Intel VT-x y AMD-V, para ofrecer virtualización completa y de alto rendimiento.</li>
+              <li>Es compatible con herramientas como Libvirt, Virt-Manager y Proxmox VE, y permite la migración en vivo de máquinas virtuales.</li>
+              <li>Es ideal para entornos empresariales y de nube, proporcionando eficiencia y escalabilidad.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><strong>Características clave de Proxmox VE:</strong>
+        <ul>
+          <li>Optimiza el uso de recursos existentes, minimizando costos de hardware y tiempo.</li>
+          <li>Interfaz web intuitiva para gestión centralizada de todas las operaciones de virtualización.</li>
+          <li>Soporta diversos tipos de almacenamiento (local, NFS, CIFS, iSCSI, etc.).</li>
+          <li>Permite crear clústeres para redundancia y alta disponibilidad.</li>
+          <li>Herramientas integradas para copias de seguridad y restauración.</li>
+          <li>Gestión de usuarios y permisos para control de acceso seguro.</li>
+          <li>Actualizaciones regulares con parches de seguridad y nuevas funciones.</li>
+          <li>Instalación flexible: sobre un sistema Debian existente o como sistema completo desde una imagen ISO.</li>
+        </ul>
+      </li>
+      <li><strong>CEPH</strong>
+        <ul>
+          <li><strong>¿Qué es CEPH?</strong>
+            <ul>
+              <li>CEPH es un sistema de almacenamiento distribuido, escalable, confiable y de alto rendimiento.</li>
+              <li>Combina almacenamiento de objetos, bloques y archivos en una sola arquitectura de código abierto.</li>
+              <li>Ideal para entornos de nube y big data, puede escalar hasta exabytes de datos y miles de clientes gracias a su base en el Reliable Autonomic Distributed Object Store (RADOS).</li>
+            </ul>
+          </li>
+          <li><strong>Componentes principales de CEPH:</strong>
+            <ul>
+              <li><strong>Monitores:</strong> Controlan el mapa del clúster.</li>
+              <li><strong>Dispositivos de almacenamiento de objetos:</strong> Guardan los datos.</li>
+              <li><strong>Gestores:</strong> Gestionan métricas e interfaces.</li>
+              <li><strong>Servidores de metadatos:</strong> Se encargan de los metadatos para CephFS.</li>
+            </ul>
+          </li>
+          <li><strong>Interfaz de almacenamiento de CEPH:</strong>
+            <ul>
+              <li><strong>RADOS Gateway (RGW):</strong> Compatible con objetos S3/Swift.</li>
+              <li><strong>RADOS Block Device (RBD):</strong> Para bloques de almacenamiento.</li>
+              <li><strong>CephFS:</strong> Sistema de archivos POSIX compatible.</li>
+            </ul>
+          </li>
+          <li><strong>Ventajas de CEPH:</strong>
+            <ul>
+              <li>Alta disponibilidad gracias a replicación y codificación de borrado para protección de datos.</li>
+              <li>Distribución inteligente de información mediante el algoritmo CRUSH.</li>
+              <li>Eliminación de puntos únicos de fallo sin la necesidad de hardware especializado.</li>
+              <li>Popular en entornos empresariales por su versatilidad y capacidad de gestión de diferentes cargas de trabajo de almacenamiento.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><strong>Licencia:</strong>
+        <ul>
+          <li>Proxmox VE se distribuye bajo la licencia <strong>GNU AGPLv3</strong>, lo que permite su uso gratuito y la inspección de su código fuente.</li>
+        </ul>
+      </li>
+    </ul>
+  </details>
+</ul>
     <details>
       <summary>📘 Clúster Proxmox</summary>
       <ul>
