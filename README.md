@@ -358,26 +358,21 @@ services:
   </ul>
 
  ## Instalación de Docker y Docker Compose
-
   1. **Instalar Docker y Docker Compose**:
      ```bash
      apk add docker
      apk add docker-compose
      ```
-
   2. **Iniciar el servicio Docker**:
      ```bash
      service docker start
      ```
-
   3. **Verificar la instalación**:
      ```bash
      docker --version
      docker-compose --version
      ```
-
   ## Descarga de Imágenes Docker
-
   1. **Descargar imágenes necesarias**:
      - Para descargar la imagen de Nginx:
        ```bash
@@ -387,30 +382,23 @@ services:
        ```bash
        docker pull portainer/portainer-ce
        ```
-
   ## Ejecución de Contenedores
-
   1. **Ejecutar un contenedor Nginx**:
      ```bash
-     docker run --name mi-nginx -d -p 80:80 nginx
+     docker run --nombre -de- mi-nginx -d -p 80:80 nginx
      ```
-
   2. **Ejecutar un contenedor Portainer**:
      ```bash
-     docker run -d -p 9000:9000 --name mi-portainer portainer/portainer-ce
+     docker run -d -p 9000:9000 --nombre-de-mi-portainer portainer/portainer-ce
      ```
-
   3. **Listar contenedores activos e imágenes descargadas**:
      ```bash
      docker ps -a
      docker images
      ```
-
   ## Uso de Docker Compose
-
   1. **Crear un archivo `docker-compose.yml`**:
      Este archivo define los servicios que deseas desplegar. Un ejemplo básico podría ser:
-
      ```yaml
      version: "3.8"
      services:
@@ -429,45 +417,34 @@ services:
          volumes:
            - ./nginx.conf:/etc/nginx/nginx.conf
      ```
-
   2. **Ejecutar los servicios definidos en `docker-compose.yml`**:
      ```bash
      docker compose up -d
      ```
-
   3. **Detener los servicios**:
      ```bash
      docker compose down
      ```
-
   4. **Ver logs de los servicios**:
      ```bash
      docker compose logs
      ```
-
   ## Gestión con Portainer
-
   1. **Acceder a Portainer**:
      - Una vez que el contenedor de Portainer esté en ejecución, accede a través del navegador en `http://localhost:9000`.
-
   2. **Crear un stack desde Portainer**:
      - Ve a la sección "Stacks" y selecciona "Add Stack".
      - Copia el contenido del archivo `docker-compose.yml` en el editor web.
      - Haz clic en "Deploy the Stack".
-
   ## Verificación del Despliegue
-
   1. **Verificar contenedores activos**:
      ```bash
      docker ps -a
      ```
-
   2. **Acceso a la aplicación web**:
      - Accede a tu aplicación web en `http://localhost`.
-
   3. **Acceso a phpMyAdmin (si está configurado)**:
      - Accede a phpMyAdmin en `http://localhost:8080`.
-
   4. **Estado del entorno desplegado (ejemplo)**:
      - Contenedores activos dentro del stack (ejemplo):
        - `miAppMySQL` (MySQL 8.0) → Escuchando en el puerto `3306:3306`.
