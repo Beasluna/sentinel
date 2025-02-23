@@ -152,30 +152,36 @@ El hipervisor asigna los recursos a cada máquina virtual y gestiona su programa
 En otras palabras, un hipervisor permite que varias instancias de sistema operativo trabajen juntas y compartan los mismos recursos físicos de la computadora. Esto se conoce como virtualización, y estas instancias se llaman máquinas virtuales. El hipervisor, también conocido como monitor de máquina virtual, administra estas máquinas virtuales mientras se ejecutan simultáneamente, separándolas lógicamente y asignando recursos de manera individual. Esto evita que una máquina virtual afecte a las demás, asegurando que si una de ellas se bloquea o tiene problemas, las demás sigan funcionando correctamente.
 
 </details>
-
-  <details>
-    
-  <summary>📘 PROXMOX</summary>
-
-  Proxmox Virtual Environment (Proxmox VE) es una solución de código abierto para la virtualización empresarial, basada en Debian GNU/Linux. Su objetivo es optimizar el uso de los recursos existentes, minimizar el coste del hardware y el tiempo empleado.
-  
-  **Características principales:**
-  
-  *   **Virtualización:** Utiliza KVM para máquinas virtuales y LXC para contenedores.
-  *   **Gestión Centralizada:** Interfaz web intuitiva para administrar VMs y contenedores.
-  *   **Almacenamiento y Redes:** Soporta diversos tipos de almacenamiento y SDN.
-  *   **Alta Disponibilidad y Clusterización:** Permite crear clústeres para redundancia.
-  *   **Seguridad y Respaldo:** Actualizaciones regulares y herramientas integradas de backup.
-  
-  Proxmox VE se distribuye bajo la licencia GNU AGPLv3, permitiendo su uso gratuito y la inspección del código fuente.
-
-</details>
-
-
  
 <details>
   <summary>📘 Guía de Uso</summary>
   <ul>
+    <details>
+      <summary>📘 Proxmox</summary>
+      <ul>
+        <li><strong>Proxmox Virtual Environment (Proxmox VE)</strong>
+          <ul>
+            <li>Proxmox VE es una plataforma de virtualización de código abierto basada en Debian GNU/Linux. Permite gestionar máquinas virtuales (VMs), contenedores y almacenamiento definido por software.</li>
+            <li>Combina tecnologías como <strong>KVM</strong> para la virtualización de hardware y <strong>LXC</strong> para la virtualización a nivel de sistema operativo.</li>
+          </ul>
+        </li>
+        <li><strong>Características principales</strong>
+          <ul>
+            <li><strong>Virtualización KVM y LXC:</strong> Flexibilidad al combinar VMs con aislamiento completo y contenedores ligeros.</li>
+            <li><strong>Gestión centralizada:</strong> Interfaz web intuitiva para administrar VMs, contenedores y almacenamiento.</li>
+            <li><strong>Almacenamiento integrado:</strong> Soporta almacenamiento local, NFS, CIFS, iSCSI, Ceph y ZFS.</li>
+            <li><strong>Clusterización y alta disponibilidad:</strong> Permite compartir recursos entre nodos y asegurar continuidad en caso de fallos.</li>
+            <li><strong>Respaldo y restauración:</strong> Incluye herramientas para copias de seguridad programadas.</li>
+            <li><strong>Seguridad avanzada:</strong> Soporta autenticación de dos factores, cortafuegos y actualizaciones de seguridad constantes.</li>
+          </ul>
+        </li>
+        <li><strong>Licencia</strong>
+          <ul>
+            <li>Proxmox VE se distribuye bajo la licencia <strong>GNU AGPLv3</strong>, lo que permite su uso gratuito y la inspección de su código fuente.</li>
+          </ul>
+        </li>
+      </ul>
+    </details>
     <details>
       <summary>📘 Clúster Proxmox</summary>
       <ul>
