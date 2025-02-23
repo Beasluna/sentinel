@@ -629,7 +629,65 @@ sudo ufw reload</code></pre>
       </ul>
     </details>
     <details>
-    <details>
+<details>
+  <summary>📋 POLÍTICA DE COPIAS DE SEGURIDAD Y RESTAURACIÓN</summary>
+  <ul>
+    <li><b>Introducción</b>
+      <ul>
+        <li>Esta política establece los procedimientos para garantizar la disponibilidad, integridad y seguridad de los datos del proyecto SENTINEL ante incidentes 🚨.</li>
+      </ul>
+    </li>
+    <li><b>Objetivos</b>
+      <ul>
+        <li>Garantizar la protección de los datos críticos de SENTINEL 🔒.</li>
+        <li>Asegurar la disponibilidad de copias de seguridad recientes y verificadas 📂.</li>
+        <li>Definir procedimientos de restauración rápidos y confiables 🚀.</li>
+        <li>Implementar mecanismos de cifrado y verificación de integridad 🔑.</li>
+      </ul>
+    </li>
+    <li><b>Tipos de Copias de Seguridad</b>
+      <table>
+        <tr>
+          <th>Tipo</th>
+          <th>Descripción</th>
+        </tr>
+        <tr>
+          <td><b>Backup Completo</b></td>
+          <td>Respaldo completo de directorios críticos (/etc, /home, /var) almacenado en formato .tar.gz.enc con cifrado AES-256 🔒.</td>
+        </tr>
+        <tr>
+          <td><b>Backup Incremental</b></td>
+          <td>Captura cambios desde el último backup completo para optimizar almacenamiento y velocidad del proceso 🚀.</td>
+        </tr>
+      </table>
+    </li>
+    <li><b>Procedimiento de Copia de Seguridad</b>
+      <ul>
+        <li>Ejecución del Script: Automática según programación en cron ⏰.</li>
+        <li>Compresión y Cifrado: Datos comprimidos y cifrados con AES-256 🔒.</li>
+        <li>Verificación de Integridad: Generación de hash SHA256 🔑.</li>
+        <li>Almacenamiento Local: En /mnt/backup_p 📁.</li>
+        <li>Envío Remoto: Transferencia vía rsync a servidor remoto 📈.</li>
+        <li>Registro en Log: Documentación en /var/log/sentinel.log 📝.</li>
+        <li>Notificación: Correo de confirmación al administrador 📨.</li>
+      </ul>
+    </li>
+    <li><b>Procedimiento de Restauración</b>
+      <ul>
+        <li>Selección del Backup: Completo o incremental 📊.</li>
+        <li>Verificación de Integridad: Comparación del hash SHA256 🔑.</li>
+        <li>Desencriptación: Uso de AES-256 para recuperar datos 🔓.</li>
+        <li>Extracción de Archivos: Desempaquetado en directorio temporal 🗂️.</li>
+        <li>Restauración Selectiva: Copia de archivos necesarios al sistema 📈.</li>
+        <li>Registro en Log: Documentación en /var/log/restore_sentinel.log 📝.</li>
+        <li>Notificación: Correo al administrador confirmando la restauración 📨.</li>
+      </ul>
+    </li>
+  </ul>
+</details>
+
+      
+  <details>
       <summary>📖 Documentación de Grafana</summary>
   
   1. **Actualiza el sistema**
