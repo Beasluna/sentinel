@@ -663,6 +663,9 @@ sudo ufw reload</code></pre>
         <li>En este caso vamos a instalar ngrok en mi servidor para poder crear futuros túneles:
           <img src="https://github.com/Beasluna/sentinel/blob/fed838a67b5ee3bcb102c7eded0a0d7f42ef9cf5/SENTINELS/ASSETS/ngrok/instalacionserver.png" alt="Instalación servidor Ngrok">
         </li>
+        <li>Instalamos Ngrok tal y como lo indica la página oficial:<br>
+        <img src="https://github.com/Beasluna/sentinel/blob/620fe37dcdca95ad72bf4319ff1db03df8408e61/SENTINELS/ASSETS/ngrok/instalacionngrokcomandos.png" alt="Instalación Ngrok Comandos">
+        </li>
           <pre><code>wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-stable-linux-amd64.zip
 unzip ngrok-stable-linux-amd64.zip
 sudo mv ngrok /usr/local/bin</code></pre>
