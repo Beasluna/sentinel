@@ -666,12 +666,9 @@ sudo ufw reload</code></pre>
         <li>Instalamos Ngrok tal y como lo indica la página oficial:<br>
         <img src="https://github.com/Beasluna/sentinel/blob/620fe37dcdca95ad72bf4319ff1db03df8408e61/SENTINELS/ASSETS/ngrok/instalacionngrokcomandos.png" alt="Instalación Ngrok Comandos">
         </li>
-          <pre><code>wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-stable-linux-amd64.zip
-unzip ngrok-stable-linux-amd64.zip
-sudo mv ngrok /usr/local/bin</code></pre>
-        </li>
-        <li>Comprobamos la instalación ejecutando:
+        <li>Comprobamos la instalación ejecutando:“ngrok” o “ngrok --version”
           <pre><code>ngrok --version</code></pre>
+          <img src="https://github.com/Beasluna/sentinel/blob/1f48c9ef14794ba402c6715583f3d684dcb8d642/SENTINELS/ASSETS/ngrok/comprobacioninstalacion.png" alt="Comprobación Instalación Ngrok">
         </li>
       </ul>
     </li>
