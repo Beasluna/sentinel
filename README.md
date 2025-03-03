@@ -654,7 +654,9 @@ sudo ufw reload</code></pre>
     <li><strong>Instalación</strong>
       <ul>
         <li>Ngrok está disponible para múltiples sistemas operativos y su instalación es sencilla. A continuación, les explicamos cómo instalarlo en Linux:</li>
-        <li>Lo primero que necesitan es crearos una cuenta en Ngrok.</li>
+        <li>Lo primero que necesitan es crearse una cuenta en Ngrok.  <br>
+        <img src="https://github.com/Beasluna/sentinel/blob/314148000deb83e555cf3d5eed4e59186c57a2be/SENTINELS/ASSETS/ngrok/Creacioncuentangrok.png" alt="Creación de cuenta en Ngrok">
+        </li>
         <li>Una vez creada la cuenta, en la página de bienvenida se ofrecen opciones para instalarlo según el sistema operativo. En este caso, instalaremos Ngrok en un servidor Linux para crear futuros túneles.</li>
         <li>Instalamos Ngrok tal y como lo indica la página oficial:
           <pre><code>wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-stable-linux-amd64.zip
