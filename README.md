@@ -657,7 +657,9 @@ sudo ufw reload</code></pre>
         <li>Lo primero que necesitan es crearse una cuenta en Ngrok.  <br>
         <img src="https://github.com/Beasluna/sentinel/blob/314148000deb83e555cf3d5eed4e59186c57a2be/SENTINELS/ASSETS/ngrok/Creacioncuentangrok.png" alt="Creación de cuenta en Ngrok">
         </li>
-        <li>Una vez creada la cuenta, en la página de bienvenida se ofrecen opciones para instalarlo según el sistema operativo. En este caso, instalaremos Ngrok en un servidor Linux para crear futuros túneles.</li>
+        <li>Una vez creada la cuenta, en la página de bienvenida se ofrecen opciones para instalarlo según el sistema operativo. En este caso, vamos a instalar Ngrok en un servidor Linux para crear futuros túneles.<br>
+        <img src="https://github.com/Beasluna/sentinel/blob/56d5f384da14b1f320f6af2516fbabe481f5f713/SENTINELS/ASSETS/ngrok/homepagengrok.png" alt="Página de bienvenida Ngrok">
+        </li>
         <li>Instalamos Ngrok tal y como lo indica la página oficial:
           <pre><code>wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-stable-linux-amd64.zip
 unzip ngrok-stable-linux-amd64.zip
