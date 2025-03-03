@@ -672,11 +672,14 @@ sudo ufw reload</code></pre>
         </li>
       </ul>
     </li>
-    <li><strong>Autenticación</strong>
+   <li><strong>Autenticación</strong>
       <ul>
-        <li>Ngrok requiere autenticación para funcionar correctamente. Para autenticaros, utilizad el token llamado “Authtoken” que Ngrok proporciona.</li>
-        <li>Ejecutad el siguiente comando para guardar vuestro token:
+        <li>Ngrok requiere autenticación para funcionar correctamente. Para autenticaros, utilizamos el token llamado "Authtoken" que Ngrok proporciona.</li>
+        <li>Ejecutamos el siguiente comando para guardar nuestro token:
           <pre><code>ngrok config add-authtoken TOKEN_AQUI</code></pre>
+        </li>
+        <li>
+          <img src="https://github.com/Beasluna/sentinel/blob/eb18ceafad287b47b274cdac6d395ddbd5ccd821/SENTINELS/ASSETS/ngrok/authtoken.png" alt="Autenticación con Ngrok">
         </li>
       </ul>
     </li>
