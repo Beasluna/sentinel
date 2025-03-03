@@ -629,6 +629,93 @@ sudo ufw reload</code></pre>
       </ul>
     </details>
     <details>
+  <summary>🌐 Exposición de Servicios Locales a Internet con Ngrok</summary>
+  <ul>
+    <li><strong>Introducción a Ngrok</strong>
+      <ul>
+        <li>En este documento, encontraran una guía detallada sobre la instalación y configuración de Ngrok, una herramienta esencial para quienes necesitan acceder de forma remota a sus dispositivos o exponer servicios locales a Internet de manera segura. Aprenderan paso a paso cómo instalar Ngrok, autenticaran con su cuenta, crear túneles para conexiones SSH, HTTP y otros protocolos, así como optimizar su uso para mejorar la productividad al trabajar desde casa.</li>
+      </ul>
+    </li>
+    <li><strong>¿Qué es Ngrok?</strong>
+      <ul>
+        <li>Ngrok es una herramienta que permite exponer servidores locales a Internet mediante túneles seguros. Esto es útil para desarrolladores, administradores de sistemas y cualquier persona que necesite acceder a su equipo de forma remota sin configurar reglas de firewall o abrir puertos en el router.</li>
+      </ul>
+    </li>
+    <li><strong>Seguridad en Ngrok</strong>
+      <ul>
+        <li>La seguridad es una de las principales características de Ngrok. Para garantizar conexiones seguras y evitar accesos no autorizados, Ngrok implementa las siguientes medidas:</li>
+        <li>Cifrado TLS/SSL: Todo el tráfico que pasa por los túneles de Ngrok está protegido mediante cifrado TLS 1.2+.</li>
+        <li>Autenticación de usuarios: Ngrok requiere autenticación mediante tokens para generar túneles.</li>
+        <li>Protección con contraseña: Al exponer servicios HTTP, Ngrok permite configurar autenticación con usuario y contraseña.</li>
+        <li>Restricción de accesos: Podéis definir reglas de control de acceso.</li>
+        <li>Registros y monitoreo: Ngrok proporciona herramientas para analizar las solicitudes entrantes.</li>
+      </ul>
+    </li>
+    <li><strong>Instalación</strong>
+      <ul>
+        <li>Ngrok está disponible para múltiples sistemas operativos y su instalación es sencilla. A continuación, les explicamos cómo instalarlo en Linux:</li>
+        <li>Lo primero que necesitan es crearos una cuenta en Ngrok.</li>
+        <li>Una vez creada la cuenta, en la página de bienvenida se ofrecen opciones para instalarlo según el sistema operativo. En este caso, instalaremos Ngrok en un servidor Linux para crear futuros túneles.</li>
+        <li>Instalamos Ngrok tal y como lo indica la página oficial:
+          <pre><code>wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-stable-linux-amd64.zip
+unzip ngrok-stable-linux-amd64.zip
+sudo mv ngrok /usr/local/bin</code></pre>
+        </li>
+        <li>Comprobamos la instalación ejecutando:
+          <pre><code>ngrok --version</code></pre>
+        </li>
+      </ul>
+    </li>
+    <li><strong>Autenticación</strong>
+      <ul>
+        <li>Ngrok requiere autenticación para funcionar correctamente. Para autenticaros, utilizad el token llamado “Authtoken” que Ngrok proporciona.</li>
+        <li>Ejecutad el siguiente comando para guardar vuestro token:
+          <pre><code>ngrok config add-authtoken TOKEN_AQUI</code></pre>
+        </li>
+      </ul>
+    </li>
+    <li><strong>Creación de Túneles</strong>
+      <ul>
+        <li>Aquí vamos a crear un túnel SSH. Primero, comprobamos si el servicio SSH está corriendo en el servidor.</li>
+        <li>Para crear el túnel, ejecutamos:
+          <pre><code>ngrok tcp 22</code></pre>
+        </li>
+        <li>Ngrok asignará una dirección del tipo:
+          <pre><code>tcp://5.tcp.eu.ngrok.io:11836</code></pre>
+          Donde `11836` es el puerto externo aleatorio asignado por Ngrok apuntando al puerto local `22`.
+        </li>
+      </ul>
+    </li>
+    <li><strong>Acceso al Túnel desde Otra Máquina</strong>
+      <ul>
+        <li>Desde otra máquina con acceso a Internet, podéis conectaos al túnel generado utilizando:
+          <pre><code>ssh -p PUERTO_EXTERNO usuario@DIRECCION_NGROK</code></pre>
+        </li>
+      </ul>
+    </li>
+    <li><strong>Caso Práctico: Rsync a través del Túnel</strong>
+      <ul>
+        <li>Prepararemos un entorno para realizar copias de seguridad utilizando `rsync`.</li>
+        <li>Creáis un directorio en el servidor y otro en vuestra máquina local con archivos de prueba generados con los siguientes comandos:
+          <pre><code>dd if=/dev/urandom of=archivo_1MB.bin bs=1M count=1
+dd if=/dev/urandom of=archivo_10MB.bin bs=1M count=10
+dd if=/dev/urandom of=archivo_100MB.bin bs=1M count=100</code></pre>
+        </li>
+        <li>Ejecutáis `rsync` utilizando el túnel creado por Ngrok:
+          <pre><code>rsync -avh -e "ssh -p PUERTO_EXTERNO" /ruta/origen usuario@DIRECCION_NGROK:/ruta/destino</code></pre>
+        </li>
+      </ul>
+    </li>
+    <li><strong>Conclusión</strong>
+      <ul>
+        <li>Ngrok es una herramienta poderosa que permite exponer servicios locales de forma segura a través de Internet sin necesidad de configurar routers o modificar reglas de firewall.</li>
+        <li>Al usar Ngrok TCP en el puerto `22`, podéis acceder remotamente mediante SSH, útil para administración de servidores o pruebas de conectividad.</li>
+        <li>No obstante, recordad que las direcciones y puertos generados son temporales. Si necesitáis estabilidad, considerad una cuenta premium o alternativas como Tailscale o ZeroTier.</li>
+      </ul>
+    </li>
+  </ul>
+</details>
+    <details>
 <details>
   <summary>📋 POLÍTICA DE COPIAS DE SEGURIDAD Y RESTAURACIÓN</summary>
   <ul>
