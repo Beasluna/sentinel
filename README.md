@@ -675,12 +675,20 @@ sudo ufw reload</code></pre>
    <li><strong>Autenticación</strong>
       <ul>
         <li>Ngrok requiere autenticación para funcionar correctamente. Para autenticaros, utilizamos el token llamado "Authtoken" que Ngrok proporciona.</li>
-        <li>Ejecutamos el siguiente comando para guardar nuestro token:
-          <pre><code>ngrok config add-authtoken TOKEN_AQUI</code></pre>
-        </li>
         <li>
           <img src="https://github.com/Beasluna/sentinel/blob/eb18ceafad287b47b274cdac6d395ddbd5ccd821/SENTINELS/ASSETS/ngrok/authtoken.png" alt="Autenticación con Ngrok">
         </li>
+        <li>Una vez que tengáis el token copiado, ejecutad el siguiente comando en la terminal:
+      <pre><code>ngrok config add-authtoken TOKEN_AQUI</code></pre>
+    </li>
+    <li>Esto guardará vuestro token y permitirá el uso de Ngrok sin problemas.</li>
+    <li>
+      Aquí tenéis un ejemplo de cómo se ve este proceso:
+      <br>
+      <img src="https://github.com/Beasluna/sentinel/blob/a218bcea9f935f71ae66d90cf6d61770a4d6ff6d/SENTINELS/ASSETS/ngrok/Creacionauthtokenysaved.png" alt="Creación y guardado de Authtoken">
+    </li>
+  </ul>
+</li>
       </ul>
     </li>
     <li><strong>Creación de Túneles</strong>
