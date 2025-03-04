@@ -750,35 +750,16 @@ sudo ufw reload</code></pre>
         </li>
       </ul>
     </li>
-
-  </ul>
-</li>
-      </ul>
-    </li>
-    <li><strong>Creación de Túneles</strong>
-      <ul>
-        <li>Aquí vamos a crear un túnel SSH. Primero, comprobamos si el servicio SSH está corriendo en el servidor.</li>
-        <li>Para crear el túnel, ejecutamos:
-          <pre><code>ngrok tcp 22</code></pre>
-        </li>
-        <li>Ngrok asignará una dirección del tipo:
-          <pre><code>tcp://5.tcp.eu.ngrok.io:11836</code></pre>
-          Donde `11836` es el puerto externo aleatorio asignado por Ngrok apuntando al puerto local `22`.
-        </li>
-      </ul>
-    </li>
-    <li><strong>Acceso al Túnel desde Otra Máquina</strong>
-      <ul>
-        <li>Desde otra máquina con acceso a Internet, podéis conectaos al túnel generado utilizando:
-          <pre><code>ssh -p PUERTO_EXTERNO usuario@DIRECCION_NGROK</code></pre>
-        </li>
-      </ul>
-    </li>
-    <li><strong>Caso Práctico: Rsync a través del Túnel</strong>
+    <li><strong>Rsync a través del Túnel</strong>
       <ul>
         <li>Prepararemos un entorno para realizar copias de seguridad utilizando `rsync`.</li>
-        <li>Creáis un directorio en el servidor y otro en vuestra máquina local con archivos de prueba generados con los siguientes comandos:
-          <pre><code>dd if=/dev/urandom of=archivo_1MB.bin bs=1M count=1
+<li>Creamos un directorio en el servidor y otro en vuestra máquina local con archivos de prueba generados. <br>
+<img src="https://github.com/Beasluna/sentinel/blob/6c316c88d9ae3ebbe120be671fe24bf3b53d74a4/SENTINELS/ASSETS/ngrok/rsynk1.png" alt="Creación de directorios para Rsync">
+        </li>
+        <li>En nuestra máquina virtual (que realizará el rsync) también creamos un directorio donde meteremos tres archivos de prueba y de diferentes tamaños.
+           <br>
+<img src="https://github.com/Beasluna/sentinel/blob/6c316c88d9ae3ebbe120be671fe24bf3b53d74a4/SENTINELS/ASSETS/ngrok/rsynk2.png" alt="Descripción de la imagen">
+   <pre><code>dd if=/dev/urandom of=archivo_1MB.bin bs=1M count=1
 dd if=/dev/urandom of=archivo_10MB.bin bs=1M count=10
 dd if=/dev/urandom of=archivo_100MB.bin bs=1M count=100</code></pre>
         </li>
