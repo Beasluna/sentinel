@@ -737,6 +737,19 @@ sudo ufw reload</code></pre>
     </li>
   </ul>
 </li>
+    <li><strong>Importante</strong>
+      <ul>
+        <li>
+          Cuando ejecutas <code>ngrok tcp 22</code>, Ngrok genera una dirección y puerto aleatorios como:
+          <pre><code>Forwarding tcp://0.tcp.ngrok.io:12345 -> localhost:22</code></pre>
+          Cada vez que detienes Ngrok con Ctrl + C y lo vuelves a ejecutar, se asignará un puerto diferente. Esto significa que la dirección de conexión cambiará, y tendrás que actualizarla en la máquina desde la que te conectas.
+         <br>**Nota:** Véase las siguientes dos imágenes.
+          <br>
+          <img src="https://github.com/Beasluna/sentinel/blob/deb7d3257c95db14325f7e0127e2947c589a5ec4/SENTINELS/ASSETS/ngrok/nuevadirecciongrok.png" alt="Nueva dirección Ngrok 1">
+          <img src="https://github.com/Beasluna/sentinel/blob/deb7d3257c95db14325f7e0127e2947c589a5ec4/SENTINELS/ASSETS/ngrok/nuevadirecciongrok2.png" alt="Nueva dirección Ngrok 2">.
+        </li>
+      </ul>
+    </li>
 
   </ul>
 </li>
