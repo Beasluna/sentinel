@@ -752,17 +752,27 @@ sudo ufw reload</code></pre>
     </li>
     <li><strong>Rsync a través del Túnel</strong>
       <ul>
-        <li>Prepararemos un entorno para realizar copias de seguridad utilizando `rsync`.</li>
-<li>Creamos un directorio en el servidor y otro en vuestra máquina local con archivos de prueba generados. <br>
-<img src="https://github.com/Beasluna/sentinel/blob/6c316c88d9ae3ebbe120be671fe24bf3b53d74a4/SENTINELS/ASSETS/ngrok/rsynk1.png" alt="Creación de directorios para Rsync">
-        </li>
-        <li>En nuestra máquina virtual (que realizará el rsync) también creamos un directorio donde meteremos tres archivos de prueba y de diferentes tamaños.
-           <br>
-<img src="https://github.com/Beasluna/sentinel/blob/6c316c88d9ae3ebbe120be671fe24bf3b53d74a4/SENTINELS/ASSETS/ngrok/rsynk2.png" alt="Descripción de la imagen">
-   <pre><code>dd if=/dev/urandom of=archivo_1MB.bin bs=1M count=1
+       <li><strong>Preparación del entorno Rsync:</strong></li>
+<ul>
+    <li>Creamos un directorio en el servidor y otro en nuestra máquina local con archivos de prueba generados:
+        <br>
+        <img src="https://github.com/Beasluna/sentinel/blob/6c316c88d9ae3ebbe120be671fe24bf3b53d74a4/SENTINELS/ASSETS/ngrok/rsynk1.png" alt="Creación de directorios para Rsync">
+    </li>
+    <li>En nuestra máquina virtual (que realizará el rsync) también creamos un directorio donde meteremos tres archivos de prueba de diferentes tamaños:
+        <br>
+        <img src="https://github.com/Beasluna/sentinel/blob/6c316c88d9ae3ebbe120be671fe24bf3b53d74a4/SENTINELS/ASSETS/ngrok/rsynk2.png" alt="Archivos de prueba en la máquina virtual">
+        <pre><code>dd if=/dev/urandom of=archivo_1MB.bin bs=1M count=1
 dd if=/dev/urandom of=archivo_10MB.bin bs=1M count=10
 dd if=/dev/urandom of=archivo_100MB.bin bs=1M count=100</code></pre>
-        </li>
+    </li>
+    <li>Ejecutando rsync mediante el túnel creado por Ngrok:
+        <br>
+        <img src="https://raw.githubusercontent.com/Beasluna/sentinel/8482e003f9e5d9faaf02abb2f5d45d713d0b5c6f/SENTINELS/ASSETS/ngrok/rsynk3.png" alt="Ejecutando Rsync Paso 1">
+        <br>
+        <img src="https://raw.githubusercontent.com/Beasluna/sentinel/8482e003f9e5d9faaf02abb2f5d45d713d0b5c6f/SENTINELS/ASSETS/ngrok/rsynk4.png" alt="Ejecutando Rsync Paso 2">
+        <br>
+        <img src="https://raw.githubusercontent.com/Beasluna/sentinel/8482e003f9e5d9faaf02abb2f5d45d713d0b5c6f/SENTINELS/ASSETS/ngrok/rsynk5.png" alt="Ejecutando Rsync Paso 3">
+    </li>
         <li>Ejecutáis `rsync` utilizando el túnel creado por Ngrok:
           <pre><code>rsync -avh -e "ssh -p PUERTO_EXTERNO" /ruta/origen usuario@DIRECCION_NGROK:/ruta/destino</code></pre>
         </li>
