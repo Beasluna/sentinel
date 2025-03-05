@@ -860,8 +860,22 @@ dd if=/dev/urandom of=archivo_100MB.bin bs=1M count=100</code></pre>
         </li>
       </ul>
     </li>
+    <li><b>Seguridad de Comunicaciones</b>
+      <ul>
+        <li><b>Configuración de msmtp:</b> Se debe asegurar que el archivo de configuración <code>/etc/msmtprc</code> en la máquina Alpine contiene los detalles de autenticación y servidor de Gmail correctos y seguros. 🔒</li>
+        <li><b>Autenticación de Gmail:</b> Verificar que la configuración de seguridad de la cuenta de Gmail permite el acceso de la aplicación msmtp, considerando el uso de autenticación OAuth2 para mayor seguridad. 🔑</li>
+      </ul>
+    </li>
+    <li><b>Responsabilidades en las Asignaciones de Roles</b>
+      <ul>
+        <li><b>Responsable Principal (Joel):</b> Encargado de supervisar todo el proceso de backup y tomar decisiones críticas. 👨‍💻</li>
+        <li><b>Operadores de Backup (Bea y Leo):</b> Personal técnico que ejecuta las copias de seguridad según el calendario establecido. 🔄</li>
+        <li><b>Verificadores (Gea y Marc):</b> Encargados de comprobar la integridad y accesibilidad de los backups realizados. ✅</li>
+      </ul>
+    </li>
   </ul>
 </details>
+
 
   <details>
       <summary>📖 Documentación de Grafana</summary>
