@@ -787,20 +787,20 @@ dd if=/dev/urandom of=archivo_100MB.bin bs=1M count=100</code></pre>
     </li>
   </ul>
 </details>
-    <details>
-<details>
+ <details>
   <summary>📋 POLÍTICA DE COPIAS DE SEGURIDAD Y RESTAURACIÓN</summary>
+
   <ul>
     <li><b>Introducción</b>
       <ul>
-        <li>Esta política establece los procedimientos para garantizar la disponibilidad, integridad y seguridad de los datos del proyecto SENTINEL ante incidentes 🚨.</li>
+        <li>Esta política establece los procedimientos para garantizar la disponibilidad, integridad y seguridad de los datos del proyecto SENTINEL ante incidentes. Es fundamental para proteger los activos de información críticos de SENTINEL y mantener la confianza en un entorno de amenazas cibernéticas en constante evolución 🚨.</li>
       </ul>
     </li>
     <li><b>Objetivos</b>
       <ul>
         <li>Garantizar la protección de los datos críticos de SENTINEL 🔒.</li>
         <li>Asegurar la disponibilidad de copias de seguridad recientes y verificadas 📂.</li>
-        <li>Definir procedimientos de restauración rápidos y confiables 🚀.</li>
+        <li>Priorizar la recuperación de sistemas y datos críticos para minimizar el tiempo de inactividad 🚀.</li>
         <li>Implementar mecanismos de cifrado y verificación de integridad 🔑.</li>
       </ul>
     </li>
@@ -812,7 +812,7 @@ dd if=/dev/urandom of=archivo_100MB.bin bs=1M count=100</code></pre>
         </tr>
         <tr>
           <td><b>Backup Completo</b></td>
-          <td>Respaldo completo de directorios críticos (/etc, /home, /var) almacenado en formato .tar.gz.enc con cifrado AES-256 🔒.</td>
+          <td>Respaldo completo de directorios críticos (/etc, /opt, /home, /var/www) almacenado en formato .tar.gz.gpg con cifrado GPG. 🔒</td>
         </tr>
         <tr>
           <td><b>Backup Incremental</b></td>
@@ -822,30 +822,47 @@ dd if=/dev/urandom of=archivo_100MB.bin bs=1M count=100</code></pre>
     </li>
     <li><b>Procedimiento de Copia de Seguridad</b>
       <ul>
-        <li>Ejecución del Script: Automática según programación en cron ⏰.</li>
-        <li>Compresión y Cifrado: Datos comprimidos y cifrados con AES-256 🔒.</li>
-        <li>Verificación de Integridad: Generación de hash SHA256 🔑.</li>
-        <li>Almacenamiento Local: En /mnt/backup_p 📁.</li>
-        <li>Envío Remoto: Transferencia vía rsync a servidor remoto 📈.</li>
-        <li>Registro en Log: Documentación en /var/log/sentinel.log 📝.</li>
-        <li>Notificación: Correo de confirmación al administrador 📨.</li>
+        <li><b>Ejecución del Script:</b> Manual con parámetro "tot" para completo o "int" para incremental ⏰.</li>
+        <li><b>Compresión y Cifrado:</b> Datos comprimidos con tar y cifrados con GPG usando AES256 🔒.</li>
+        <li><b>Verificación de Integridad:</b> Implícita en el proceso de GPG 🔑.</li>
+        <li><b>Almacenamiento Local:</b> En /root/backups. 📁</li>
+        <li><b>Registro en Log:</b> Documentación en /var/log/backup.log 📈.</li>
+        <li><b>Notificación:</b> Correo de confirmación al administrador (sentinelmlbjp@gmail.com) 📨.</li>
       </ul>
     </li>
     <li><b>Procedimiento de Restauración</b>
       <ul>
-        <li>Selección del Backup: Completo o incremental 📊.</li>
-        <li>Verificación de Integridad: Comparación del hash SHA256 🔑.</li>
-        <li>Desencriptación: Uso de AES-256 para recuperar datos 🔓.</li>
-        <li>Extracción de Archivos: Desempaquetado en directorio temporal 🗂️.</li>
-        <li>Restauración Selectiva: Copia de archivos necesarios al sistema 📈.</li>
-        <li>Registro en Log: Documentación en /var/log/restore_sentinel.log 📝.</li>
-        <li>Notificación: Correo al administrador confirmando la restauración 📨.</li>
+        <li><b>Selección del Backup:</b> Identificar el archivo .gpg más reciente o requerido 📊.</li>
+        <li><b>Desencriptación:</b> Uso de GPG con la frase de paso correcta para recuperar datos 🔑.</li>
+        <li><b>Extracción de Archivos:</b> Desempaquetado del archivo .tar.gz. 🔓.</li>
+        <li><b>Restauración Selectiva:</b> Copia de archivos necesarios al sistema 🗂️.</li>
+        <li><b>Registro:</b> Documentación manual del proceso de restauración 📈.</li>
+        <li><b>Verificación:</b> Comprobación de la integridad y funcionalidad de los datos restaurados 📝.</li>
+      </ul>
+    </li>
+    <li><b>Consideraciones Adicionales</b>
+      <ul>
+        <li><b>Contraseña:</b> Se utiliza una frase de paso predefinida para el cifrado GPG. 📊.</li>
+        <li><b>Directorios Respaldados:</b> /etc, /opt, /home, /var/www 🔑.</li>
+        <li><b>Herramientas Utilizadas:</b> rsync para copia, tar para compresión, GPG para cifrado, ngrok como túnel 🔓.</li>
+      </ul>
+    </li>
+    <li><b>Infraestructura y Comunicaciones</b>
+      <ul>
+        <li><b>Dispositivo Principal:</b> Se utiliza una Raspberry Pi como servidor de backup remoto del proyecto SENTINEL. 📊.</li>
+        <li><b>Túnel Seguro:</b> Se implementa ngrok para crear un túnel seguro y exponer los servicios locales de la Raspberry Pi a Internet. 🔑.</li>
+        <li><b>Sistema de Correo:</b>
+          <ul>
+            <li>Se utiliza una máquina con Alpine Linux para el envío de correos electrónicos. 🗂️.</li>
+            <li>La herramienta msmtp está configurada en Alpine para el envío de correos a través de Gmail. 📈.</li>
+            <li>Los correos de notificación se envían desde la máquina Alpine a una cuenta de Gmail designada. 📝.</li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
 </details>
 
-      
   <details>
       <summary>📖 Documentación de Grafana</summary>
   
