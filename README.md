@@ -1208,16 +1208,59 @@ main "$@"
         <li><strong>Red NAT (LAN):</strong> Se utilizará para la comunicación entre los dispositivos internos de la red sin exponer las IPs internas al exterior.</li>
       </ul>
       <p>Una vez iniciada la máquina de pfSense, verás una pantalla de bienvenida que te guiará a través del proceso de configuración inicial, donde podrás aceptar los términos de uso y comenzar la instalación del sistema.</p>
-      <li>Una vez iniciada la máquina de pfSense, verás una pantalla de bienvenida que te guiará a través del proceso de configuración inicial, donde podrás aceptar los términos de uso y comenzar la instalación del sistema.</li>
-<li>
-  <strong>Pantalla de instalación de pfSense:</strong><br>
-  <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/Posinstalacion.png" 
-       alt="Pantalla de instalación de pfSense" width="600">
-</li>
+      <li>
+        <strong>Pantalla de instalación de pfSense:</strong><br>
+        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/Posinstalacion.png" 
+             alt="Pantalla de instalación de pfSense" width="600">
+      </li>
+      <li>
+        <strong>Nos focalizamos en la configuración de interfaces:</strong><br>
+        Una vez que pfSense esté instalado, se te pedirá que configures las interfaces de red, como WAN y LAN. Esto es crucial para establecer conexiones con Internet y tu red local.
+      </li>
+      <li>
+        Para acceder a la interfaz web de administración de pfSense desde cualquier navegador, primero debemos deshabilitar temporalmente el firewall. Para ello, ejecutamos el siguiente comando en la terminal de pfSense:
+      </li>
+      <li>
+        <strong>Deshabilitar firewall temporalmente:</strong><br>
+        <code>pfctl -d</code> Este comando desactiva el firewall de pfSense de forma temporal, permitiendo el acceso a la GUI sin restricciones.<br>
+        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/pfctl.png" 
+             alt="Comando pfctl en pfSense" width="600">
+      </li>
+      <li>
+        <strong>Verificación de la IP asignada:</strong><br>
+        Tras deshabilitar el firewall, podemos verificar la IP asignada a la interfaz de administración.<br>
+        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/ip.png" 
+             alt="Verificación de IP en pfSense" width="600">
+      </li>
+      <li>
+        <strong>Acceso a la interfaz web:</strong><br>
+        Ahora podemos acceder a la interfaz web de pfSense con las credenciales predeterminadas:<br>
+        <ul>
+          <li><strong>Usuario:</strong> admin</li>
+          <li><strong>Contraseña:</strong> pfsense</li>
+        </ul>
+        Accederemos introduciendo la URL: <code>https://192.168.123.24</code> en el navegador.<br>
+        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/generalinf.png" 
+             alt="Interfaz web de pfSense" width="600">
+      </li>
+      <li>
+        <strong>Configuración inicial mediante el asistente:</strong><br>
+        Una vez dentro de la interfaz web, pfSense nos guiará a través de un asistente de configuración donde definiremos:
+        <ul>
+          <li><strong>Hostname:</strong> Nombre que identificará a pfSense en la red.</li>
+          <li><strong>Domain:</strong> Dominio al que pertenece el firewall (opcional).</li>
+          <li><strong>Servidores DNS:</strong> Podemos utilizar los de Google (8.8.8.8, 8.8.4.4), Cloudflare (1.1.1.1, 1.0.0.1) o el resolver interno (127.0.0.1).</li>
+        </ul>
+        Estos parámetros son fundamentales para el correcto funcionamiento de la red y el acceso a internet.<br>
+        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/setup.png" 
+             alt="Asistente de configuración de pfSense" width="600">
       </li>
     </li>
   </ul>
 </details>
+
+
+
 
 
    <details>
