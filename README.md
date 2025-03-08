@@ -1179,6 +1179,46 @@ main "$@"
         Para más información sobre Grafana, consulta la  
         <a href="https://grafana.com/docs/grafana/latest/">documentación oficial</a>.
      </details>
+<details>
+  <summary>🔥 Instalación y Conceptualización de pfSense en un Entorno Virtualizado</summary>
+  <ul>
+    <li><strong>Introducción a pfSense</strong>
+      <p>En el marco del proyecto Sentinel, pfSense emerge como una solución de seguridad y gestión de red altamente efectiva y versátil. Este potente firewall de código abierto, basado en FreeBSD, cuenta con características que lo convierten en una elección ideal para proteger y optimizar nuestra infraestructura de red.</p>
+      <p>pfSense se destaca por su robusta capacidad de filtrado de paquetes, permitiendo un control granular sobre el tráfico de red entrante y saliente. Su interfaz web intuitiva facilita la configuración y administración, incluso para usuarios con conocimientos técnicos limitados.</p>
+    </li>
+    <li><strong>Adaptadores de Red en pfSense</strong>
+      <ul>
+        <li><strong>Adaptador puente (WAN):</strong> Conecta la interfaz de red virtual con la red física del host, permitiendo que pfSense obtenga una dirección IP directamente del router de Internet. Es esencial para que pfSense funcione como firewall y router, gestionando el tráfico entre la red interna (LAN) y la red externa (Internet).</li>
+        <li><strong>Red NAT (LAN):</strong> Permite la traducción de direcciones IP privadas a direcciones públicas, conservando direcciones IPv4 y permitiendo la conexión con otros dispositivos de la red interna sin exponer IPs privadas a la red externa.</li>
+      </ul>
+    </li>
+    <li><strong>Funciones Clave de pfSense</strong>
+      <ul>
+        <li><strong>Firewall y NAT:</strong> Reglas avanzadas de filtrado y traducción de direcciones para proteger y gestionar el tráfico de red.</li>
+        <li><strong>VPN:</strong> Soporte para conexiones seguras mediante OpenVPN e IPsec.</li>
+        <li><strong>QoS y Traffic Shaping:</strong> Control del tráfico para priorizar servicios, permitiendo establecer límites de ancho de banda por IP o red.</li>
+        <li><strong>IDS/IPS:</strong> Integración con Snort o Suricata como sistemas de detección y prevención de intrusiones, permitiendo monitorear y bloquear tráfico malicioso en tiempo real.</li>
+        <li><strong>Portal Cautivo:</strong> Control de acceso a la red mediante autenticación.</li>
+      </ul>
+    </li>
+    <li><strong>Proceso de Instalación de pfSense</strong>
+      <p>Antes de profundizar en la configuración de pfSense, realizaremos una demostración práctica de su instalación en un entorno virtualizado. Para ello, configuraremos la máquina virtual con dos adaptadores de red:</p>
+      <ul>
+        <li><strong>Adaptador puente (WAN):</strong> Configurado para acceder a Internet y conectarse al router físico, obteniendo una IP pública para que pfSense pueda gestionar el tráfico de la red externa.</li>
+        <li><strong>Red NAT (LAN):</strong> Se utilizará para la comunicación entre los dispositivos internos de la red sin exponer las IPs internas al exterior.</li>
+      </ul>
+      <p>Una vez iniciada la máquina de pfSense, verás una pantalla de bienvenida que te guiará a través del proceso de configuración inicial, donde podrás aceptar los términos de uso y comenzar la instalación del sistema.</p>
+      <li>Una vez iniciada la máquina de pfSense, verás una pantalla de bienvenida que te guiará a través del proceso de configuración inicial, donde podrás aceptar los términos de uso y comenzar la instalación del sistema.</li>
+<li>
+  <strong>Pantalla de instalación de pfSense:</strong><br>
+  <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/Posinstalacion.png" 
+       alt="Pantalla de instalación de pfSense" width="600">
+</li>
+      </li>
+    </li>
+  </ul>
+</details>
+
 
    <details>
       <summary>📖 Documentación de Prometheus</summary>
