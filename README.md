@@ -806,8 +806,8 @@ dd if=/dev/urandom of=archivo_100MB.bin bs=1M count=100</code></pre>
     </ul>
   </ul>
 </li>
-
-
+</details>
+<details>
   <summary>📋 POLÍTICA DE COPIAS DE SEGURIDAD Y RESTAURACIÓN</summary>
 
   <ul>
