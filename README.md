@@ -296,6 +296,8 @@ Un hipervisor permite que varias instancias de sistema operativo trabajen juntas
         <li><strong>Licencia de Proxmox:</strong>
           <ul>
             <li>Proxmox VE se distribuye bajo la licencia <strong>GNU AGPLv3</strong>, lo que permite su uso gratuito y la inspección de su código fuente.</li>
+            Para más información sobre Proxmox y sus servicios de soporte, consulta la  
+      <a href="https://www.proxmox.com/en/services/support-services/support#support-resources">documentación oficial</a>.
           </ul>
         </li>
       </ul>
