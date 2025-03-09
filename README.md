@@ -1202,16 +1202,18 @@ main "$@"
       </ul>
     </li>
     <li><strong>Proceso de Instalación de pfSense</strong>
-      <p>Antes de profundizar en la configuración de pfSense, realizaremos una demostración práctica de su instalación en un entorno virtualizado. Para ello, configuraremos la máquina virtual con dos adaptadores de red:</p>
+      <p>Antes de profundizar con los conceptos teóricos, procederemos a realizar una demostración práctica de la instalación de pfSense en un entorno virtualizado. Para ello, configuraremos la máquina virtual con dos adaptadores de red. La primera interfaz se conectará a la WAN (salida hacia Internet), mientras que la segunda se destinará a la LAN (conexión con otras máquinas virtuales del laboratorio):</p>
       <ul>
         <li><strong>Adaptador puente (WAN):</strong> Configurado para acceder a Internet y conectarse al router físico, obteniendo una IP pública para que pfSense pueda gestionar el tráfico de la red externa.</li>
-        <li><strong>Red NAT (LAN):</strong> Se utilizará para la comunicación entre los dispositivos internos de la red sin exponer las IPs internas al exterior.</li>
+          <li>El adaptador puente se utiliza para la interfaz WAN, permitiendo que pfSense obtenga una dirección IP directamente del router de Internet. Esto es esencial para que pueda funcionar como firewall y router, gestionando el tráfico entre la red interna (LAN) y la red externa (Internet)</li>
+        <li><strong>Red NAT (Network Address Translation: LAN):</strong> es una tecnología en redes que permite la traducción de direcciones IP privadas a una dirección IP pública. Esta técnica es esencial para conservar las direcciones IPv4 públicas, que son un recurso limitado. </li>
+<li>Se utilizará para la comunicación entre los dispositivos internos de la red sin exponer las IPs internas al exterior.</li>
       </ul>
       <p>Una vez iniciada la máquina de pfSense, verás una pantalla de bienvenida que te guiará a través del proceso de configuración inicial, donde podrás aceptar los términos de uso y comenzar la instalación del sistema.</p>
       <li>
-        <strong>Pantalla de instalación de pfSense:</strong><br>
-        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/Posinstalacion.png" 
-             alt="Pantalla de instalación de pfSense" width="600">
+      <strong>Pantalla de instalación de pfSense:</strong><br>
+      <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/Posinstalacion.png" 
+            alt="Pantalla de instalación de pfSense" width="600">
       </li>
       <li>
         <strong>Nos focalizamos en la configuración de interfaces:</strong><br>
@@ -1234,18 +1236,18 @@ main "$@"
       </li>
       <li>
         <strong>Acceso a la interfaz web:</strong><br>
-        Ahora podemos acceder a la interfaz web de pfSense con las credenciales predeterminadas:<br>
+        Ahora podemos acceder a la interfaz web de pfSense, aunque el navegador pueda mostrar una advertencia indicando que el sitio no es seguro o no es de confianza. Esto ocurre porque pfSense utiliza un certificado autofirmado por defecto. Para continuar, simplemente debemos aceptar la excepción de seguridad en el navegador.<br>
+        <img src="https://github.com/Beasluna/sentinel/blob/13b40b4beec08d9d607e7ca87dc30b946a94912c/SENTINELS/ASSETS/pfSense/irtefaz.png"> 
         <ul>
           <li><strong>Usuario:</strong> admin</li>
           <li><strong>Contraseña:</strong> pfsense</li>
         </ul>
-        Accederemos introduciendo la URL: <code>https://192.168.123.24</code> en el navegador.<br>
-        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/generalinf.png" 
-             alt="Interfaz web de pfSense" width="600">
+        Accederemos introduciendo la URL: <code>https://192.168.123.24</code> en el navegador.<br>   
       </li>
       <li>
-        <strong>Configuración inicial mediante el asistente:</strong><br>
         Una vez dentro de la interfaz web, pfSense nos guiará a través de un asistente de configuración donde definiremos:
+        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/generalinf.png" 
+             alt="Interfaz web de pfSense" width="600">
         <ul>
           <li><strong>Hostname:</strong> Nombre que identificará a pfSense en la red.</li>
           <li><strong>Domain:</strong> Dominio al que pertenece el firewall (opcional).</li>
