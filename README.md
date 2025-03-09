@@ -854,11 +854,11 @@ sudo ufw reload</code></pre>
     <ul>
       <li><strong>Pantallazos de Configuración</strong>
         <ul>
-          <li><strong>Interfaz WAN (100.77.20.58)</strong><br>
+          <li><strong>Interfaz WAN (100.77.20.58)</strong><br><br>
             <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/nodo1.png" width="600"><br>
             Función: Conexión a la red externa del aula y enlace con Internet mediante DHCP.
           </li>
-          <li><strong>Interfaz LAN (192.168.2.1)</strong><br>
+          <li><strong>Interfaz LAN (192.168.2.1)</strong><br><br>
             <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/nodo1_hardware.png" width="600"><br>
             Función: Puerta de enlace para dispositivos internos (red LAN privada).
           </li>
@@ -883,7 +883,7 @@ sudo ufw reload</code></pre>
     <ul>
       <li><strong>Pantallazos de Configuración</strong>
         <ul>
-          <li><strong>Interfaz WAN (100.77.20.59)</strong><br>
+          <li><strong>Interfaz WAN (100.77.20.59)</strong><br><br>
             <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/nodo2.png" width="600"><br>
             Función: Conexión redundante a la red externa con IP dinámica.
           </li>
@@ -1001,16 +1001,16 @@ El tráfico de Portainer dentro de Alpine es manejado internamente y también se
     <li><strong>Instalación</strong>
       <ul>
         <li>Ngrok está disponible para múltiples sistemas operativos y su instalación es sencilla. A continuación, les explicamos cómo instalarlo en Linux:</li>
-        <li>Lo primero que necesitan es crearse una cuenta en Ngrok.  <br>
+        <li>Lo primero que necesitan es crearse una cuenta en Ngrok.  <br><br>
         <img src="https://github.com/Beasluna/sentinel/blob/314148000deb83e555cf3d5eed4e59186c57a2be/SENTINELS/ASSETS/ngrok/Creacioncuentangrok.png" alt="Creación de cuenta en Ngrok">
-        </li>
-        <li>Una vez creada la cuenta, en la página de bienvenida se ofrecen opciones para instalarlo según el sistema operativo. En este caso, vamos a instalar Ngrok en un servidor Linux para crear futuros túneles.<br>
+        </li> <br><br>
+        <li>Una vez creada la cuenta, en la página de bienvenida se ofrecen opciones para instalarlo según el sistema operativo. En este caso, vamos a instalar Ngrok en un servidor Linux para crear futuros túneles.<br><br>
         <img src="https://github.com/Beasluna/sentinel/blob/56d5f384da14b1f320f6af2516fbabe481f5f713/SENTINELS/ASSETS/ngrok/homepagengrok.png" alt="Página de bienvenida Ngrok">
-        </li>
+        </li> <br><br>
         <li>En este caso vamos a instalar ngrok en mi servidor para poder crear futuros túneles:
           <img src="https://github.com/Beasluna/sentinel/blob/fed838a67b5ee3bcb102c7eded0a0d7f42ef9cf5/SENTINELS/ASSETS/ngrok/instalacionserver.png" alt="Instalación servidor Ngrok">
         </li>
-        <li>Instalamos Ngrok tal y como lo indica la página oficial:<br>
+        <li>Instalamos Ngrok tal y como lo indica la página oficial:<br><br>
         <img src="https://github.com/Beasluna/sentinel/blob/620fe37dcdca95ad72bf4319ff1db03df8408e61/SENTINELS/ASSETS/ngrok/instalacionngrokcomandos.png" alt="Instalación Ngrok Comandos">
         </li>
         <li>Comprobamos la instalación ejecutando:“ngrok” o “ngrok --version”
@@ -1024,7 +1024,7 @@ El tráfico de Portainer dentro de Alpine es manejado internamente y también se
         <li>Ngrok requiere autenticación para funcionar correctamente. Para autenticaros, utilizamos el token llamado "Authtoken" que Ngrok proporciona.</li>
         <li>
           <img src="https://github.com/Beasluna/sentinel/blob/eb18ceafad287b47b274cdac6d395ddbd5ccd821/SENTINELS/ASSETS/ngrok/authtoken.png" alt="Autenticación con Ngrok">
-        </li>
+        </li> <br><br>
         <li>Una vez que tengáis el token copiado, ejecutad el siguiente comando en la terminal:
       <pre><code>ngrok config add-authtoken TOKEN_AQUI</code></pre>
     </li>
@@ -1033,16 +1033,16 @@ El tráfico de Portainer dentro de Alpine es manejado internamente y también se
       Aquí tenéis un ejemplo de cómo se ve este proceso:
       <br>
       <img src="https://github.com/Beasluna/sentinel/blob/a218bcea9f935f71ae66d90cf6d61770a4d6ff6d/SENTINELS/ASSETS/ngrok/Creacionauthtokenysaved.png" alt="Creación y guardado de Authtoken">
-    </li>
+    </li> <br><br>
         <li><strong>Creación de Túneles</strong>
   <ul>
     <li>Primero, comprobamos si el servicio SSH está corriendo en el servidor.</li>
     <li>Aquí tienen una imágen de referencia:</li>
-    <br>
+    <br><br>
     <img src="https://github.com/Beasluna/sentinel/blob/3ea8bc62137c446dc241e8e620005069068d1416/SENTINELS/ASSETS/ngrok/servicesshdstatus.png" alt="Servicio SSH Status">
     <li>Para crear el túnel, es tan sencillo como poner ngrok seguido del tipo de protocolo y el puerto al que se quiera apuntar:
       <pre><code>ngrok tcp 22</code></pre>
-      <br>
+      <br><br>
       <img src="https://github.com/Beasluna/sentinel/blob/3ea8bc62137c446dc241e8e620005069068d1416/SENTINELS/ASSETS/ngrok/creaciondeltunelprotocoloypuerto.png" alt="Creación del túnel: protocolo y puerto">
     </li>
     <li>Ngrok va a asignar una dirección del tipo:
@@ -1052,7 +1052,7 @@ El tráfico de Portainer dentro de Alpine es manejado internamente y también se
     <li>Ngrok va a asignar una dirección del tipo:
       <pre><code>tcp://5.tcp.eu.ngrok.io:11836</code></pre>
       Donde `11836` es el puerto externo aleatorio asignado por Ngrok apuntando al puerto local `22`.
-      <br>
+      <br><br>
       <img src="https://github.com/Beasluna/sentinel/blob/3ea8bc62137c446dc241e8e620005069068d1416/SENTINELS/ASSETS/ngrok/asignaciondedireccionypuertoexterno.png" alt="Asignación de dirección y puerto externo">
     </li>
   </ul>
@@ -1061,25 +1061,25 @@ El tráfico de Portainer dentro de Alpine es manejado internamente y también se
   <ul>
     <li>Una vez creado el túnel, es importante probarlo desde otra máquina que tenga acceso a Internet. En este ejemplo, usaremos una máquina con Alpine Linux.</li>
     <li>Aquí tenéis un ejemplo de cómo se realiza la comprobación del túnel desde una máquina Alpine Linux:
-      <br>
+      <br><br>
       <img src="https://github.com/Beasluna/sentinel/blob/3ea8bc62137c446dc241e8e620005069068d1416/SENTINELS/ASSETS/ngrok/comprobaciontuneldesdemvalpine.png" alt="Comprobación del túnel desde Alpine Linux">
     <li>
       <pre><code>ssh -p PUERTO_EXTERNO usuario@DIRECCION_NGROK</code></pre>
     </li>
     <li>Aquí teneis un ejemplo de como se realiza la conexión SSH al túnel desde una maquina Alpine Linux:
-     <br>
+     <br><br>
      <img src="https://github.com/Beasluna/sentinel/blob/3ea8bc62137c446dc241e8e620005069068d1416/SENTINELS/ASSETS/ngrok/comprobaciontuneldesdemvalpine2.png" alt="Conexión SSH al túnel desde Alpine Linux">
-    </li>
+    </li> <br><br>
     <li>Aquí tenéis un ejemplo de una conexión SSH exitosa al túnel desde una máquina Alpine Linux:
-     <br>
-     <img src="https://github.com/Beasluna/sentinel/blob/3ea8bc62137c446dc241e8e620005069068d1416/SENTINELS/ASSETS/ngrok/comprobaciontuneldesdemvalpine3.png" alt="Conexión SSH exitosa al túnel desde Alpine Linux">
-    </li>
+     <br><br>
+     <img src="https://github.com/Beasluna/sentinel/blob/3ea8bc62137c446dc241e8e620005069068d1416/SENTINELS/ASSETS/ngrok/comprobaciontuneldesdemvalpine3.png" alt="Conexión SSH exitosa al túnel desde Alpine Linux"> 
+    </li> <br><br>
     <li>Además de acceder a través de SSH, también pueden verificar el estado del túnel en la webapp de Ngrok:
-     <br>
+     <br><br>
      <img src="https://github.com/Beasluna/sentinel/blob/3ea8bc62137c446dc241e8e620005069068d1416/SENTINELS/ASSETS/ngrok/comprobaciontuneldesdemvalpine4.png" alt="Acceso al túnel y verificación en la webapp de Ngrok">
-    </li>
+    </li> <br><br>
     <li>Aquí tienen un ejemplo de otra comprobación  exitosa al túnel desde una máquina Alpine Linux:
-     <br>
+     <br><br>
      <img src="https://github.com/Beasluna/sentinel/blob/3ea8bc62137c446dc241e8e620005069068d1416/SENTINELS/ASSETS/ngrok/comprobaciontuneldesdemvalpine5.png" alt="Comprobación SSH exitosa al túnel desde Alpine Linux">
     </li>
   </ul>
