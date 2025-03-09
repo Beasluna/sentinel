@@ -1272,18 +1272,74 @@ main "$@"
         </ul>
         <ul>
           En este paso, podemos cambiar tanto el nombre de usuario como la contraseña de acceso a la interfaz web de pfSense. <br>
-          <il>Es recomendable cambiar la contraseña predeterminada (que es pfsense) por una más segura para proteger el acceso al sistema. También podemos cambiar el nombre de usuario si lo deseamos, aunque el valor predeterminado (admin) es comúnmente suficiente</il><br>
+          <il>Es recomendable cambiar la contraseña predeterminada (que es pfsense) por una más segura para proteger el acceso al sistema. También podemos cambiar el nombre de usuario si lo deseamos, aunque el valor predeterminado (admin) es comúnmente suficiente</il><br><br>
           Una vez realizados los cambios, avanzamos para completar la configuración.
           <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/setadmingui.png"
             alt="Cambio de usuario y contraseña" width="600"> <br>
         </ul>
         <ul>
         <il>Después de realizar todos los cambios necesarios en la configuración inicial, pfSense nos pedirá que realicemos un reinicio o reload del sistema. <br>
-          Esto aplicará todas las configuraciones realizadas y reiniciará el servicio para que los cambios entren en efecto.</il><br>
+          Esto aplicará todas las configuraciones realizadas y reiniciará el servicio para que los cambios entren en efecto.</il><br><br>
         <il>Hacemos clic en "Reload" para que pfSense reinicie con la nueva configuración. </il> <br>
         <il>Después de este paso, ya estaremos listos para acceder a la interfaz web y seguir con la configuración avanzada.</il> <br>
+          <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/reload.png"
+            alt="Reload" width="600"> <br><br>
+          <img src="https://github.com/Beasluna/sentinel/blob/13b40b4beec08d9d607e7ca87dc30b946a94912c/SENTINELS/ASSETS/pfSense/reload1.png"
+            alt="Reload" width="600"> <br><br>
+          <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/wizard.png"
+            alt="Reload Complete" width="600"> <br><br>
         </ul>
       </li>
+      <summary>📊 Dashboard de pfSense</summary>
+  <ul>
+    <li><strong>Introducción al Dashboard</strong>
+      <p>El dashboard de pfSense proporciona un resumen general del estado del sistema y acceso rápido a las configuraciones más importantes.</p>
+    </li>
+    <li><strong>1. Barra de Navegación Superior</strong>
+      <p>En la parte superior de la página, encontrarás una barra de navegación con las opciones principales:</p>
+      <ul>
+        <li><strong>System:</strong> Configuración del sistema, incluyendo reinicios y actualizaciones.</li>
+        <li><strong>Interfaces:</strong> Configuración de las interfaces de red, como WAN y LAN.</li>
+        <li><strong>Firewall:</strong> Reglas de firewall, NAT y configuraciones relacionadas.</li>
+        <li><strong>Services:</strong> Servicios adicionales como VPN, DHCP, DNS, etc.</li>
+        <li><strong>Diagnostics:</strong> Herramientas de diagnóstico y logs.</li>
+      </ul>
+    </li>
+    <li><strong>2. Resumen del Estado del Sistema</strong>
+      <p>Debajo de la barra de navegación, se muestra una vista general del estado del sistema:</p>
+      <ul>
+        <li><strong>Estado de las interfaces:</strong> Información sobre las interfaces WAN y LAN, incluyendo si están activas y su dirección IP asignada.</li>
+        <li><strong>Uso de CPU y memoria:</strong> Un gráfico que muestra el uso actual de CPU y memoria del sistema.</li>
+        <li><strong>Estado del Firewall:</strong> Indica si el firewall está activo o si hay alguna alerta relevante.</li>
+      </ul>
+    </li>
+    <li><strong>3. Notificaciones y Alertas</strong>
+      <p>En la parte superior o inferior de la página, puede haber un área dedicada a notificaciones y alertas:</p>
+      <ul>
+        <li>Advertencias de seguridad.</li>
+        <li>Actualizaciones disponibles.</li>
+        <li>Problemas de configuración.</li>
+      </ul>
+    </li>
+    <li><strong>4. Accesos Rápidos a Funciones Comunes</strong>
+      <p>En el centro o lateral del dashboard, encontrarás accesos rápidos a tareas comunes:</p>
+      <ul>
+        <li>Reiniciar el sistema.</li>
+        <li>Ver los logs del sistema.</li>
+        <li>Consultar las conexiones activas o estadísticas de tráfico.</li>
+      </ul>
+    </li>
+    <li><strong>5. Estadísticas de Tráfico y Conexiones</strong>
+      <p>El dashboard también incluye gráficos o tablas que muestran:</p>
+      <ul>
+        <li>Tráfico en tiempo real.</li>
+        <li>Conexiones activas.</li>
+        <li>Velocidades de descarga y carga.</li>
+        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/dashboard.png"
+          alt="Dashboard" width="600"> <br><br>
+      </ul>
+    </li>
+  </ul>
     </li>
   </ul>
 </details>
