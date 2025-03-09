@@ -1249,27 +1249,27 @@ dd if=/dev/urandom of=archivo_100MB.bin bs=1M count=100</code></pre>
     <pre><code>
 #!/bin/bash
 
-# Configuración
+#### Configuración
 BACKUP_DIR="${BACKUP_DIR:-/root/backups}"
 TEMP_DIR="${TEMP_DIR:-/tmp/backup}"
 LOG_FILE="${LOG_FILE:-/var/log/backup.log}"
 EMAIL="${EMAIL:-sentinelmlbjp@gmail.com}"  # Cambia esto por tu correo real
 PASSPHRASE="${PASSPHRASE:-passwd123123}"
 
-# Configuración de Rsync para copia remota
+#### Configuración de Rsync para copia remota
 REMOTE_USER="${REMOTE_USER:-rapy}"
 REMOTE_HOST="${REMOTE_HOST:-2.tcp.eu.ngrok.io}"
 REMOTE_PORT="${REMOTE_PORT:-19877}"
 REMOTE_DIR="${REMOTE_DIR:-/home/rapy/backup_test}"
 
-# Función para registrar logs y enviar correo
+#### Función para registrar logs y enviar correo
 log_and_mail() {
     local message="$1"
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $message" | tee -a "$LOG_FILE"
     echo "$message" | msmtp "$EMAIL"
 }
 
-# Verificar dependencias
+#### Verificar dependencias
 check_dependencies() {
     local dependencies=("rsync" "tar" "msmtp" "gpg")  # GPG es obligatorio ahora
     for dep in "${dependencies[@]}"; do
@@ -1280,7 +1280,7 @@ check_dependencies() {
     done
 }
 
-# Verificar espacio en disco antes del backup
+#### Verificar espacio en disco antes del backup
 check_disk_space() {
     local required_space="${1:-1048576}"  # 1GB mínimo por defecto
     local available_space=$(df -k / | awk 'NR==2 {print $4}')
@@ -1290,7 +1290,7 @@ check_disk_space() {
     fi
 }
 
-# Validar argumentos
+#### Validar argumentos
 validate_arguments() {
     if [ "$#" -ne 1 ] || { [ "$1" != "tot" ] && [ "$1" != "int" ]; }; then
         echo "Uso: $0 {tot|int}"
@@ -1298,16 +1298,16 @@ validate_arguments() {
     fi
 }
 
-# Definir directorios a respaldar
+#### Definir directorios a respaldar
 DIRS=("/etc" "/opt" "/var/www")
 
-# Crear carpetas necesarias
+#### Crear carpetas necesarias
 create_directories() {
     mkdir -p "$BACKUP_DIR"
     mkdir -p "$TEMP_DIR"
 }
 
-# Función para copia, compresión y cifrado
+#### Función para copia, compresión y cifrado
 perform_backup() {
     local backup_type="$1"
     log_and_mail "=== Realizando respaldo $backup_type ==="
@@ -1353,7 +1353,7 @@ perform_backup() {
     log_and_mail "✅ Backup cifrado enviado exitosamente al servidor remoto."
 }
 
-# Realizar respaldo completo o incremental
+#### Realizar respaldo completo o incremental
 perform_incremental_backup() {
     local last_backup=$(ls -t "$BACKUP_DIR"/backup-*.tar.gz.gpg 2>/dev/null | head -n 1)  # Buscar backups cifrados
     if [ -z "$last_backup" ]; then
@@ -1391,27 +1391,27 @@ main "$@"
     <pre><code>
 #!/bin/bash
 
-# Configuración
+#### Configuración
 BACKUP_DIR="${BACKUP_DIR:-/root/backups}"
 RESTORE_DIR="${RESTORE_DIR:-/root/restored}"
 LOG_FILE="${LOG_FILE:-/var/log/restore.log}"
 EMAIL="${EMAIL:-sentinelmlbjp@gmail.com}"  # Cambia esto por tu correo real
 PASSPHRASE="${PASSPHRASE:-passwd123123}"
 
-# Configuración de Rsync para copia remota
+#### Configuración de Rsync para copia remota
 REMOTE_USER="${REMOTE_USER:-rapy}"
 REMOTE_HOST="${REMOTE_HOST:-2.tcp.eu.ngrok.io}"
 REMOTE_PORT="${REMOTE_PORT:-19877}"
 REMOTE_DIR="${REMOTE_DIR:-/home/rapy/Documents/backup_test/}"
 
-# Función para registrar logs y enviar correo
+#### Función para registrar logs y enviar correo
 log_and_mail() {
     local message="$1"
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $message" | tee -a "$LOG_FILE"
     echo "$message" | msmtp "$EMAIL"
 }
 
-# Verificar dependencias
+#### Verificar dependencias
 check_dependencies() {
     local dependencies=("rsync" "tar" "msmtp" "gpg")  # GPG es obligatorio
     for dep in "${dependencies[@]}"; do
@@ -1422,7 +1422,7 @@ check_dependencies() {
     done
 }
 
-# Validar argumentos
+#### Validar argumentos
 validate_arguments() {
     if [ "$#" -ne 1 ]; then
         echo "Uso: $0 <nombre_del_backup>"
@@ -1431,13 +1431,13 @@ validate_arguments() {
     fi
 }
 
-# Crear carpetas necesarias
+#### Crear carpetas necesarias
 create_directories() {
     mkdir -p "$BACKUP_DIR"
     mkdir -p "$RESTORE_DIR"
 }
 
-# Descargar el backup cifrado desde el servidor remoto
+#### Descargar el backup cifrado desde el servidor remoto
 download_backup() {
     local backup_name="$1"
     local remote_path="$REMOTE_DIR/$backup_name"
@@ -1452,7 +1452,7 @@ download_backup() {
     log_and_mail "✅ Backup cifrado descargado exitosamente."
 }
 
-# Descifrar el backup
+#### Descifrar el backup
 decrypt_backup() {
     local backup_name="$1"
     local encrypted_file="$BACKUP_DIR/$backup_name"
@@ -1467,7 +1467,7 @@ decrypt_backup() {
     log_and_mail "✅ Backup descifrado exitosamente."
 }
 
-# Extraer el backup
+#### Extraer el backup
 extract_backup() {
     local backup_name="$1"
     local decrypted_file="$BACKUP_DIR/${backup_name%.gpg}"
@@ -1481,7 +1481,7 @@ extract_backup() {
     log_and_mail "✅ Backup extraído exitosamente en $RESTORE_DIR."
 }
 
-# Main
+#### Main
 main() {
     validate_arguments "$@"
     check_dependencies
