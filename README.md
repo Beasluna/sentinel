@@ -1223,29 +1223,28 @@ main "$@"
         Para acceder a la interfaz web de administración de pfSense desde cualquier navegador, primero debemos deshabilitar temporalmente el firewall. Para ello, ejecutamos el siguiente comando en la terminal de pfSense:
       </li>
       <li>
-        <strong>Deshabilitar firewall temporalmente:</strong><br>
+        <strong>Deshabilitar firewall temporalmente:</strong><br><br>
         <code>pfctl -d</code> Este comando desactiva el firewall de pfSense de forma temporal, permitiendo el acceso a la GUI sin restricciones.<br>
         <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/pfctl.png" 
              alt="Comando pfctl en pfSense" width="600">
       </li>
       <li>
-        <strong>Verificación de la IP asignada:</strong><br>
+        <strong>Verificación de la IP asignada:</strong><br><br>
         Tras deshabilitar el firewall, podemos verificar la IP asignada a la interfaz de administración.<br>
         <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/ip.png" 
              alt="Verificación de IP en pfSense" width="600">
       </li>
       <li>
-        <strong>Acceso a la interfaz web:</strong><br>
+        <strong>Acceso a la interfaz web:</strong><br><br>
         Ahora podemos acceder a la interfaz web de pfSense, aunque el navegador pueda mostrar una advertencia indicando que el sitio no es seguro o no es de confianza. Esto ocurre porque pfSense utiliza un certificado autofirmado por defecto. Para continuar, simplemente debemos aceptar la excepción de seguridad en el navegador.<br>
-        <img src="https://github.com/Beasluna/sentinel/blob/13b40b4beec08d9d607e7ca87dc30b946a94912c/SENTINELS/ASSETS/pfSense/irtefaz.png"> 
+        <img src="https://github.com/Beasluna/sentinel/blob/13b40b4beec08d9d607e7ca87dc30b946a94912c/SENTINELS/ASSETS/pfSense/irtefaz.png"> <br><br>
+        Accederemos introduciendo la URL: <code>https://192.168.123.24</code> en el navegador.<br>   
         <ul>
           <li><strong>Usuario:</strong> admin</li>
-          <li><strong>Contraseña:</strong> pfsense</li>
+          <li><strong>Contraseña:</strong> pfsense<li>
         </ul>
-        Accederemos introduciendo la URL: <code>https://192.168.123.24</code> en el navegador.<br>   
       </li>
-      <li>
-        Una vez dentro de la interfaz web, pfSense nos guiará a través de un asistente de configuración donde definiremos:
+      <li>Una vez dentro de la interfaz web, pfSense nos guiará a través de un asistente de configuración donde definiremos: </li> <br><br>
         <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/generalinf.png" 
              alt="Interfaz web de pfSense" width="600">
         <ul>
@@ -1255,7 +1254,35 @@ main "$@"
         </ul>
         Estos parámetros son fundamentales para el correcto funcionamiento de la red y el acceso a internet.<br>
         <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/setup.png" 
-             alt="Asistente de configuración de pfSense" width="600">
+             alt="Asistente de configuración de pfSense" width="600"> <br><br>
+        <ul> 
+          En esta sección, se configuran el Time Server Hostname y la Zona Horaria (Time Zone).
+          <li>Por defecto, pfSense selecciona un servidor de tiempo adecuado y la zona horaria predeterminada. A menos que necesitemos realizar algún cambio específico, simplemente hacemos clic en "Next" para continuar con la configuración. </li>
+          <li>pfSense nos da la opción de volver a configurar la interfaz WAN. Esto es útil en caso de que hayamos cometido algún error durante la configuración inicial o si necesitamos realizar algún ajuste, como cambiar el tipo de conexión (DHCP, estática, PPPoE) o modificar otros parámetros de red. </li>
+          Si no es necesario realizar ajustes en la configuración puedes simplemente avanzar al siguiente paso sin hacer cambios. Esto te permitirá continuar con la configuración del sistema sin retrasos innecesarios.
+          <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/wan.png"
+            alt="Interfaz Wan" width="600"> <br><br>
+        </ul>
+        <ul>
+        Ahora configuramos la interfaz LAN, donde definimos la dirección IP que tendrá pfSense dentro de la red interna.<br>
+        <il>Aquí podemos establecer una IP estática para el firewall, que servirá como puerta de enlace para los dispositivos de la red local. También podemos ajustar la máscara de subred y otros parámetros si es necesario. </il><br>
+        Si no requerimos cambios adicionales, simplemente avanzamos al siguiente paso. <br><br>
+          <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/lan.png"
+            alt="Interfaz Lan" width="600"> <br>
+        </ul>
+        <ul>
+          En este paso, podemos cambiar tanto el nombre de usuario como la contraseña de acceso a la interfaz web de pfSense. <br>
+          <il>Es recomendable cambiar la contraseña predeterminada (que es pfsense) por una más segura para proteger el acceso al sistema. También podemos cambiar el nombre de usuario si lo deseamos, aunque el valor predeterminado (admin) es comúnmente suficiente</il><br>
+          Una vez realizados los cambios, avanzamos para completar la configuración.
+          <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/setadmingui.png"
+            alt="Cambio de usuario y contraseña" width="600"> <br>
+        </ul>
+        <ul>
+        <il>Después de realizar todos los cambios necesarios en la configuración inicial, pfSense nos pedirá que realicemos un reinicio o reload del sistema. <br>
+          Esto aplicará todas las configuraciones realizadas y reiniciará el servicio para que los cambios entren en efecto.</il><br>
+        <il>Hacemos clic en "Reload" para que pfSense reinicie con la nueva configuración. </il> <br>
+        <il>Después de este paso, ya estaremos listos para acceder a la interfaz web y seguir con la configuración avanzada.</il> <br>
+        </ul>
       </li>
     </li>
   </ul>
