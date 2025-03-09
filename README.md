@@ -788,6 +788,189 @@ sudo ufw reload</code></pre>
           alt="Dashboard" width="600"> <br><br>
       </ul>
     </li>
+    <details>
+  <summary>💻 pfSense en Proxmox</summary>
+  <ul>
+    <li><strong>Introducción</strong>
+      <p>En el proyecto Sentinel, hemos implementado un clúster de Proxmox compuesto por dos nodos, lo que nos proporciona una infraestructura robusta y flexible para la gestión de máquinas virtuales y contenedores. Esta configuración ofrece seguridad y disponibilidad, distribuyendo eficientemente las cargas de trabajo.</p>
+      <p>Cada nodo puede albergar máquinas virtuales y contenedores, y la configuración de clúster facilita la compartición de recursos entre ambos. Esto nos brinda ventajas como la alta disponibilidad y la capacidad de migrar máquinas virtuales de un nodo a otro sin interrupciones.</p>
+    </li>
+    <li><strong>Pasos para Instalar pfSense en Proxmox</strong>
+      <ol>
+        <li><strong>Preparación del Entorno:</strong> Configura las redes necesarias en Proxmox:
+          <ul>
+            <li>Crea un Linux Bridge para la WAN (por ejemplo, vmbr0).</li>
+            <li>Crea otro Linux Bridge para la LAN (por ejemplo, vmbr1).</li>
+          </ul>
+        </li>
+        <li><strong>Creación de la Máquina Virtual:</strong> 
+          <ul>
+            <li>Asigna dos adaptadores de red a la VM: uno conectado a vmbr0 (WAN) y otro a vmbr1 (LAN).</li>
+            <li>Configura el disco duro virtual y el ISO de instalación de pfSense.</li>
+          </ul>
+        </li>
+        <li><strong>Instalación de pfSense:</strong> 
+          <ul>
+            <li>Sigue las instrucciones del instalador para configurar el sistema.</li>
+            <li>Asigna las interfaces WAN y LAN según los puentes creados en Proxmox.</li>
+          </ul>
+        </li>
+        <li><strong>Configuraciones Adicionales:</strong> 
+          <ul>
+            <li>Desactiva el hardware checksum offload desde: System > Advanced > Networking.</li>
+            <li>Accede a la interfaz web de pfSense desde una máquina conectada a la LAN para completar las configuraciones iniciales.</li>
+          </ul>
+        </li>
+      </ol>
+    </li>
+    <li><strong>Ventajas de Virtualizar pfSense en Proxmox</strong>
+      <ul>
+        <li>Optimización del uso de recursos al consolidar múltiples servicios en un solo servidor físico.</li>
+        <li>Alta disponibilidad gracias al clúster de Proxmox.</li>
+        <li>Migración en caliente de máquinas virtuales sin interrupciones del servicio.</li>
+      </ul>
+    </li>
+    <li><strong>Tareas Comunes</strong>
+      <ul>
+        <li>Revisar las estadísticas del tráfico desde el dashboard de pfSense.</li>
+        <li>Añadir reglas al firewall para gestionar el tráfico WAN y LAN.</li>
+        <li>Mantener actualizado tanto pfSense como Proxmox para garantizar seguridad y estabilidad.</li>
+      </ul>
+    </li>
+    
+  ![pfSense en Proxmox](https://github.com/Beasluna/sentinel/blob/13b40b4beec08d9d607e7ca87dc30b946a94912c/SENTINELS/ASSETS/pfSense/sentinelproxmox.png)
+  <li><strong>Como se aprecia en la imagen</strong>
+      <p>Cada nodo del clúster tiene su propio perfil de pfSense corriendo en una máquina virtual. Esto permite que cada nodo actúe como un firewall independiente, gestionando la seguridad y el tráfico de red de manera aislada, mientras que ambos forman parte del clúster general.</p>
+      <p>Esta configuración asegura que el tráfico de red esté debidamente filtrado y controlado en cada nodo, manteniendo la seguridad del sistema.</p>
+      <p>Vamos a ir mostrando pantallazos de cada nodo del clúster, detallando cómo está configurado pfSense en cada uno. Al final de la presentación, explicaremos las reglas de firewall que hemos implementado en pfSense para asegurar y gestionar el tráfico de la red, detallando su funcionamiento y la lógica detrás de cada una de ellas.</p>
+    </li>
+  </ul>
+
+  <details>
+  <summary>🔧 Configuración de Nodos del Clúster</summary>
+
+  <details>
+    <summary>🖥️ Nodo 1: pfSense en Proxmox</summary>
+    <ul>
+      <li><strong>Pantallazos de Configuración</strong>
+        <ul>
+          <li><strong>Interfaz WAN (100.77.20.58)</strong><br>
+            <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/nodo1.png" width="600"><br>
+            Función: Conexión a la red externa del aula y enlace con Internet mediante DHCP.
+          </li>
+          <li><strong>Interfaz LAN (192.168.2.1)</strong><br>
+            <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/nodo1_hardware.png" width="600"><br>
+            Función: Puerta de enlace para dispositivos internos (red LAN privada).
+          </li>
+        </ul>
+      </li>
+      <li><strong>Configuración Hardware</strong>
+        <ul>
+          <li>Adaptadores virtuales en Proxmox (imágenes "blancas")</li>
+        </ul>
+      </li>
+      <li><strong>Propósito</strong>
+        <ul>
+          <li>Enrutamiento seguro entre LAN (192.168.2.0/24) y WAN (100.77.20.0/24)</li>
+          <li>Aislamiento de red interna para protección contra amenazas externas</li>
+        </ul>
+      </li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🖥️ Nodo 2: pfSense en Proxmox</summary>
+    <ul>
+      <li><strong>Pantallazos de Configuración</strong>
+        <ul>
+          <li><strong>Interfaz WAN (100.77.20.59)</strong><br>
+            <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/nodo2.png" width="600"><br>
+            Función: Conexión redundante a la red externa con IP dinámica.
+          </li>
+          <li><strong>Interfaz LAN (192.168.0.1)</strong><br>
+            <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/nodo2_hardware.png" width="600"><br>
+            Función: Gestión de subred interna independiente (192.168.0.0/24).
+          </li>
+        </ul>
+      </li>
+      <li><strong>Configuración Hardware</strong>
+        <ul>
+          <li>Dual NIC virtuales con asignación directa de recursos</li>
+        </ul>
+      </li>
+      <li><strong>Propósito</strong>
+        <ul>
+          <li>Balanceo de carga entre ambas instancias de pfSense</li>
+          <li>Redundancia para alta disponibilidad del clúster</li>
+        </ul>
+      </li>
+    </ul>
+  </details>
+
+  <ul>
+    <li><strong>Segmentación de Red</strong>
+      <ul>
+        <li>Nodo 1: Subred 192.168.2.0/24</li>
+        <li>Nodo 2: Subred 192.168.0.0/24</li>
+      </ul>
+    </li>
+    <li><strong>Ventajas Clave</strong>
+      <ul>
+        <li>Aislamiento de tráfico entre subredes</li>
+        <li>Configuración independiente de reglas firewall por nodo</li>
+        <li>Migración en caliente entre nodos sin pérdida de conectividad</li>
+      </ul>
+    </li>
+  </ul>
+    <details>
+  <summary>🌐 Configuración NAT/WAN/LAN</summary>
+
+  ### Arquitectura de Red
+  En nuestro proyecto, estamos utilizando varias máquinas virtuales para ejecutar diferentes servicios, que incluyen Alpine Linux, Docker, Portainer, pfSense, Grafana y Prometheus. A continuación, detallamos la configuración y el flujo de red entre estos servicios:
+
+  #### Máquina Virtual Alpine
+  En la máquina virtual Alpine, estamos ejecutando Docker para gestionar contenedores.
+Portainer, una herramienta de gestión de contenedores Docker, está corriendo dentro de un contenedor en Alpine, permitiendo la administración de Docker desde una interfaz web
+  - **Función**: Ejecuta Docker para gestionar contenedores.
+  - **Portainer**: Corre dentro de un contenedor en Alpine, permitiendo la administración de Docker desde una interfaz web.
+
+  #### Configuración de pfSense
+  pfSense está configurado para redirigir el tráfico hacia el puerto 9000 de la máquina Alpine. Esta máquina, a su vez, redirige ese tráfico al contenedor que ejecuta Portainer.
+Se ha implementado un redireccionamiento de puertos en pfSense, de manera que cualquier solicitud que llegue al puerto 9000 de pfSense sea dirigida a la IP de la máquina Alpine en el mismo puerto 9000.
+El tráfico de Portainer dentro de Alpine es manejado internamente y también se redirige al puerto correspondiente dentro de la red interna.
+  - **Redirección de Puertos**: pfSense redirige el tráfico hacia el puerto 9000 de la máquina Alpine.
+  - **Acceso a Portainer**: Los usuarios se conectan a la IP de pfSense en el puerto 9000, y pfSense redirige el tráfico a Alpine.
+
+  #### Acceso a Portainer:
+  Para acceder a la interfaz web de Portainer, los usuarios deben conectarse a la dirección IP de pfSense en el puerto 9000.
+  Desde allí, pfSense redirige el tráfico hacia la máquina Alpine, donde Portainer está disponible en el mismo puerto 9000.
+
+  Este enfoque asegura que la interfaz de administración de Docker, proporcionada por Portainer, sea accesible de forma segura a través de la red interna, pasando por el control de acceso y filtrado de pfSense. La arquitectura también mantiene una separación clara entre las redes internas y externas, asegurando la seguridad del acceso.
+
+
+  ### Reglas del Firewall
+  #### Nodos del Clúster
+  A continuación, se presentan las reglas de firewall configuradas para cada nodo del clúster:
+
+  ##### Nodo 1
+  - **WAN**:  
+    <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/nodo1_reglaswan.png" alt="Reglas WAN Nodo 1" width="600">
+  - **LAN**:  
+    <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/nodo1_reglaslan.png" alt="Reglas LAN Nodo 1" width="600">
+
+  ##### Nodo 2
+  - **WAN**:  
+    <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/nodo2_reglaswan.png" alt="Reglas WAN Nodo 2" width="600">
+  - **LAN**:  
+    <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/nodo2_reglaslan.png" alt="Reglas LAN Nodo 2" width="600">
+
+</details>
+
+</details>
+
+
+</details>
+
   </ul>
     </li>
   </ul>
