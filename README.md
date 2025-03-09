@@ -629,6 +629,170 @@ sudo ufw reload</code></pre>
       </ul>
     </details>
     <details>
+  <summary>🔥 Instalación y Conceptualización de pfSense en un Entorno Virtualizado</summary>
+  <ul>
+    <li><strong>Introducción a pfSense</strong>
+      <p>En el marco del proyecto Sentinel, pfSense emerge como una solución de seguridad y gestión de red altamente efectiva y versátil. Este potente firewall de código abierto, basado en FreeBSD, cuenta con características que lo convierten en una elección ideal para proteger y optimizar nuestra infraestructura de red.</p>
+      <p>pfSense se destaca por su robusta capacidad de filtrado de paquetes, permitiendo un control granular sobre el tráfico de red entrante y saliente. Su interfaz web intuitiva facilita la configuración y administración, incluso para usuarios con conocimientos técnicos limitados.</p>
+    </li>
+    <li><strong>Adaptadores de Red en pfSense</strong>
+      <ul>
+        <li><strong>Adaptador puente (WAN):</strong> Conecta la interfaz de red virtual con la red física del host, permitiendo que pfSense obtenga una dirección IP directamente del router de Internet. Es esencial para que pfSense funcione como firewall y router, gestionando el tráfico entre la red interna (LAN) y la red externa (Internet).</li>
+        <li><strong>Red NAT (LAN):</strong> Permite la traducción de direcciones IP privadas a direcciones públicas, conservando direcciones IPv4 y permitiendo la conexión con otros dispositivos de la red interna sin exponer IPs privadas a la red externa.</li>
+      </ul>
+    </li>
+    <li><strong>Funciones Clave de pfSense</strong>
+      <ul>
+        <li><strong>Firewall y NAT:</strong> Reglas avanzadas de filtrado y traducción de direcciones para proteger y gestionar el tráfico de red.</li>
+        <li><strong>VPN:</strong> Soporte para conexiones seguras mediante OpenVPN e IPsec.</li>
+        <li><strong>QoS y Traffic Shaping:</strong> Control del tráfico para priorizar servicios, permitiendo establecer límites de ancho de banda por IP o red.</li>
+        <li><strong>IDS/IPS:</strong> Integración con Snort o Suricata como sistemas de detección y prevención de intrusiones, permitiendo monitorear y bloquear tráfico malicioso en tiempo real.</li>
+        <li><strong>Portal Cautivo:</strong> Control de acceso a la red mediante autenticación.</li>
+      </ul>
+    </li>
+    <li><strong>Proceso de Instalación de pfSense</strong>
+      <p>Antes de profundizar con los conceptos teóricos, procederemos a realizar una demostración práctica de la instalación de pfSense en un entorno virtualizado. Para ello, configuraremos la máquina virtual con dos adaptadores de red. La primera interfaz se conectará a la WAN (salida hacia Internet), mientras que la segunda se destinará a la LAN (conexión con otras máquinas virtuales del laboratorio):</p>
+      <ul>
+        <li><strong>Adaptador puente (WAN):</strong> Configurado para acceder a Internet y conectarse al router físico, obteniendo una IP pública para que pfSense pueda gestionar el tráfico de la red externa.</li>
+          <li>El adaptador puente se utiliza para la interfaz WAN, permitiendo que pfSense obtenga una dirección IP directamente del router de Internet. Esto es esencial para que pueda funcionar como firewall y router, gestionando el tráfico entre la red interna (LAN) y la red externa (Internet)</li>
+        <li><strong>Red NAT (Network Address Translation: LAN):</strong> es una tecnología en redes que permite la traducción de direcciones IP privadas a una dirección IP pública. Esta técnica es esencial para conservar las direcciones IPv4 públicas, que son un recurso limitado. </li>
+<li>Se utilizará para la comunicación entre los dispositivos internos de la red sin exponer las IPs internas al exterior.</li>
+      </ul>
+      <p>Una vez iniciada la máquina de pfSense, verás una pantalla de bienvenida que te guiará a través del proceso de configuración inicial, donde podrás aceptar los términos de uso y comenzar la instalación del sistema.</p>
+      <li>
+      <strong>Pantalla de instalación de pfSense:</strong><br>
+      <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/Posinstalacion.png" 
+            alt="Pantalla de instalación de pfSense" width="600">
+      </li>
+      <li>
+        <strong>Nos focalizamos en la configuración de interfaces:</strong><br>
+        Una vez que pfSense esté instalado, se te pedirá que configures las interfaces de red, como WAN y LAN. Esto es crucial para establecer conexiones con Internet y tu red local.
+      </li>
+      <li>
+        Para acceder a la interfaz web de administración de pfSense desde cualquier navegador, primero debemos deshabilitar temporalmente el firewall. Para ello, ejecutamos el siguiente comando en la terminal de pfSense:
+      </li>
+      <li>
+        <strong>Deshabilitar firewall temporalmente:</strong><br><br>
+        <code>pfctl -d</code> Este comando desactiva el firewall de pfSense de forma temporal, permitiendo el acceso a la GUI sin restricciones.<br>
+        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/pfctl.png" 
+             alt="Comando pfctl en pfSense" width="600">
+      </li>
+      <li>
+        <strong>Verificación de la IP asignada:</strong><br><br>
+        Tras deshabilitar el firewall, podemos verificar la IP asignada a la interfaz de administración.<br>
+        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/ip.png" 
+             alt="Verificación de IP en pfSense" width="600">
+      </li>
+      <li>
+        <strong>Acceso a la interfaz web:</strong><br><br>
+        Ahora podemos acceder a la interfaz web de pfSense, aunque el navegador pueda mostrar una advertencia indicando que el sitio no es seguro o no es de confianza. Esto ocurre porque pfSense utiliza un certificado autofirmado por defecto. Para continuar, simplemente debemos aceptar la excepción de seguridad en el navegador.<br>
+        <img src="https://github.com/Beasluna/sentinel/blob/13b40b4beec08d9d607e7ca87dc30b946a94912c/SENTINELS/ASSETS/pfSense/irtefaz.png"> <br><br>
+        Accederemos introduciendo la URL: <code>https://192.168.123.24</code> en el navegador.<br>   
+        <ul>
+          <li><strong>Usuario:</strong> admin</li>
+          <li><strong>Contraseña:</strong> pfsense<li>
+        </ul>
+      </li>
+      <li>Una vez dentro de la interfaz web, pfSense nos guiará a través de un asistente de configuración donde definiremos: </li> <br><br>
+        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/generalinf.png" 
+             alt="Interfaz web de pfSense" width="600">
+        <ul>
+          <li><strong>Hostname:</strong> Nombre que identificará a pfSense en la red.</li>
+          <li><strong>Domain:</strong> Dominio al que pertenece el firewall (opcional).</li>
+          <li><strong>Servidores DNS:</strong> Podemos utilizar los de Google (8.8.8.8, 8.8.4.4), Cloudflare (1.1.1.1, 1.0.0.1) o el resolver interno (127.0.0.1).</li>
+        </ul>
+        Estos parámetros son fundamentales para el correcto funcionamiento de la red y el acceso a internet.<br>
+        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/setup.png" 
+             alt="Asistente de configuración de pfSense" width="600"> <br><br>
+        <ul> 
+          En esta sección, se configuran el Time Server Hostname y la Zona Horaria (Time Zone).
+          <li>Por defecto, pfSense selecciona un servidor de tiempo adecuado y la zona horaria predeterminada. A menos que necesitemos realizar algún cambio específico, simplemente hacemos clic en "Next" para continuar con la configuración. </li>
+          <li>pfSense nos da la opción de volver a configurar la interfaz WAN. Esto es útil en caso de que hayamos cometido algún error durante la configuración inicial o si necesitamos realizar algún ajuste, como cambiar el tipo de conexión (DHCP, estática, PPPoE) o modificar otros parámetros de red. </li>
+          Si no es necesario realizar ajustes en la configuración puedes simplemente avanzar al siguiente paso sin hacer cambios. Esto te permitirá continuar con la configuración del sistema sin retrasos innecesarios.
+          <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/wan.png"
+            alt="Interfaz Wan" width="600"> <br><br>
+        </ul>
+        <ul>
+        Ahora configuramos la interfaz LAN, donde definimos la dirección IP que tendrá pfSense dentro de la red interna.<br>
+        <il>Aquí podemos establecer una IP estática para el firewall, que servirá como puerta de enlace para los dispositivos de la red local. También podemos ajustar la máscara de subred y otros parámetros si es necesario. </il><br>
+        Si no requerimos cambios adicionales, simplemente avanzamos al siguiente paso. <br><br>
+          <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/lan.png"
+            alt="Interfaz Lan" width="600"> <br>
+        </ul>
+        <ul>
+          En este paso, podemos cambiar tanto el nombre de usuario como la contraseña de acceso a la interfaz web de pfSense. <br>
+          <il>Es recomendable cambiar la contraseña predeterminada (que es pfsense) por una más segura para proteger el acceso al sistema. También podemos cambiar el nombre de usuario si lo deseamos, aunque el valor predeterminado (admin) es comúnmente suficiente</il><br><br>
+          Una vez realizados los cambios, avanzamos para completar la configuración.
+          <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/setadmingui.png"
+            alt="Cambio de usuario y contraseña" width="600"> <br>
+        </ul>
+        <ul>
+        <il>Después de realizar todos los cambios necesarios en la configuración inicial, pfSense nos pedirá que realicemos un reinicio o reload del sistema. <br>
+          Esto aplicará todas las configuraciones realizadas y reiniciará el servicio para que los cambios entren en efecto.</il><br><br>
+        <il>Hacemos clic en "Reload" para que pfSense reinicie con la nueva configuración. </il> <br>
+        <il>Después de este paso, ya estaremos listos para acceder a la interfaz web y seguir con la configuración avanzada.</il> <br>
+          <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/reload.png"
+            alt="Reload" width="600"> <br><br>
+          <img src="https://github.com/Beasluna/sentinel/blob/13b40b4beec08d9d607e7ca87dc30b946a94912c/SENTINELS/ASSETS/pfSense/reload1.png"
+            alt="Reload" width="600"> <br><br>
+          <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/wizard.png"
+            alt="Reload Complete" width="600"> <br><br>
+        </ul>
+      </li>
+      <summary>📊 Dashboard de pfSense</summary>
+  <ul>
+    <li><strong>Introducción al Dashboard</strong>
+      <p>El dashboard de pfSense proporciona un resumen general del estado del sistema y acceso rápido a las configuraciones más importantes.</p>
+    </li>
+    <li><strong>1. Barra de Navegación Superior</strong>
+      <p>En la parte superior de la página, encontrarás una barra de navegación con las opciones principales:</p>
+      <ul>
+        <li><strong>System:</strong> Configuración del sistema, incluyendo reinicios y actualizaciones.</li>
+        <li><strong>Interfaces:</strong> Configuración de las interfaces de red, como WAN y LAN.</li>
+        <li><strong>Firewall:</strong> Reglas de firewall, NAT y configuraciones relacionadas.</li>
+        <li><strong>Services:</strong> Servicios adicionales como VPN, DHCP, DNS, etc.</li>
+        <li><strong>Diagnostics:</strong> Herramientas de diagnóstico y logs.</li>
+      </ul>
+    </li>
+    <li><strong>2. Resumen del Estado del Sistema</strong>
+      <p>Debajo de la barra de navegación, se muestra una vista general del estado del sistema:</p>
+      <ul>
+        <li><strong>Estado de las interfaces:</strong> Información sobre las interfaces WAN y LAN, incluyendo si están activas y su dirección IP asignada.</li>
+        <li><strong>Uso de CPU y memoria:</strong> Un gráfico que muestra el uso actual de CPU y memoria del sistema.</li>
+        <li><strong>Estado del Firewall:</strong> Indica si el firewall está activo o si hay alguna alerta relevante.</li>
+      </ul>
+    </li>
+    <li><strong>3. Notificaciones y Alertas</strong>
+      <p>En la parte superior o inferior de la página, puede haber un área dedicada a notificaciones y alertas:</p>
+      <ul>
+        <li>Advertencias de seguridad.</li>
+        <li>Actualizaciones disponibles.</li>
+        <li>Problemas de configuración.</li>
+      </ul>
+    </li>
+    <li><strong>4. Accesos Rápidos a Funciones Comunes</strong>
+      <p>En el centro o lateral del dashboard, encontrarás accesos rápidos a tareas comunes:</p>
+      <ul>
+        <li>Reiniciar el sistema.</li>
+        <li>Ver los logs del sistema.</li>
+        <li>Consultar las conexiones activas o estadísticas de tráfico.</li>
+      </ul>
+    </li>
+    <li><strong>5. Estadísticas de Tráfico y Conexiones</strong>
+      <p>El dashboard también incluye gráficos o tablas que muestran:</p>
+      <ul>
+        <li>Tráfico en tiempo real.</li>
+        <li>Conexiones activas.</li>
+        <li>Velocidades de descarga y carga.</li>
+        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/dashboard.png"
+          alt="Dashboard" width="600"> <br><br>
+      </ul>
+    </li>
+  </ul>
+    </li>
+  </ul>
+</details>
+    <details>
   <summary>🌐 Exposición de Servicios Locales a Internet con Ngrok</summary>
   <ul>
     <li><strong>Introducción a Ngrok</strong>
@@ -806,171 +970,6 @@ dd if=/dev/urandom of=archivo_100MB.bin bs=1M count=100</code></pre>
     </ul>
   </ul>
 </li>
-</details>
-
-<details>
-  <summary>🔥 Instalación y Conceptualización de pfSense en un Entorno Virtualizado</summary>
-  <ul>
-    <li><strong>Introducción a pfSense</strong>
-      <p>En el marco del proyecto Sentinel, pfSense emerge como una solución de seguridad y gestión de red altamente efectiva y versátil. Este potente firewall de código abierto, basado en FreeBSD, cuenta con características que lo convierten en una elección ideal para proteger y optimizar nuestra infraestructura de red.</p>
-      <p>pfSense se destaca por su robusta capacidad de filtrado de paquetes, permitiendo un control granular sobre el tráfico de red entrante y saliente. Su interfaz web intuitiva facilita la configuración y administración, incluso para usuarios con conocimientos técnicos limitados.</p>
-    </li>
-    <li><strong>Adaptadores de Red en pfSense</strong>
-      <ul>
-        <li><strong>Adaptador puente (WAN):</strong> Conecta la interfaz de red virtual con la red física del host, permitiendo que pfSense obtenga una dirección IP directamente del router de Internet. Es esencial para que pfSense funcione como firewall y router, gestionando el tráfico entre la red interna (LAN) y la red externa (Internet).</li>
-        <li><strong>Red NAT (LAN):</strong> Permite la traducción de direcciones IP privadas a direcciones públicas, conservando direcciones IPv4 y permitiendo la conexión con otros dispositivos de la red interna sin exponer IPs privadas a la red externa.</li>
-      </ul>
-    </li>
-    <li><strong>Funciones Clave de pfSense</strong>
-      <ul>
-        <li><strong>Firewall y NAT:</strong> Reglas avanzadas de filtrado y traducción de direcciones para proteger y gestionar el tráfico de red.</li>
-        <li><strong>VPN:</strong> Soporte para conexiones seguras mediante OpenVPN e IPsec.</li>
-        <li><strong>QoS y Traffic Shaping:</strong> Control del tráfico para priorizar servicios, permitiendo establecer límites de ancho de banda por IP o red.</li>
-        <li><strong>IDS/IPS:</strong> Integración con Snort o Suricata como sistemas de detección y prevención de intrusiones, permitiendo monitorear y bloquear tráfico malicioso en tiempo real.</li>
-        <li><strong>Portal Cautivo:</strong> Control de acceso a la red mediante autenticación.</li>
-      </ul>
-    </li>
-    <li><strong>Proceso de Instalación de pfSense</strong>
-      <p>Antes de profundizar con los conceptos teóricos, procederemos a realizar una demostración práctica de la instalación de pfSense en un entorno virtualizado. Para ello, configuraremos la máquina virtual con dos adaptadores de red. La primera interfaz se conectará a la WAN (salida hacia Internet), mientras que la segunda se destinará a la LAN (conexión con otras máquinas virtuales del laboratorio):</p>
-      <ul>
-        <li><strong>Adaptador puente (WAN):</strong> Configurado para acceder a Internet y conectarse al router físico, obteniendo una IP pública para que pfSense pueda gestionar el tráfico de la red externa.</li>
-          <li>El adaptador puente se utiliza para la interfaz WAN, permitiendo que pfSense obtenga una dirección IP directamente del router de Internet. Esto es esencial para que pueda funcionar como firewall y router, gestionando el tráfico entre la red interna (LAN) y la red externa (Internet)</li>
-        <li><strong>Red NAT (Network Address Translation: LAN):</strong> es una tecnología en redes que permite la traducción de direcciones IP privadas a una dirección IP pública. Esta técnica es esencial para conservar las direcciones IPv4 públicas, que son un recurso limitado. </li>
-<li>Se utilizará para la comunicación entre los dispositivos internos de la red sin exponer las IPs internas al exterior.</li>
-      </ul>
-      <p>Una vez iniciada la máquina de pfSense, verás una pantalla de bienvenida que te guiará a través del proceso de configuración inicial, donde podrás aceptar los términos de uso y comenzar la instalación del sistema.</p>
-      <li>
-      <strong>Pantalla de instalación de pfSense:</strong><br>
-      <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/Posinstalacion.png" 
-            alt="Pantalla de instalación de pfSense" width="600">
-      </li>
-      <li>
-        <strong>Nos focalizamos en la configuración de interfaces:</strong><br>
-        Una vez que pfSense esté instalado, se te pedirá que configures las interfaces de red, como WAN y LAN. Esto es crucial para establecer conexiones con Internet y tu red local.
-      </li>
-      <li>
-        Para acceder a la interfaz web de administración de pfSense desde cualquier navegador, primero debemos deshabilitar temporalmente el firewall. Para ello, ejecutamos el siguiente comando en la terminal de pfSense:
-      </li>
-      <li>
-        <strong>Deshabilitar firewall temporalmente:</strong><br><br>
-        <code>pfctl -d</code> Este comando desactiva el firewall de pfSense de forma temporal, permitiendo el acceso a la GUI sin restricciones.<br>
-        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/pfctl.png" 
-             alt="Comando pfctl en pfSense" width="600">
-      </li>
-      <li>
-        <strong>Verificación de la IP asignada:</strong><br><br>
-        Tras deshabilitar el firewall, podemos verificar la IP asignada a la interfaz de administración.<br>
-        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/ip.png" 
-             alt="Verificación de IP en pfSense" width="600">
-      </li>
-      <li>
-        <strong>Acceso a la interfaz web:</strong><br><br>
-        Ahora podemos acceder a la interfaz web de pfSense, aunque el navegador pueda mostrar una advertencia indicando que el sitio no es seguro o no es de confianza. Esto ocurre porque pfSense utiliza un certificado autofirmado por defecto. Para continuar, simplemente debemos aceptar la excepción de seguridad en el navegador.<br>
-        <img src="https://github.com/Beasluna/sentinel/blob/13b40b4beec08d9d607e7ca87dc30b946a94912c/SENTINELS/ASSETS/pfSense/irtefaz.png"> <br><br>
-        Accederemos introduciendo la URL: <code>https://192.168.123.24</code> en el navegador.<br>   
-        <ul>
-          <li><strong>Usuario:</strong> admin</li>
-          <li><strong>Contraseña:</strong> pfsense<li>
-        </ul>
-      </li>
-      <li>Una vez dentro de la interfaz web, pfSense nos guiará a través de un asistente de configuración donde definiremos: </li> <br><br>
-        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/generalinf.png" 
-             alt="Interfaz web de pfSense" width="600">
-        <ul>
-          <li><strong>Hostname:</strong> Nombre que identificará a pfSense en la red.</li>
-          <li><strong>Domain:</strong> Dominio al que pertenece el firewall (opcional).</li>
-          <li><strong>Servidores DNS:</strong> Podemos utilizar los de Google (8.8.8.8, 8.8.4.4), Cloudflare (1.1.1.1, 1.0.0.1) o el resolver interno (127.0.0.1).</li>
-        </ul>
-        Estos parámetros son fundamentales para el correcto funcionamiento de la red y el acceso a internet.<br>
-        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/setup.png" 
-             alt="Asistente de configuración de pfSense" width="600"> <br><br>
-        <ul> 
-          En esta sección, se configuran el Time Server Hostname y la Zona Horaria (Time Zone).
-          <li>Por defecto, pfSense selecciona un servidor de tiempo adecuado y la zona horaria predeterminada. A menos que necesitemos realizar algún cambio específico, simplemente hacemos clic en "Next" para continuar con la configuración. </li>
-          <li>pfSense nos da la opción de volver a configurar la interfaz WAN. Esto es útil en caso de que hayamos cometido algún error durante la configuración inicial o si necesitamos realizar algún ajuste, como cambiar el tipo de conexión (DHCP, estática, PPPoE) o modificar otros parámetros de red. </li>
-          Si no es necesario realizar ajustes en la configuración puedes simplemente avanzar al siguiente paso sin hacer cambios. Esto te permitirá continuar con la configuración del sistema sin retrasos innecesarios.
-          <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/wan.png"
-            alt="Interfaz Wan" width="600"> <br><br>
-        </ul>
-        <ul>
-        Ahora configuramos la interfaz LAN, donde definimos la dirección IP que tendrá pfSense dentro de la red interna.<br>
-        <il>Aquí podemos establecer una IP estática para el firewall, que servirá como puerta de enlace para los dispositivos de la red local. También podemos ajustar la máscara de subred y otros parámetros si es necesario. </il><br>
-        Si no requerimos cambios adicionales, simplemente avanzamos al siguiente paso. <br><br>
-          <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/lan.png"
-            alt="Interfaz Lan" width="600"> <br>
-        </ul>
-        <ul>
-          En este paso, podemos cambiar tanto el nombre de usuario como la contraseña de acceso a la interfaz web de pfSense. <br>
-          <il>Es recomendable cambiar la contraseña predeterminada (que es pfsense) por una más segura para proteger el acceso al sistema. También podemos cambiar el nombre de usuario si lo deseamos, aunque el valor predeterminado (admin) es comúnmente suficiente</il><br><br>
-          Una vez realizados los cambios, avanzamos para completar la configuración.
-          <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/setadmingui.png"
-            alt="Cambio de usuario y contraseña" width="600"> <br>
-        </ul>
-        <ul>
-        <il>Después de realizar todos los cambios necesarios en la configuración inicial, pfSense nos pedirá que realicemos un reinicio o reload del sistema. <br>
-          Esto aplicará todas las configuraciones realizadas y reiniciará el servicio para que los cambios entren en efecto.</il><br><br>
-        <il>Hacemos clic en "Reload" para que pfSense reinicie con la nueva configuración. </il> <br>
-        <il>Después de este paso, ya estaremos listos para acceder a la interfaz web y seguir con la configuración avanzada.</il> <br>
-          <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/reload.png"
-            alt="Reload" width="600"> <br><br>
-          <img src="https://github.com/Beasluna/sentinel/blob/13b40b4beec08d9d607e7ca87dc30b946a94912c/SENTINELS/ASSETS/pfSense/reload1.png"
-            alt="Reload" width="600"> <br><br>
-          <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/wizard.png"
-            alt="Reload Complete" width="600"> <br><br>
-        </ul>
-      </li>
-      <summary>📊 Dashboard de pfSense</summary>
-  <ul>
-    <li><strong>Introducción al Dashboard</strong>
-      <p>El dashboard de pfSense proporciona un resumen general del estado del sistema y acceso rápido a las configuraciones más importantes.</p>
-    </li>
-    <li><strong>1. Barra de Navegación Superior</strong>
-      <p>En la parte superior de la página, encontrarás una barra de navegación con las opciones principales:</p>
-      <ul>
-        <li><strong>System:</strong> Configuración del sistema, incluyendo reinicios y actualizaciones.</li>
-        <li><strong>Interfaces:</strong> Configuración de las interfaces de red, como WAN y LAN.</li>
-        <li><strong>Firewall:</strong> Reglas de firewall, NAT y configuraciones relacionadas.</li>
-        <li><strong>Services:</strong> Servicios adicionales como VPN, DHCP, DNS, etc.</li>
-        <li><strong>Diagnostics:</strong> Herramientas de diagnóstico y logs.</li>
-      </ul>
-    </li>
-    <li><strong>2. Resumen del Estado del Sistema</strong>
-      <p>Debajo de la barra de navegación, se muestra una vista general del estado del sistema:</p>
-      <ul>
-        <li><strong>Estado de las interfaces:</strong> Información sobre las interfaces WAN y LAN, incluyendo si están activas y su dirección IP asignada.</li>
-        <li><strong>Uso de CPU y memoria:</strong> Un gráfico que muestra el uso actual de CPU y memoria del sistema.</li>
-        <li><strong>Estado del Firewall:</strong> Indica si el firewall está activo o si hay alguna alerta relevante.</li>
-      </ul>
-    </li>
-    <li><strong>3. Notificaciones y Alertas</strong>
-      <p>En la parte superior o inferior de la página, puede haber un área dedicada a notificaciones y alertas:</p>
-      <ul>
-        <li>Advertencias de seguridad.</li>
-        <li>Actualizaciones disponibles.</li>
-        <li>Problemas de configuración.</li>
-      </ul>
-    </li>
-    <li><strong>4. Accesos Rápidos a Funciones Comunes</strong>
-      <p>En el centro o lateral del dashboard, encontrarás accesos rápidos a tareas comunes:</p>
-      <ul>
-        <li>Reiniciar el sistema.</li>
-        <li>Ver los logs del sistema.</li>
-        <li>Consultar las conexiones activas o estadísticas de tráfico.</li>
-      </ul>
-    </li>
-    <li><strong>5. Estadísticas de Tráfico y Conexiones</strong>
-      <p>El dashboard también incluye gráficos o tablas que muestran:</p>
-      <ul>
-        <li>Tráfico en tiempo real.</li>
-        <li>Conexiones activas.</li>
-        <li>Velocidades de descarga y carga.</li>
-        <img src="https://github.com/Beasluna/sentinel/blob/1a482c65a59e25ddcace367038a5523571d87ae2/SENTINELS/ASSETS/pfSense/dashboard.png"
-          alt="Dashboard" width="600"> <br><br>
-      </ul>
-    </li>
-  </ul>
-    </li>
-  </ul>
 </details>
 
 <details>
