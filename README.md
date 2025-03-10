@@ -134,7 +134,7 @@ Esta documentación ofrece una visión general, incluyendo su arquitectura, comp
 <details>
   <summary>🛜  DIAGRAMA DE RED SENTINEL</summary>
 
-  ![Diagrama de red](SENTINELS/ASSETS/Diagramasentinel.gif)
+  ![Diagrama de red](SENTINELS/ASSETS/Diagramasentinel1.gif)
 
 </details>
 
