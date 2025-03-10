@@ -692,7 +692,7 @@ sudo ufw reload</code></pre>
         Accederemos introduciendo la URL: <code>https://192.168.123.24</code> en el navegador.<br>   
         <ul>
           <li><strong>Usuario:</strong> admin</li>
-          <li><strong>Contraseña:</strong> pfsense<li>
+          <li><strong>Contraseña:</strong> pfsense</li>
         </ul>
       </li>
       <li>Una vez dentro de la interfaz web, pfSense nos guiará a través de un asistente de configuración donde definiremos: </li> <br><br>
