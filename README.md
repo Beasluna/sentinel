@@ -454,6 +454,407 @@ services:
        - `miAppPHP` (PHP-FPM) → Sin puerto expuesto directamente.
        - `miAppPhpMyAdmin` (phpMyAdmin) → Accesible en `8080:80`.
  </details>
+
+<details>
+    <summary>💎 Desplieguede XMPP con Ejabberd en Docker 🚀</summary>
+        <p>¡Bienvenidos! En esta guía, transformaremos tu entorno con una integración impecable de Pidgin, potenciado por Docker y Docker Compose en Sentinel. Prepárate para centralizar, contener y optimizar la seguridad de tu red. ✨</p>
+        <img src="https://www.process-one.net/content/images/size/w1200/2024/09/ejabberd-docker.jpg" alt="Ejabberd & Docker" style="width: 100%; max-width: 600px; margin-top: 10px;">
+    </div>
+    <section style="margin-bottom: 30px;">
+        <h3>🌟 Ejabberd: El Corazón de tu Mensajería XMPP 🌟</h3>
+        <p>Ejabberd, que significa "Erlang Jabber Daemon", es un servidor de mensajería instantánea de código abierto que utiliza el protocolo XMPP. Desde su creación por Alexey Shchepin en 2002, se ha consolidado como una solución robusta, versátil y esencial para la comunicación en tiempo real. 🚀</p>
+        <div style="margin-top: 15px;">
+            <h4>✨ Características Destacadas:</h4>
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li>⚡️ <strong>Rendimiento Superior:</strong> Diseñado para flujos masivos, ideal para empresas y entornos de alto tráfico.</li>
+                <li>🌐 <strong>Escalabilidad sin Límites:</strong> Arquitectura Erlang que facilita la concurrencia y la distribución.</li>
+                <li>🔒 <strong>Seguridad de Vanguardia:</strong> Prácticas de seguridad avanzadas, incluyendo encriptación SSL/TLS.</li>
+                <li>🛠️ <strong>Extensibilidad Total:</strong> API potente para el desarrollo de plugins personalizados.</li>
+                <li>🤝 <strong>Compatibilidad Universal:</strong> Cumple con los estándares XMPP y se federa con otros servidores.</li>
+                <li>✔️ <strong>Alta Disponibilidad Garantizada:</strong> Soporta clustering para una distribución de carga eficiente.</li>
+                <li>💬 <strong>Soporte MUC Avanzado:</strong> Salas de chat públicas y privadas con administración de usuarios.</li>
+            </ul>
+        </div>
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3>🏆 ¿Por Qué Elegir Ejabberd? 🏆</h3>
+        <p>Ejabberd se distingue por:</p>
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li>Facilidad de configuración. ⚙️</li>
+            <li>Consumo eficiente de recursos. 🌿</li>
+            <li>Adaptabilidad excepcional a distintos escenarios. 🎯</li>
+        </ul>
+        <p>Estas cualidades lo hacen ideal para organizaciones que buscan una solución de comunicación privada y completamente controlada. 🛡️</p>
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3>➕ Funcionalidades Adicionales ➕</h3>
+        <p>Ejabberd es más que un simple servidor XMPP. También incluye:</p>
+        <ul style="list-style-type: square; margin-left: 20px;">
+            <li>Broker MQTT. 📡</li>
+            <li>Pasarela SIP. 📞</li>
+            <li>Interfaz web de administración intuitiva. 🌐</li>
+        </ul>
+        <p>Estas características expanden su utilidad, transformándolo en una plataforma versátil para servicios en tiempo real. 💡</p>
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3>🆚 Alternativas a XMPP: Un Vistazo Rápido 🆚</h3>
+        <ul style="list-style-type: none; padding-left: 0;">
+            <li><strong>Matrix:</strong> Protocolo descentralizado con cifrado fuerte y mensajería grupal. 🧑‍🤝‍🧑</li>
+            <li><strong>MQTT:</strong> Ideal para IoT y dispositivos de baja potencia. 🌐</li>
+            <li><strong>WebRTC:</strong> Perfecto para videollamadas y transmisión de medios. 📹</li>
+            <li><strong>SIP:</strong> Especializado en telefonía IP y VoIP. 📞</li>
+        </ul>
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3>📊 Comparativa de Servidores XMPP 📊</h3>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+            <thead style="background-color: #f2f2f2;">
+                <tr>
+                    <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Característica</th>
+                    <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Ejabberd</th>
+                    <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">OpenFire</th>
+                    <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Prosody</th>
+                    <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">MongooseIM</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Lenguaje principal</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Erlang</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Java</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Lua</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Erlang</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Escalabilidad</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Alta 🚀</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Moderada 🚧</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Baja-Moderada 📉</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Muy alta 🌟</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Facilidad de uso</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Moderada ⚙️</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Alta ✅</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Alta ✅</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Moderada 🛠️</td>
+                </tr>
+                 <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Consumo de recursos</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Eficiente ⚡</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Moderado ⚖️</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Muy eficiente 🌿</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Eficiente ⚡</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Interfaz de administración</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Web 🌐</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Web (intuitiva) 🧠</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Línea de comandos 💻</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Web 🌐</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Ideal para</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Entornos empresariales y alto tráfico 🏢</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Empresas con necesidades de integración 🧩</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Sistemas con recursos limitados 🍃</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Grandes instalaciones 🏭</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Extensibilidad</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Alta (API poderosa) 💪</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Alta (plugins) 🔌</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Alta (módulos) 📦</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Alta 💪</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Características adicionales</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">MQTT, SIP ➕</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Amplia gama de plugins 🧰</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Ligero y modular 🍃</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Tolerancia a fallos ✅</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Seguridad</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Avanzada 🛡️</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">SSL/TLS y otras 🔑</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Estándar 🚦</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Avanzada 🛡️</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3>Puerto 🦺 para Funcionalidad:</h3>
+        <ul style="list-style-type: none; padding-left: 0;">
+            <li><strong>5222:</strong> Conexión de clientes XMPP con cifrado STARTTLS. 🔑</li>
+            <li><strong>5223:</strong> (Obsoleto) Utilizado para conexiones seguras XMPP sobre SSL. 🔒</li>
+            <li><strong>5280:</strong> Acceso a la interfaz web de administración del servidor mediante el navegador. 🌐</li>
+            <li><strong>5443:</strong> Acceso seguro a esta interfaz mediante HTTPS. 🛡️</li>
+            <li><strong>5269:</strong> Utilizado para la comunicación entre servidores XMPP. 📡</li>
+        </ul>
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3>Arquitectura XMPP:</h3>
+        <p>El protocolo XMPP sigue una arquitectura cliente-servidor, muy similar al correo electrónico: 📧</p>
+        <ol>
+            <li>1️⃣ Un usuario se conecta a un servidor XMPP con un cliente como Pidgin, Dino, Gajim o Conversations. 🧑‍💻</li>
+            <li>2️⃣ El servidor gestiona la comunicación y puede conectarse con otros servidores XMPP. ⚙️</li>
+            <li>3️⃣ Los mensajes viajan en formato XML, permitiendo su enrutamiento y entrega a los destinatarios. ✉️</li>
+        </ol>
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3>Cliente Pidgin 🐦</h3>
+        <p>Pidgin (anteriormente Gaim) es un cliente de mensajería instantánea multiplataforma que permite conectarse a múltiples redes y cuentas de manera simultánea. Es compatible con diversos protocolos como XMPP, IRC, MSN, Yahoo!, AIM, entre otros, y admite extensiones mediante plugins para añadir funcionalidades como cifrado de mensajes (OTR o Pidgin-Encryption). Su diseño es sencillo y minimalista, ideal para usuarios que buscan una solución multiprotocolo eficiente y personalizable 🕊️</p>
+       <img src="https://universoabierto.org/wp-content/uploads/2016/09/pidgin.jpg" alt="Pidgin" style="width: 100%; max-width: 400px; margin-top: 10px;">
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3>🧑‍🤝‍🧑 Otros clientes de mensajería</h3>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+        <thead style="background-color: #f2f2f2;">
+            <tr>
+                <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Cliente</th>
+                <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Características principales</th>
+                <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Plataformas</th>
+                <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Ideal para</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Xabber</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Cliente XMPP de código abierto, soporte multicuenta, interfaz limpia y sin publicidad</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Android 🤖</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Usuarios de XMPP en dispositivos móviles 📱</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Trillian</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Compatible con múltiples protocolos (Facebook, Skype, Google, AIM), sincronización entre dispositivos</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Windows 🪟, Mac 🍎, iOS 📱, Android 🤖</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Usuarios multiplataforma y redes sociales 🧑‍🤝‍🧑</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Stack Browser</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Permite usar múltiples aplicaciones web en un entorno organizado</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Windows 🪟, Mac 🍎</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Gestión centralizada de aplicaciones web 🗂️</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">All-in-One Messenger</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Integra servicios como WhatsApp, Telegram, Skype y Gmail en una sola aplicación</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Windows 🪟</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Usuarios que usan múltiples servicios de chat 💬</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Empathy</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Soporte para texto, voz y video; compatible con varios protocolos</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Linux 🐧</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Usuarios de Linux que buscan integración total 💻</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Adium</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Cliente ligero y personalizable compatible con múltiples redes</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Mac 🍎</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Usuarios de macOS 💻</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Jitsi</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Chat de texto, voz y videoconferencia; enfoque en seguridad</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Multiplataforma 🌐</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Comunicación segura 🔒</td>
+            </tr>
+            <tr>
+                <td style="padding: 8px; border: 1px solid #ddd;">Digsby</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Soporte para mensajería instantánea y redes sociales</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Windows 🪟</td>
+                <td style="padding: 8px; border: 1px solid #ddd;">Integración de mensajería y redes sociales 🧑‍🤝‍🧑</td>
+            </tr>
+        </tbody>
+    </table>
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3>➕ Agregar y configurar un usuario en Pidgin:</h3>
+        <p>Para agregar y configurar un usuario en Pidgin, primero se debe abrir la aplicación, ir a la sección de cuentas, seleccionar "Añadir" y escoger el protocolo XMPP, luego pones el nombre de usuario junto al dominio y seguidamente su contraseña. 📝</p>
+        <p>USUARIO: 👤</p>
+        <img src="https://i.imgur.com/s44eO2Q.png" alt="Pidgin Agregar Usuario" style="width: 100%; max-width: 400px; margin-top: 10px;">
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3>🧩 Instalar complementos en Pidgin:</h3>
+        <p>Accede al menú "Complementos", donde puedes activar las opciones preinstaladas o descargar nuevas extensiones. Estas amplían la funcionalidad y seguridad de la aplicación, como el cifrado de mensajes con OTR, entre otros. 🔑</p>
+        <img src="https://i.imgur.com/m192K4x.png" alt="Pidgin Complementos" style="width: 100%; max-width: 400px; margin-top: 10px;">
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3>🛠️ CASO PRÁCTICO CON DOCKER-COMPOSE</h3>
+        <p>Antes de comenzar, asegúrate de tener lo siguiente: 👇</p>
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li>Tu entorno de trabajo debe estar funcionando, para nosotros será Sentinel. ✅</li>
+            <li>Tener acceso a Proxmox VE. 💻</li>
+            <li>Contenedor LXC: siempre recomendamos que sea Debian. 🐧</li>
+            <li>Docker y Docker Compose: Instalados en el contenedor lxc. 🐳 Si no los tienes, sigue estos pasos:
+               https://docs.docker.com/compose/install/linux/
+            </li>
+        </ul>
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3>📦 Estructura de Directorios</h3>
+        <p>Para mantener todo organizado, crearemos la siguiente estructura de directorios en nuestro contenedor LXC:</p>
+        <pre style="background-color: #f9f9f9; padding: 10px; border: 1px solid #ddd; overflow-x: auto;"><code>mkdir -p ~/pidgin/{config_p,config_x}</code></pre>
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3>📝 Configuración Docker Compose</h3>
+        <p>Crea un archivo llamado <code>docker-compose.yml</code> en el directorio <code>~/pidgin/</code> con el siguiente contenido:</p>
+        <pre style="background-color: #f9f9f9; padding: 10px; border: 1px solid #ddd; overflow-x: auto;"><code>
+version: "3.8"
+services:
+  xmpp-server:
+    image: ejabberd/ecs:latest
+    ports:
+      - "5222:5222"
+      - "5269:5269"
+      - "5280:5280"
+    volumes:
+      - ./ejabberd_data:/home/ejabberd/database
+    environment:
+      - XMPP_DOMAIN=localhost
+      - EJABBERD_ADMINS=admin@localhost
+    restart: always
+
+  pidgin_1:
+    image: jlesage/pidgin
+    depends_on:
+      - xmpp-server
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./config_p:/config
+      - ./config_x:/accounts
+    environment:
+      - DISPLAY_WIDTH=800
+      - DISPLAY_HEIGHT=600
+    restart: always
+
+  pidgin_2:
+    image: jlesage/pidgin
+    depends_on:
+      - xmpp-server
+    ports:
+      - "3001:3000"
+    volumes:
+      - ./config_p:/config
+      - ./config_x:/accounts
+    environment:
+      - DISPLAY_WIDTH=800
+      - DISPLAY_HEIGHT=600
+    restart: always
+</code></pre>
+        <p>Este archivo define tres servicios:</p>
+        <ul style="list-style-type: square; margin-left: 20px;">
+            <li><code>xmpp-server</code>: El servidor XMPP (ejabberd). ⚙️</li>
+            <li><code>pidgin_1</code>: El primer cliente Pidgin. 🐦</li>
+            <li><code>pidgin_2</code>: El segundo cliente Pidgin. 🐦</li>
+        </ul>
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3>⚙️ Configuración de Pidgin</h3>
+        <p>Ahora, vamos a configurar los archivos necesarios para Pidgin. 📝</p>
+        <ol style="margin-left: 20px;">
+            <li>
+                <code>config_p/pidgin.config</code>
+                <p>Crea un archivo llamado <code>pidgin.config</code> en el directorio <code>~/pidgin/config_p/</code> con el siguiente contenido:</p>
+                <pre style="background-color: #f9f9f9; padding: 10px; border: 1px solid #ddd; overflow-x: auto;"><code>
+[core]
+plugin_path=/opt/pidgin/plugins
+
+[debug]
+module_debug=true
+
+[ui]
+use_theme=true
+theme_name=default
+                </code></pre>
+            </li>
+            <li>
+                <code>config_x/accounts.xml</code>
+                <p>Crea un archivo llamado <code>accounts.xml</code> en el directorio <code>~/pidgin/config_x/</code> con el siguiente contenido:</p>
+                <pre style="background-color: #f9f9f9; padding: 10px; border: 1px solid #ddd; overflow-x: auto;"><code>
+&lt;accounts&gt;
+  &lt;account&gt;
+    &lt;protocol&gt;xmpp&lt;/protocol&gt;
+    &lt;name&gt;usuario@localhost&lt;/name&gt;
+    &lt;password&gt;contraseña&lt;/password&gt;
+    &lt;autoconnect&gt;true&lt;/autoconnect&gt;
+  &lt;/account&gt;
+  &lt;account&gt;
+    &lt;protocol&gt;xmpp&lt;/protocol&gt;
+    &lt;name&gt;usuario2@localhost&lt;/name&gt;
+    &lt;password&gt;contraseña2&lt;/password&gt;
+    &lt;autoconnect&gt;true&lt;/autoconnect&gt;
+  &lt;/account&gt;
+&lt;/accounts&gt;
+                </code></pre>
+                <p>⚠️ <strong>Recuerda cambiar el usuario, contraseña y dominio por los que vayas a usar.</strong> ⚠️</p>
+            </li>
+        </ol>
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3>▶️ Despliegue</h3>
+        <p>Con todos los archivos de configuración listos, es hora de desplegar nuestro entorno Pidgin con Docker Compose. Ejecuta el siguiente comando en el directorio <code>~/pidgin/</code>:</p>
+        <pre style="background-color: #f9f9f9; padding: 10px; border: 1px solid #ddd; overflow-x: auto;"><code>docker-compose up -d</code></pre>
+        <p>Esto descargará las imágenes necesarias y creará los contenedores definidos en el archivo <code>docker-compose.yml</code>. 🚀</p>
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3>🖥️ Acceso a Pidgin</h3>
+        <p>Una vez que los contenedores estén en funcionamiento, podrás acceder a las interfaces web de Pidgin a través de las siguientes URLs: 🌐</p>
+        <ul style="list-style-type: none; padding-left: 0;">
+            <li>Cliente 1: <code>http://[IP-DEL-CONTENEDOR]:3000</code> 🐦</li>
+            <li>Cliente 2: <code>http://[IP-DEL-CONTENEDOR]:3001</code> 🐦</li>
+        </ul>
+        <p>Reemplaza <code>[IP-DEL-CONTENEDOR]</code> con la dirección IP de tu contenedor LXC. 📝</p>
+    </section>
+     <section style="margin-bottom: 30px;">
+        <h3>Interfaz gráfica de ejabberd</h3>
+        <p>Accede a la interfaz web de administración de Ejabberd para gestionar la configuración y los usuarios. <img src="https://i.imgur.com/2pDj0Um.png" alt="Ejabberd Admin" style="width: 100%; max-width: 400px; margin-top: 10px;">
+        </p>
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3>🛡️ Consideraciones de Seguridad</h3>
+        <ul style="list-style-type: disc; margin-left: 20px;">
+            <li><strong>Contraseñas:</strong> Las contraseñas en el archivo <code>accounts.xml</code> se almacenan en texto plano. Esto no es seguro para entornos de producción. Considera usar secretos de Docker o variables de entorno para gestionar las contraseñas de forma segura. 🔑</li>
+            <li><strong>Dominio:</strong> El dominio XMPP está configurado como "localhost". Cambia esto a un dominio válido para uso en red. 🌐</li>
+            <li><strong>TLS:</strong> Implementa TLS para asegurar las comunicaciones XMPP. 🔒</li>
+        </ul>
+    </section>
+    <section style="margin-bottom: 30px;">
+        <h3>➕ Mejoras Adicionales</h3>
+        <ul style="list-style-type: square; margin-left: 20px;">
+            <li><strong>Gestión centralizada:</strong> Utiliza Portainer para gestionar los contenedores Docker de forma centralizada. ⚙️</li>
+            <li><strong>Red overlay:</strong> Considera usar redes Docker overlay para despliegues en múltiples nodos Proxmox. 🌐</li>
+        </ul>
+    </section>
+    <section>
+        <h3>📚 WEBGRAFÍA</h3>
+        <ul style="list-style-type: none; padding-left: 0;">
+            <li><a href="https://dinogeek.me/ES/VPS/Como-instalar-y-configurar-un-servidor-XMPP-Jabber-en-un-VPS.html">dinogeek.me</a> 🌐</li>
+            <li><a href="https://wiki.debian.org/es/FreedomBox/Manual/ejabberd">wiki.debian.org</a> 🐧</li>
+            <li><a href="https://wiki.debian.org/es/Ejabberd_Configuration">wiki.debian.org</a> ⚙️</li>
+            <li><a href="https://www.ecured.cu/Ejabberd">ecured.cu</a> 📖</li>
+            <li><a href="https://www.ejabberd.im/index.html">ejabberd.im</a> 💬</li>
+            <li><a href="https://www.icesi.edu.co/revistas/index.php/sistemas_telematica/article/download/965/990/996">icesi.edu.co</a> 🎓</li>
+            <li><a href="https://juantrucupei.wordpress.com/2016/07/25/instalacion-y-configuracion-basica-de-servidor-ejabberd/">juantrucupei.wordpress.com</a> 📝</li>
+            <li><a href="https://es.wikipedia.org/wiki/Ejabberd">es.wikipedia.org</a> ℹ️</li>
+            <li><a href="https://ugeek.github.io/blog/post/2019-02-10-servidor-ejabberd-xmpp-en-tu-raspberry-mediante-docker-y-dockerfile.html">ugeek.github.io</a> 🐳</li>
+            <li><a href="https://repositorio.uci.cu/bitstream/ident/8668/2/TD_07113_13.pdf">repositorio.uci.cu</a> 📄</li>
+            <li><a href="https://www.sysadminsdecuba.com/2021/01/servidor-ejabberd-con-autenticacion-ldap/amp/">sysadminsdecuba.com</a> 🛡️</li>
+            <li><a href="https://ugeek.github.io/blog/post/2021-11-07-docker-monta-tu-propio-servidor-de-mensajeria-ejabberd--xmpp.html">ugeek.github.io</a> 🐳</li>
+            <li><a href="https://raulperez.tieneblog.net/mensajeria-instantanea-encriptada-y-privada-jabber-otr-y-pidgin/">raulperez.tieneblog.net</a> 🔑</li>
+            <li><a href="https://pidgin.im">pidgin.im</a> 🐦</li>
+        </ul>
+    </section>
+
+    <footer style="margin-top: 30px; text-align: center; color: #888;">
+        <p>Creado con ❤️ por el equipo de Sentinel</p>
+    </footer>
+</details>
+
  <details>
   <summary>📘 Clúster Proxmox</summary>
       <h2>Clúster de Proxmox con 2 Nodos</h2>
