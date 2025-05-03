@@ -1943,6 +1943,7 @@ main "$@"
         <li><strong>Introducción</strong>
           <ul>
             <li>Las funciones hash son pilares fundamentales de la criptografía moderna y desempeñan un papel crucial en la seguridad de sistemas digitales. Estas funciones transforman datos de cualquier tamaño en una cadena de longitud fija, conocida como "hash", que actúa como una huella digital única. Además de su uso en criptografía, las funciones hash son ampliamente utilizadas en aplicaciones como verificación de integridad, almacenamiento seguro de contraseñas y blockchain.</li>
+            <br><img src="https://github.com/Beasluna/sentinel/blob/40e62152de4bfe9f93ea5a455a27dd18fcbb353c/SENTINELS/ASSETS/HASHES/hash1.png" alt="Proceso de hash">
           </ul>
         </li>
         <li><strong>Funcionamiento y Tipos de Hash</strong>
@@ -1951,7 +1952,7 @@ main "$@"
               <ul>
                 <li>Una función hash es una función matemática que toma un conjunto de datos de entrada (de cualquier tamaño) y produce una salida de longitud fija.</li>
                 <li>Visualización del proceso:
-                  <br><img src="https://ejemplo.com/hash-process.png" alt="Proceso de hash">
+                  <br><img src="https://github.com/Beasluna/sentinel/blob/40e62152de4bfe9f93ea5a455a27dd18fcbb353c/SENTINELS/ASSETS/HASHES/hash2.png" alt="Visualización de hash">
                 </li>
               </ul>
             </li>
@@ -1965,14 +1966,44 @@ main "$@"
             <li><strong>Tipos Comunes</strong>
               <ul>
                 <li>MD5 (128 bits) - Obsoleto por vulnerabilidades</li>
+                <br><img src="https://github.com/Beasluna/sentinel/blob/40e62152de4bfe9f93ea5a455a27dd18fcbb353c/SENTINELS/ASSETS/HASHES/hash3.png" alt="MD5">
                 <li>SHA-1 (160 bits) - También obsoleto</li>
+                <br><img src="https://github.com/Beasluna/sentinel/blob/40e62152de4bfe9f93ea5a455a27dd18fcbb353c/SENTINELS/ASSETS/HASHES/hash4.png" alt="SHA1">
                 <li>SHA-256 (256 bits) - Ampliamente utilizado</li>
+                <br><img src="https://github.com/Beasluna/sentinel/blob/40e62152de4bfe9f93ea5a455a27dd18fcbb353c/SENTINELS/ASSETS/HASHES/hash5.jpg" alt="SHA256">
                 <li>BLAKE2 - Alternativa moderna</li>
+                <br><img src="https://github.com/Beasluna/sentinel/blob/40e62152de4bfe9f93ea5a455a27dd18fcbb353c/SENTINELS/ASSETS/HASHES/hash6.png" alt="BLAKE2">
                 <li>Argon2 - Para contraseñas</li>
+                <br><img src="https://github.com/Beasluna/sentinel/blob/40e62152de4bfe9f93ea5a455a27dd18fcbb353c/SENTINELS/ASSETS/HASHES/hash7.png" alt="ARGON2">
               </ul>
             </li>
           </ul>
         </li>
+        </li>
+        <li><strong>Proceso de Generación de Hashes</strong>
+          <ul>
+            <li><strong>1. Preprocesamiento</strong>
+              <ul>
+                <li>División del mensaje en bloques de tamaño fijo (ej. 512 bits para SHA-256)</li>
+                <li>Añadir padding si el último bloque está incompleto</li>
+              </ul>
+            </li>
+            <li><strong>2. Inicialización</strong>
+              <ul>
+                <li>Establecimiento de valores iniciales predefinidos</li>
+              </ul>
+            </li>
+            <li><strong>3. Procesamiento</strong>
+              <ul>
+                <li>Operaciones lógicas (AND, OR, XOR) y matemáticas (rotaciones, sumas modulares)</li>
+                <li>Función de compresión para combinar bloques</li>
+              </ul>
+            </li>
+            <li><strong>4. Salida</strong>
+              <ul>
+                <li>Conversión del estado final a formato hexadecimal</li>
+                <li>Ejemplo visual:
+                <br><img src="https://github.com/Beasluna/sentinel/blob/40e62152de4bfe9f93ea5a455a27dd18fcbb353c/SENTINELS/ASSETS/HASHES/hash8.png" alt="Generación de hash">
         <li><strong>Colisiones en Funciones Hash</strong>
           <ul>
             <li>Ocurren cuando dos entradas diferentes generan el mismo hash</li>
@@ -1985,13 +2016,17 @@ main "$@"
             <li><strong>Verificación de Integridad</strong>
               <ul>
                 <li>Checksums para archivos y mensajes</li>
-                <li>Ejemplo: <img src="https://ejemplo.com/checksum.png" alt="Ejemplo checksum"></li>
+                <li>Ejemplo: 
+                 <br><img src="https://github.com/Beasluna/sentinel/blob/40e62152de4bfe9f93ea5a455a27dd18fcbb353c/SENTINELS/ASSETS/HASHES/hash9.png" alt="Ejemplo checksum">
+                  </li>
               </ul>
             </li>
             <li><strong>Almacenamiento de Contraseñas</strong>
               <ul>
                 <li>Uso de hashes con salt</li>
-                <li>Ejemplo: <img src="https://ejemplo.com/password-hash.png" alt="Hash de contraseña"></li>
+                <li>Ejemplo: 
+                <br><img src="https://github.com/Beasluna/sentinel/blob/40e62152de4bfe9f93ea5a455a27dd18fcbb353c/SENTINELS/ASSETS/HASHES/hash10.png" alt="Hash de contraseña">    
+                </li>
               </ul>
             </li>
           </ul>
@@ -1999,26 +2034,33 @@ main "$@"
         <li><strong>Comparativa de Funciones Hash</strong>
           <ul>
             <li>Tabla comparativa:
-              <br><img src="https://ejemplo.com/hash-comparison.png" alt="Tabla comparativa">
+              <br><img src="https://github.com/Beasluna/sentinel/blob/40e62152de4bfe9f93ea5a455a27dd18fcbb353c/SENTINELS/ASSETS/HASHES/hash11.png" alt="Tabla comparativa">
+            </li>
+            <li>Ejemplo visual:
+            <br><img src="https://github.com/Beasluna/sentinel/blob/40e62152de4bfe9f93ea5a455a27dd18fcbb353c/SENTINELS/ASSETS/HASHES/hash12.png" alt="Tabla comparativa">
             </li>
           </ul>
         </li>
         <li><strong>Ataques Avanzados</strong>
           <ul>
-            <li>Fuerza bruta: Prueba todas combinaciones</li>
-            <li>Diccionario: Usa contraseñas comunes</li>
-            <li>Rainbow tables: Hashes precalculados</li>
-            <li>Ejemplo ataque: <img src="https://ejemplo.com/hash-attack.png" alt="Ataque a hash"></li>
+            <li>Fuerza bruta: PLos ataques de fuerza bruta intentan generar todas las combinaciones posibles de entradas hasta encontrar una que produzca el mismo hash. Este método es computacionalmente costoso pero efectivo contra funciones hash débiles como MD5.</li>
+            <br><img src="https://github.com/Beasluna/sentinel/blob/40e62152de4bfe9f93ea5a455a27dd18fcbb353c/SENTINELS/ASSETS/HASHES/hash13.png" alt="Fuerza bruta">
+            <li>Diccionario: En lugar de probar todas las combinaciones posibles, los ataques de diccionario utilizan listas predefinidas de palabras comunes o contraseñas frecuentes para encontrar coincidencias.</li>
+            <br><img src="https://github.com/Beasluna/sentinel/blob/40e62152de4bfe9f93ea5a455a27dd18fcbb353c/SENTINELS/ASSETS/HASHES/hash14.png" alt="Diccionario">
+            <li>Rainbow tables: Las tablas rainbow son bases de datos precalculadas de hashes para contraseñas comunes. Aunque efectivas, pueden ser mitigadas usando salts .</li>
+            <li>Ejemplo ataque: <a href="https://www.youtube.com/watch?v=SenshNXWkQ4&t=1s" alt="Ataque a rainbow"></li>
           </ul>
         </li>
         <li><strong>Herramientas Modernas</strong>
           <ul>
             <li>Hashcat: Para recuperación de contraseñas</li>
-            <li>John the Ripper: Auditoría de seguridad</li>
-            <li>Ejemplo uso: <img src="https://ejemplo.com/hashcat.png" alt="Uso de Hashcat"></li>
+            <li>John the Ripper: John the Ripper es otra herramienta popular para auditorías de seguridad. Es especialmente útil para detectar contraseñas débiles en sistemas.</li>
+            <li>: 
+            <br><a href="https://github.com/Beasluna/sentinel/blob/40e62152de4bfe9f93ea5a455a27dd18fcbb353c/SENTINELS/ASSETS/HASHES/hash15.png" alt="Uso de Hashcat">
+              </li>
           </ul>
         </li>
-        <li><strong>Implementación en Código</strong>
+        <li><strong>Implementación en Código</strong></li>
           <ul>
             <li><strong>Python</strong>
               <pre><code>import hashlib
@@ -2038,15 +2080,111 @@ main "$@"
         </li>
         <li><strong>Casos de Uso Innovadores</strong>
           <ul>
-            <li>Blockchain y criptomonedas</li>
-            <li>Identificación de archivos únicos (IPFS)</li>
-            <li>Verificación de datos médicos</li>
+            <li>Blockchain y criptomonedas: Las funciones hash son la base de tecnologías como Bitcoin y Ethereum. Cada bloque contiene el hash del bloque anterior, creando una cadena inmutable.</li>
+            <br> <img src="https://github.com/Beasluna/sentinel/blob/40e62152de4bfe9f93ea5a455a27dd18fcbb353c/SENTINELS/ASSETS/HASHES/hash19.png" alt=Blockchain>
+            <li>Identificación de archivos únicos (IPFS):Las funciones hash se utilizan para identificar archivos únicos en sistemas distribuidos como IPFS (InterPlanetary File System). </li>
+            <li>Verificación de datos médicos: En el sector salud, las funciones hash se utilizan para verificar la integridad de registros médicos electrónicos.</li>
           </ul>
         </li>
         <li><strong>Evolución Futura</strong>
-          <ul>
+          <ul> <li>Con la llegada de la computación cuántica, las funciones hash actuales podrían enfrentar nuevos desafíos. Investigaciones en criptografía post-cuántica están explorando alternativas para garantizar la seguridad en un mundo cada vez más interconectado</li>
             <li>Desafíos de la computación cuántica</li>
             <li>Criptografía post-cuántica</li>
+          </ul>
+        </li>
+          <li><strong>Algoritmos de Cifrado: DES y 3DES</strong>
+          <ul>
+            <li><strong>Origen e Historia de DES</strong>
+              <ul>
+                <li>Desarrollado por IBM en los años 70 (proyecto Lucifer)</li>
+                <li>Estándar NIST desde 1977 (FIPS PUB 46)</li>
+                <li>Primer algoritmo de cifrado ampliamente adoptado</li>
+                <li>Arquitectura Feistel con 16 rondas</li>
+              </ul>
+            </li>
+            <li><strong>Especificaciones Técnicas</strong>
+              <ul>
+                <li>Cifrado simétrico por bloques (64 bits)</li>
+                <li>Clave de 56 bits (64 bits con paridad)</li>
+                <li>16 rondas de transformación</li>
+                <li>Diagrama del proceso:
+                  <br><img src="https://ejemplo.com/3des.png" alt="Esquema DES">
+                </li>
+              </ul>
+            </li>
+            <li><strong>Vulnerabilidades Críticas</strong>
+              <ul>
+                <li><strong>Tamaño de clave insuficiente (56 bits)</strong>
+                  <ul>
+                    <li>Ataque por fuerza bruta viable (Deep Crack, 1998)</li>
+                    <li>Tiempo de descifrado: ~22 horas con hardware especializado</li>
+                  </ul>
+                </li>
+                <li><strong>Ataques analíticos</strong>
+                  <ul>
+                    <li>Diferencial (Biham y Shamir, 1990)</li>
+                    <li>Lineal (Matsui, 1993)</li>
+                  </ul>
+                </li>
+                <li><strong>Debilidades en S-boxes</strong></li>
+              </ul>
+            </li>
+            <li><strong>Triple DES (3DES)</strong>
+              <ul>
+                <li><strong>Implementación</strong>
+                  <ul>
+                    <li>EDE (Encrypt-Decrypt-Encrypt) con 2-3 claves</li>
+                    <li>Tamaño efectivo de clave: 112-168 bits</li>
+                    <li>Compatibilidad con sistemas DES legacy</li>
+                  </ul>
+                </li>
+                <li><strong>Modos de Operación</strong>
+                  <ul>
+                    <li>3TDEA (tres claves independientes)</li>
+                    <li>2TDEA (dos claves, K1=K3)</li>
+                  </ul>
+                </li>
+                <li><strong>Limitaciones</strong>
+                  <ul>
+                    <li>3x más lento que DES original</li>
+                    <li>Vulnerable a meet-in-the-middle attacks</li>
+                    <li>NIST desaprobó su uso desde 2018</li>
+                  </ul>
+                </li>
+                </li>
+              </ul>
+            </li>
+            <li><strong>Alternativas Modernas</strong>
+              <ul>
+                <li>AES (Rijndael) - Estándar actual desde 2001</li>
+                <li>ChaCha20 - Para dispositivos móviles</li>
+                <li>Twofish - Alternativa de código abierto</li>
+              </ul>
+            </li>
+            <li><strong>Linea Temporal</strong>
+              <table>
+                <tr>
+                  <th>Año</th>
+                  <th>Evento</th>
+                </tr>
+                <tr>
+                  <td>1977</td>
+                  <td>DES se convierte en estándar</td>
+                </tr>
+                <tr>
+                  <td>1999</td>
+                  <td>Primer crack completo de DES</td>
+                </tr>
+                <tr>
+                  <td>2005</td>
+                  <td>NIST recomienda 3DES como transición</td>
+                </tr>
+                <tr>
+                  <td>2017</td>
+                  <td>NIST desaconseja 3DES</td>
+                </tr>
+              </table>
+            </li>
           </ul>
         </li>
         <li><strong>Algoritmos de Cifrado: DES y 3DES</strong>
@@ -2060,39 +2198,253 @@ main "$@"
             <li><strong>3DES</strong>
               <ul>
                 <li>Triple cifrado para mayor seguridad</li>
-                <li>Ejemplo: <img src="https://ejemplo.com/3des.png" alt="3DES"></li>
+                <li>Ejemplo DES: <img src="https://github.com/Beasluna/sentinel/blob/40e62152de4bfe9f93ea5a455a27dd18fcbb353c/SENTINELS/ASSETS/HASHES/hash20.png" alt="DES"></li>
               </ul>
             </li>
+            <li><strong>Algoritmos de Cifrado: DES y 3DES</strong>
             <li><strong>Alternativas Modernas</strong>
               <ul>
-                <li>AES (128, 192, 256 bits)</li>
-                <li>Blowfish, Twofish, ChaCha20</li>
+                <li><strong>AES (Advanced Encryption Standard)</strong>
+                  <ul>
+                    <li>Estándar NIST desde 2001 (Rijndael)</li>
+                    <li>Claves de 128/192/256 bits</li>
+                    <li>10/12/14 rondas según tamaño de clave</li>
+                    <li>Eficiente en hardware y software</li>
+                  </ul>
+                </li>
+                <li><strong>Blowfish</strong>
+                  <ul>
+                    <li>Clave variable hasta 448 bits</li>
+                    <li>16 rondas tipo Feistel</li>
+                    <li>Optimizado para sistemas con memoria limitada</li>
+                  </ul>
+                </li>
+                <li><strong>Twofish</strong>
+                  <ul>
+                    <li>Finalista del concurso AES</li>
+                    <li>Claves de 128/192/256 bits</li>
+                    <li>16 rondas con S-boxes dependientes de clave</li>
+                  </ul>
+                </li>
+                <li><strong>ChaCha20</strong>
+                  <ul>
+                    <li>Cifrado de flujo (RFC 7539)</li>
+                    <li>20 rondas, 256-bit clave</li>
+                    <li>Más rápido que AES en dispositivos móviles</li>
+                  </ul>
+                </li>
+                <li><strong>Comparativa:</strong>
+                  <br>
+                  <table>
+                    <tr>
+                      <th>Algoritmo</th>
+                      <th>Tamaño clave</th>
+                      <th>Velocidad</th>
+                      <th>Seguridad</th>
+                    </tr>
+                    <tr>
+                      <td>AES-256</td>
+                      <td>256 bits</td>
+                      <td>★★★★☆</td>
+                      <td>★★★★★</td>
+                    </tr>
+                    <tr>
+                      <td>Twofish</td>
+                      <td>256 bits</td>
+                      <td>★★★☆☆</td>
+                      <td>★★★★★</td>
+                    </tr>
+                    <tr>
+                      <td>ChaCha20</td>
+                      <td>256 bits</td>
+                      <td>★★★★★</td>
+                      <td>★★★★☆</td>
+                    </tr>
+                  </table>
+                </li>
               </ul>
+            </li>
+            <li><strong>Funcionamiento Detallado de DES</strong>
+              <ul>
+                <li><strong>1. Estructura de Bloques</strong>
+                  <ul>
+                    <li>Procesamiento en bloques de 64 bits</li>
+                    <li>Padding PKCS#5/PKCS#7 para datos no alineados</li>
+                    <li>Ejemplo de bloque:
+                      <pre>01001000 01000101 01001100 01001100 01001111 00000000 00000000 00000000</pre>
+                    </li>
+                  </ul>
+                </li>
+                <li><strong>2. Proceso de Rondas</strong>
+                  <ul>
+                    <li>16 rondas Feistel idénticas</li>
+                    <li>Generación de subclaves (48 bits por ronda)</li>
+                    <li>Función F en cada ronda:
+                      <ol>
+                        <li>Expansión (32 → 48 bits)</li>
+                        <li>XOR con subclave</li>
+                        <li>Sustitución (8 S-boxes de 6→4 bits)</li>
+                        <li>Permutación (32 bits)</li>
+                      </ol>
+                    </li>
+                  </ul>
+                </li>
+                <li><strong>3. Operaciones Clave</strong>
+                  <ul>
+                    <li><strong>Permutación Inicial (IP):</strong> Reorganización de bits</li>
+                    <li><strong>S-boxes:</strong> No linealidad criptográfica</li>
+                    <li><strong>Permutación Final (FP):</strong> Inversa de IP</li>
+                  </ul>
+                </li>
+                <li><strong>Ejemplo Práctico</strong>
+                  <ul>
+                    <li><strong>Entrada:</strong> "HELLO" (48 45 4C 4C 4F en ASCII)</li>
+                    <li><strong>Clave:</strong> 0x133457799BBCDFF1</li>
+                    <li><strong>Proceso:</strong>
+                      <pre>1. Padding → 48 45 4C 4C 4F 00 00 00
+2. IP → Permutación inicial
+3. 16 rondas Feistel
+4. FP → Ciphertext: 85 E8 13 54 0F 0A B4 05</pre>
+            </li>
+            <li><strong>Visualización:</strong>
             </li>
           </ul>
         </li>
-        <li><strong>Conclusión</strong>
-          <ul>
-            <li>Las funciones hash son esenciales para la seguridad digital</li>
-            <li>DES y 3DES han sido superados por algoritmos modernos</li>
-            <li>Es crucial mantenerse actualizado con los estándares de cifrado</li>
-          </ul>
-        </li>
-        <li><strong>Recursos Adicionales</strong>
-          <ul>
-            <li>Vídeos:
+      </ul>
+    </li>
+  </ul>
+</li>
+  <li>🎬 <strong>Recursos Visuales</strong>
+            <ul>
+              <li><strong>🔐 3DES Encryption</strong>
+                <ul>
+                  <li><a href="https://www.youtube.com/watch?v=4R_kocR1roM">Multiple Encryption and Triple DES</a></li>
+                  <li>⏱️ 15 min | 📌 Explicación con diagramas animados</li>
+                  <li>⭐ Concepto de triple cifrado y vulnerabilidades</li>
+                </ul>
+              </li>
+              <li><strong>⚙️ DES Algorithm</strong>
+                <ul>
+                  <li><a href="https://www.youtube.com/watch?v=nynAQ593HdU">Single Round of DES Algorithm</a></li>
+                  <li>⏱️ 12 min | 📌 Ronda completa paso a paso</li>
+                  <li>⭐ Visualización de permutaciones y S-boxes</li>
+                </ul>
+              </li>
+              <li><strong>🔄 MD5 Hash</strong>
+                <ul>
+                  <li><a href="https://www.youtube.com/watch?v=5MiMK45gkTY">How MD5 works (from scratch)</a></li>
+                  <li>⏱️ 18 min | 📌 Implementación manual</li>
+                  <li>⭐ Proceso completo de hashing</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+            <<li><strong>📚 Webgrafía y Recursos</strong>
               <ul>
-                <li>3DES Encryption: <a href="#">Enlace</a></li>
-                <li>DES Algorithm: <a href="#">Enlace</a></li>
-                <li>MD5 Hash: <a href="#">Enlace</a></li>
-              </ul>
-            </li>
-            <li>Webgrafía:
-              <ul>
-                <li>NIST Secure Hash Standard</li>
-                <li>OWASP Password Storage</li>
-                <li>SHAttered Attack</li>
-                <li>Documentación oficial de Hashcat</li>
+                <li><strong>🔐 Estándares Oficiales</strong>
+                  <ul>
+                    <li>🏛️ <a href="https://csrc.nist.gov/publications/detail/fips/180/4/final" target="_blank"><strong>NIST - Secure Hash Standard (SHS)</strong></a>
+                      <ul>
+                        <li>📄 Documento oficial FIPS 180-4</li>
+                        <li>⭐ SHA-1, SHA-256 y otros algoritmos hash</li>
+                      </ul>
+                    </li>
+                    <li>🏛️ <a href="https://csrc.nist.gov/projects/cryptographic-standards-and-guidelines/archived-crypto-projects/aes-development" target="_blank"><strong>NIST - Advanced Encryption Standard (AES)</strong></a>
+                      <ul>
+                        <li>📄 Historia y especificaciones técnicas</li>
+                        <li>⭐ Rijndael algorithm</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><strong>🛡️ Seguridad Aplicada</strong>
+                  <ul>
+                    <li>🛡️ <a href="https://owasp.org/www-project-cheat-sheets/cheatsheets/Password_Storage_Cheat_Sheet.html" target="_blank"><strong>OWASP - Password Storage Cheat Sheet</strong></a>
+                      <ul>
+                        <li>📝 Guía práctica actualizada</li>
+                        <li>⭐ Argon2, PBKDF2 y bcrypt</li>
+                      </ul>
+                    </li>
+                    <li>💥 <a href="https://shattered.io/" target="_blank"><strong>SHAttered Attack (SHA-1 Collision)</strong></a>
+                      <ul>
+                        <li>🔓 Demostración práctica</li>
+                        <li>⭐ Primer ataque real contra SHA-1</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><strong>📖 Artículos Educativos</strong>
+                  <ul>
+                    <li>🌐 <a href="https://www.cloudflare.com/learning/ssl/what-is-a-cryptographic-hash/" target="_blank"><strong>Cloudflare - Cryptographic Hash Functions</strong></a>
+                      <ul>
+                        <li>👨‍🏫 Explicación introductoria</li>
+                        <li>⭐ Aplicaciones prácticas</li>
+                      </ul>
+                    </li>
+                    <li>📊 <a href="https://www.ibm.com/topics/blockchain/hash-functions" target="_blank"><strong>IBM - Blockchain y Hash Functions</strong></a>
+                      <ul>
+                        <li>⛓️ Aplicación en criptomonedas</li>
+                        <li>⭐ Ejemplos técnicos</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><strong>🛠️ Herramientas y Librerías</strong>
+                  <ul>
+                    <li>⚒️ <a href="https://hashcat.net/hashcat/" target="_blank"><strong>Hashcat - Advanced Password Recovery</strong></a>
+                      <ul>
+                        <li>💻 Herramienta profesional</li>
+                        <li>⭐ Soporte para múltiples algoritmos</li>
+                      </ul>
+                    </li>
+                    <li>🐍 <a href="https://docs.python.org/3/library/hashlib.html" target="_blank"><strong>Python hashlib Documentation</strong></a>
+                      <ul>
+                        <li>📚 Implementación oficial</li>
+                        <li>⭐ Ejemplos de código</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><strong>🚀 Tecnologías Emergentes</strong>
+                  <ul>
+                    <li>🔮 <a href="https://csrc.nist.gov/projects/post-quantum-cryptography" target="_blank"><strong>NIST - Post-Quantum Cryptography</strong></a>
+                      <ul>
+                        <li>🧮 Algoritmos resistentes a cuántica</li>
+                        <li>⭐ Proyecto en desarrollo</li>
+                      </ul>
+                    </li>
+                    <li>⚡ <a href="https://blake2.net/" target="_blank"><strong>BLAKE2: Fast and Secure Hashing</strong></a>
+                      <ul>
+                        <li>🚀 Alternativa moderna</li>
+                        <li>⭐ Comparativa con SHA-3</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><strong>📌 Recursos Adicionales</strong>
+                  <table>
+                    <tr>
+                      <th>Tema</th>
+                      <th>Enlace</th>
+                      <th>Tipo</th>
+                    </tr>
+                    <tr>
+                      <td>Argon2</td>
+                      <td><a href="https://www.argon2.com/">argon2.com</a></td>
+                      <td>Sitio oficial</td>
+                    </tr>
+                    <tr>
+                      <td>Rainbow Tables</td>
+                      <td><a href="https://www.freecodecamp.org/news/rainbow-tables-explained/">freeCodeCamp</a></td>
+                      <td>Artículo</td>
+                    </tr>
+                    <tr>
+                      <td>Criptografía Básica</td>
+                      <td><a href="https://www.khanacademy.org/computing/computers-and-internet/xcae6f4a7ff017e7d:secure-data/xcae6f4a7ff017e7d:cryptography/a/cryptography-basics">Khan Academy</a></td>
+                      <td>Tutorial</td>
+                    </tr>
+                  </table>
+                </li>
               </ul>
             </li>
           </ul>
