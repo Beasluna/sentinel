@@ -1938,10 +1938,167 @@ main "$@"
     </details>
 
    <details>
-      <summary>📖 Documentación de Proxmox</summary>
-      Para más información sobre Proxmox y sus servicios de soporte, consulta la  
-      <a href="https://www.proxmox.com/en/services/support-services/support#support-resources">documentación oficial</a>.
-    </details>
+      <summary>🔐 Funciones Hash en Ciberseguridad</summary>
+      <ul>
+        <li><strong>Introducción</strong>
+          <ul>
+            <li>Las funciones hash son pilares fundamentales de la criptografía moderna y desempeñan un papel crucial en la seguridad de sistemas digitales. Estas funciones transforman datos de cualquier tamaño en una cadena de longitud fija, conocida como "hash", que actúa como una huella digital única. Además de su uso en criptografía, las funciones hash son ampliamente utilizadas en aplicaciones como verificación de integridad, almacenamiento seguro de contraseñas y blockchain.</li>
+          </ul>
+        </li>
+        <li><strong>Funcionamiento y Tipos de Hash</strong>
+          <ul>
+            <li><strong>Definición</strong>
+              <ul>
+                <li>Una función hash es una función matemática que toma un conjunto de datos de entrada (de cualquier tamaño) y produce una salida de longitud fija.</li>
+                <li>Visualización del proceso:
+                  <br><img src="https://ejemplo.com/hash-process.png" alt="Proceso de hash">
+                </li>
+              </ul>
+            </li>
+            <li><strong>Características Principales</strong>
+              <ul>
+                <li>Unidireccionalidad: Es computacionalmente imposible recuperar los datos originales</li>
+                <li>Determinista: Misma entrada → mismo hash</li>
+                <li>Efecto avalancha: Pequeños cambios generan hashes completamente diferentes</li>
+              </ul>
+            </li>
+            <li><strong>Tipos Comunes</strong>
+              <ul>
+                <li>MD5 (128 bits) - Obsoleto por vulnerabilidades</li>
+                <li>SHA-1 (160 bits) - También obsoleto</li>
+                <li>SHA-256 (256 bits) - Ampliamente utilizado</li>
+                <li>BLAKE2 - Alternativa moderna</li>
+                <li>Argon2 - Para contraseñas</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><strong>Colisiones en Funciones Hash</strong>
+          <ul>
+            <li>Ocurren cuando dos entradas diferentes generan el mismo hash</li>
+            <li>Ejemplo histórico: Ataque SHAttered a SHA-1 en 2017</li>
+            <li>Impacto en autenticación, almacenamiento de contraseñas y blockchain</li>
+          </ul>
+        </li>
+        <li><strong>Usos en Seguridad Informática</strong>
+          <ul>
+            <li><strong>Verificación de Integridad</strong>
+              <ul>
+                <li>Checksums para archivos y mensajes</li>
+                <li>Ejemplo: <img src="https://ejemplo.com/checksum.png" alt="Ejemplo checksum"></li>
+              </ul>
+            </li>
+            <li><strong>Almacenamiento de Contraseñas</strong>
+              <ul>
+                <li>Uso de hashes con salt</li>
+                <li>Ejemplo: <img src="https://ejemplo.com/password-hash.png" alt="Hash de contraseña"></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><strong>Comparativa de Funciones Hash</strong>
+          <ul>
+            <li>Tabla comparativa:
+              <br><img src="https://ejemplo.com/hash-comparison.png" alt="Tabla comparativa">
+            </li>
+          </ul>
+        </li>
+        <li><strong>Ataques Avanzados</strong>
+          <ul>
+            <li>Fuerza bruta: Prueba todas combinaciones</li>
+            <li>Diccionario: Usa contraseñas comunes</li>
+            <li>Rainbow tables: Hashes precalculados</li>
+            <li>Ejemplo ataque: <img src="https://ejemplo.com/hash-attack.png" alt="Ataque a hash"></li>
+          </ul>
+        </li>
+        <li><strong>Herramientas Modernas</strong>
+          <ul>
+            <li>Hashcat: Para recuperación de contraseñas</li>
+            <li>John the Ripper: Auditoría de seguridad</li>
+            <li>Ejemplo uso: <img src="https://ejemplo.com/hashcat.png" alt="Uso de Hashcat"></li>
+          </ul>
+        </li>
+        <li><strong>Implementación en Código</strong>
+          <ul>
+            <li><strong>Python</strong>
+              <pre><code>import hashlib
+    hash_object = hashlib.sha256(b'Hello World')
+    hex_dig = hash_object.hexdigest()
+    print(hex_dig)</code></pre>
+            </li>
+            <li><strong>JavaScript</strong>
+              <pre><code>async function hashMessage(message) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(message);
+      const hash = await crypto.subtle.digest('SHA-256', data);
+      return hash;
+    }</code></pre>
+            </li>
+          </ul>
+        </li>
+        <li><strong>Casos de Uso Innovadores</strong>
+          <ul>
+            <li>Blockchain y criptomonedas</li>
+            <li>Identificación de archivos únicos (IPFS)</li>
+            <li>Verificación de datos médicos</li>
+          </ul>
+        </li>
+        <li><strong>Evolución Futura</strong>
+          <ul>
+            <li>Desafíos de la computación cuántica</li>
+            <li>Criptografía post-cuántica</li>
+          </ul>
+        </li>
+        <li><strong>Algoritmos de Cifrado: DES y 3DES</strong>
+          <ul>
+            <li><strong>Origen de DES</strong>
+              <ul>
+                <li>Desarrollado por IBM en los 70</li>
+                <li>Clave de 56 bits - ahora inseguro</li>
+              </ul>
+            </li>
+            <li><strong>3DES</strong>
+              <ul>
+                <li>Triple cifrado para mayor seguridad</li>
+                <li>Ejemplo: <img src="https://ejemplo.com/3des.png" alt="3DES"></li>
+              </ul>
+            </li>
+            <li><strong>Alternativas Modernas</strong>
+              <ul>
+                <li>AES (128, 192, 256 bits)</li>
+                <li>Blowfish, Twofish, ChaCha20</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><strong>Conclusión</strong>
+          <ul>
+            <li>Las funciones hash son esenciales para la seguridad digital</li>
+            <li>DES y 3DES han sido superados por algoritmos modernos</li>
+            <li>Es crucial mantenerse actualizado con los estándares de cifrado</li>
+          </ul>
+        </li>
+        <li><strong>Recursos Adicionales</strong>
+          <ul>
+            <li>Vídeos:
+              <ul>
+                <li>3DES Encryption: <a href="#">Enlace</a></li>
+                <li>DES Algorithm: <a href="#">Enlace</a></li>
+                <li>MD5 Hash: <a href="#">Enlace</a></li>
+              </ul>
+            </li>
+            <li>Webgrafía:
+              <ul>
+                <li>NIST Secure Hash Standard</li>
+                <li>OWASP Password Storage</li>
+                <li>SHAttered Attack</li>
+                <li>Documentación oficial de Hashcat</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+        </details>
 
    <details>
       <summary>📖 Documentación de Snort</summary>
