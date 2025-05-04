@@ -2451,12 +2451,297 @@ main "$@"
         </li>
       </ul>
         </details>
-
-   <details>
-      <summary>📖 Documentación de Snort</summary>
-      Para más información sobre Snort, consulta la  
-      <a href="https://www.snort.org/documents">documentación oficial</a>.
-    </details>
+      <details>
+      <summary>🎬 Jellyfin: La Alternativa Open-Source para Servidores Multimedia</summary>
+      <ul>
+        <li><strong>🌟 Introducción</strong>
+          <ul>
+            <li>Jellyfin es un <strong>servidor multimedia autoalojado</strong> de código abierto que te permite:
+              <ul>
+                <li>🖥️ Organizar películas, series, música y fotos</li>
+                <li>📱 Acceder desde cualquier dispositivo (local o remotamente)</li>
+                <li>💰 Totalmente gratuito (sin funciones premium bloqueadas)</li>
+              </ul>
+            </li>
+            <li>
+              <details>
+                <summary>📊 Comparativa con alternativas:</summary>
+                <table>
+                  <tr>
+                    <th>Característica</th>
+                    <th>Jellyfin</th>
+                    <th>Plex</th>
+                    <th>Emby</th>
+                  </tr>
+                  <tr>
+                    <td>Coste</td>
+                    <td>Gratis</td>
+                    <td>Freemium</td>
+                    <td>Freemium</td>
+                  </tr>
+                  <tr>
+                    <td>Código</td>
+                    <td>Open-Source</td>
+                    <td>Cerrado</td>
+                    <td>Cerrado</td>
+                  </tr>
+                  <tr>
+                    <td>Privacidad</td>
+                    <td>Total</td>
+                    <td>Limitada</td>
+                    <td>Limitada</td>
+                  </tr>
+                  <tr>
+                    <td>Plugins</td>
+                    <td>Comunidad</td>
+                    <td>Oficiales</td>
+                    <td>Oficiales</td>
+                  </tr>
+                </table>
+              </details>
+            </li>
+          </ul>
+        </li>
+        <li><strong>🆚 JELLYFIN VS PLEX</strong>
+          <ul>
+            <li>Jellyfin y Plex son dos de las plataformas más populares con enfoques distintos:
+              <ul>
+                <li>🎯 <strong>Jellyfin</strong>: Gratuito/open-source, privacidad total, pero requiere más configuración</li>
+                <li>🔵 <strong>Plex</strong>: Interfaz pulida y funciones avanzadas, pero con modelo freemium</li>
+              </ul>
+            </li>
+            <li>
+              <details>
+                <summary>🔍 Comparativa detallada</summary>
+                <table>
+                  <tr>
+                    <th>Criterio</th>
+                    <th>Jellyfin 🟢</th>
+                    <th>Plex 🔵</th>
+                    <th>¿Cuál gana? ⚖️</th>
+                  </tr>
+                  <tr>
+                    <td>📌 Modelo de negocio</td>
+                    <td>100% gratuito y open-source</td>
+                    <td>Freemium (Plex Pass para funciones premium)</td>
+                    <td>✅ Jellyfin</td>
+                  </tr>
+                  <tr>
+                    <td>🎯 Facilidad de uso</td>
+                    <td>Interfaz funcional pero menos pulida</td>
+                    <td>Configuración casi automática</td>
+                    <td>✅ Plex</td>
+                  </tr>
+                  <tr>
+                    <td>⚙️ Funcionalidades</td>
+                    <td>Buenas funciones básicas, plugins de comunidad</td>
+                    <td>Transcodificación avanzada, DVR, apps premium</td>
+                    <td>✅ Plex</td>
+                  </tr>
+                  <tr>
+                    <td>🛡️ Privacidad</td>
+                    <td>Todo local sin nube</td>
+                    <td>Usa servidores Plex para autenticación</td>
+                    <td>✅ Jellyfin</td>
+                  </tr>
+                  <tr>
+                    <td>📱 Compatibilidad</td>
+                    <td>Soporta muchas plataformas con ajustes</td>
+                    <td>Apps nativas en más dispositivos</td>
+                    <td>✅ Plex</td>
+                  </tr>
+                  <tr>
+                    <td>🔧 Transcodificación</td>
+                    <td>Depende del hardware</td>
+                    <td>Hardware-accelerated con Plex Pass</td>
+                    <td>✅ Plex</td>
+                  </tr>
+                  <tr>
+                    <td>🔄 Soporte</td>
+                    <td>Comunidad activa (sin soporte oficial)</td>
+                    <td>Soporte técnico para premium</td>
+                    <td>⚖️ Empate</td>
+                  </tr>
+                </table>
+              </details>
+            </li>
+          </ul>
+        </li>
+        <li><strong>🚀 Características Clave</strong>
+          <ul>
+            <li>
+              <details>
+                <summary>🎯 Ventajas Principales</summary>
+                <ul>
+                  <li>🔓 100% Open-Source (GPL License)</li>
+                  <li>🌍 Acceso multiplataforma (Android, iOS, SmartTVs)</li>
+                  <li>🛡️ Privacidad garantizada (sin nube obligatoria)</li>
+                  <li>🧩 Soporte para plugins (Kodi Sync, Metadata)</li>
+                </ul>
+              </details>
+              li><strong>🛠️ PARTE PRÁCTICA</strong>
+                <ul>
+                  <li><details>
+                    <summary>📌 Requisitos Previos + Configuración de Red</summary>
+                    <ol>
+                      <li>Máquina virtual Alpine Linux con:
+                        <ul>
+                          <li>Docker y Portainer instalados</li>
+                          <li>Dos adaptadores:
+                            <ol type="a">
+                              <li>NAT (internet)</li>
+                              <li>Puente (acceso desde móvil)</li>
+                            </ol>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>Configuración en VirtualBox:
+                        <ul>
+                          <li>Reiniciar la VM después de cambios</li>
+                          <li>Verificar interfaces con <code>ip a</code>:
+                            <ul>
+                              <li>Deben aparecer <strong>eth0</strong> (NAT) y <strong>eth1</strong> (puente)</li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ol>
+                  </details></li>
+                  <!-- Docker Compose -->
+                  <li><details>
+                    <summary>🐋 Paso 2: Despliegue con Docker Compose</summary>
+                    <ol>
+                      <li>Acceder a Portainer: <code>http://192.168.34.89:9443</code></li>
+                      <li>Ir a <strong>Stacks > Add Stack</strong></li>
+                      <li>Pegar este <code>docker-compose.yml</code>:
+                        <pre>
+          version: '3'
+          services:
+            jellyfin:
+              image: jellyfin/jellyfin
+              ports:
+                - "8096:8096"
+              volumes:
+                - /media:/media
+                        </pre>
+                      </li>
+                      <li>Hacer clic en <strong>Deploy the stack</strong></li>
+                      <li>Acceder via puerto <code>8096</code></li>
+                    </ol>
+                  </details></li>
+                  <!-- Plugins -->
+                  <li><details>
+                    <summary>🔌 Paso 3: Instalación de Plugins</summary>
+                    <ol>
+                      <li>En Dashboard de Jellyfin:
+                        <ul>
+                          <li>Click en ⚙️ <strong>Configuración</strong></li>
+                          <li>Seleccionar <strong>Plugins</strong></li>
+                          <li>Instalar <em>Kodi Sync Queue</em></li>
+                        </ul>
+                      </li>
+                    </ol>
+                  </details></li>
+                  <!-- Transferencia de archivos -->
+                  <li><details>
+                    <summary>📥 Paso 4: Descarga y Mover Archivos</summary>
+                    <ol>
+                      <li>Descargar contenido:
+                        <ul>
+                          <li>Servidor Python: <code>python -m http.server</code></li>
+                          <li>Descargar con: <code>wget http://192.168.34.64:8000/video-bea.mp4</code></li>
+                        </ul>
+                      </li>
+                      <li>Mover a biblioteca:
+                        <code>mv video-bea.mp4 /media/video/</code>
+                      </li>
+                    </ol>
+                  </details></li>
+                  <!-- Biblioteca -->
+                  <li><details>
+                    <summary>🔄 Paso 5: Actualizar Biblioteca</summary>
+                    <ul>
+                      <li><strong>Automático</strong>: Jellyfin detecta cambios</li>
+                      <li><strong>Manual</strong>:
+                        <ol>
+                          <li>Ir a <code>http://192.168.34.89:8096</code></li>
+                          <li>Seleccionar <strong>Bibliotecas > Escaneo</strong></li>
+                        </ol>
+                      </li>
+                    </ul>
+                  </details></li>
+                  <!-- Red y acceso móvil -->
+                  <li><details>
+                    <summary>📱 Paso 6-7: Configurar Acceso Móvil</summary>
+                    <ol>
+                      <li>Habilitar IP Forwarding:
+                        <pre>
+          echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
+          sysctl -p
+                        </pre>
+                      </li>
+                      <li>Configurar iptables:
+                        <pre>
+          iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+          iptables -A FORWARD -i eth1 -o eth0 -j ACCEPT
+                        </pre>
+                      </li>
+                      <li>Acceder desde móvil:
+                        <code>http://192.168.34.89:8096</code>
+                      </li>
+                    </ol>
+                  </details></li>
+                  <!-- Incidencias y Aprendizaje -->
+                  <li><details>
+                    <summary>⚠️ Incidencia + Lecciones Aprendidas</summary>
+                    <div>
+                      <h4>🔴 Problema de Conexión</h4>
+                      <ul>
+                        <li><strong>Causas posibles</strong>:
+                          <ul>
+                            <li>Configuración incorrecta de red</li>
+                            <li>Reglas iptables mal aplicadas</li>
+                            <li>Puertos bloqueados</li>
+                          </ul>
+                        </li>
+                        <li><strong>Soluciones intentadas</strong>:
+                          <ul>
+                            <li>Verificación de adaptadores</li>
+                            <li>Pruebas con wget/Python</li>
+                          </ul>
+                        </li>
+                      </ul>
+                      <h4>💡 Lecciones Clave</h4>
+                      <ol>
+                        <li>Configuración de redes en VirtualBox</li>
+                        <li>Importancia de mapear volúmenes en Docker</li>
+                        <li>Uso de herramientas alternativas (wget, Python server)</li>
+                        <li>Documentación para depuración</li>
+                      </ol>
+                    </div>
+                  </details></li>
+                  <!-- Anexos -->
+                  <li><details>
+                    <summary>📎 ANEXOS</summary>
+                    <ul>
+                      <li>Transferencia entre máquinas:
+                        <ul>
+                          <li>Archivo docker-compose.yml</li>
+                          <li>Configuración de bibliotecas</li>
+                        </ul>
+                      </li>
+                      <li>Instalación exitosa de plugins</li>
+                      <li>Creación de directorios y verificación</li>
+                      <li>Visualización final del video 😊</li>
+                    </ul>
+                  </details></li>
+                </ul>
+              </li>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </details>
 
    <details>
       <summary>📖 Documentación de Docker</summary>
