@@ -2451,7 +2451,265 @@ main "$@"
         </li>
       </ul>
         </details>
+        <details>
+      <summary>📧 Servidores de Correo: Configuración y Administración</summary>
+      <ul>
+        <li><strong>🌟 Servidores de Correo</strong> son sistemas esenciales para la comunicación electrónica moderna, permitiendo el envío, recepción y almacenamiento de mensajes. Este proyecto cubre la instalación y configuración completa de un servidor de correo funcional utilizando Postfix, Dovecot y Mailutils en Ubuntu Server.
+          <ul>
+            <br> <img src="https://github.com/Beasluna/sentinel/blob/9b8eee26cd1ddcf4335e2ec744134dd95b327617/SENTINELS/ASSETS/Servidor%20de%20correo/Servidor1.png" alt="Servidor de Correo">
+            <li>El proyecto incluye:
+              <ul>
+                <li>🖥️ Configuración de servidor MTA (Postfix): Postfix es un servidor de correo electrónico de código abierto diseñado para gestionar el envío y la recepción de correos electrónicos de forma eficiente. Actúa como un agente de transferencia de correo (MTA), encargándose de recibir los mensajes enviados por los usuarios y luego dirigirlos correctamente hacia el servidor de destino o entregarlos al destinatario final. Postfix es conocido por ser una alternativa rápida, segura y fácil de administrar frente a otros servidores MTA tradicionales, y es ampliamente utilizado en sistemas Linux y macOS para el manejo del correo electrónico.</li>
+                <li>📨 Implementación de servidor MDA (Dovecot): Dovecot es un servidor de correo (MDA) que permite a los usuarios acceder a sus correos almacenados mediante los protocolos IMAP y POP3. Su función principal es entregar los mensajes a los buzones y garantizar su lectura segura.
+
+Soporta formatos Maildir y mbox, y ofrece autenticación segura con SSL/TLS para proteger las conexiones y credenciales. Dovecot es rápido, eficiente y fácil de configurar, siendo una opción popular para gestionar el acceso al correo en servidores Linux.
+</li>
+                <li>🔒 Configuración de seguridad con SSL/TLS</li>
+              </ul>
+            </li>
+            <li>
               <details>
+                <summary>📊 Componentes Clave</summary>
+                <table>
+                  <tr>
+                    <th>Componente</th>
+                    <th>Función</th>
+                    <th>Ejemplo</th>
+                  </tr>
+                  <tr>
+                    <td>MUA</td>
+                    <td>Cliente de correo para usuarios</td>
+                    <td>Thunderbird, Outlook</td>
+                  </tr>
+                  <tr>
+                    <td>MTA</td>
+                    <td>Transferencia de correo entre servidores</td>
+                    <td>Postfix</td>
+                  </tr>
+                  <tr>
+                    <td>MDA</td>
+                    <td>Entrega a buzones locales</td>
+                    <td>Dovecot</td>
+                  </tr>
+                  <tr>
+                    <td>DNS MX</td>
+                    <td>Direccionamiento de correo</td>
+                    <td>Bind9</td>
+                  </tr>
+                </table>
+              </details>
+            </li>
+          </ul>
+        </li>
+        <li><strong>🆚 PROTOCOLOS DE CORREO</strong>
+          <ul>
+            <li>Comparativa de protocolos esenciales:
+              <ul>
+                <li>📤 <strong>SMTP</strong>: Envío de correos (puertos 25, 465, 587)</li>
+                <li>📥 <strong>POP3</strong>: Descarga de correos (puerto 110)</li>
+                <li>🔄 <strong>IMAP</strong>: Sincronización de correos (puerto 143)</li>
+              </ul>
+            </li>
+            <li>
+              <details>
+                <summary>🔍 Comparativa detallada</summary>
+                <table>
+                  <tr>
+                    <th>Criterio</th>
+                    <th>SMTP</th>
+                    <th>POP3</th>
+                    <th>IMAP</th>
+                  </tr>
+                  <tr>
+                    <td>Función</td>
+                    <td>Envío</td>
+                    <td>Descarga</td>
+                    <td>Sincronización</td>
+                  </tr>
+                  <tr>
+                    <td>Puerto seguro</td>
+                    <td>465/587</td>
+                    <td>995</td>
+                    <td>993</td>
+                  </tr>
+                  <tr>
+                    <td>Almacenamiento</td>
+                    <td>No aplica</td>
+                    <td>Local</td>
+                    <td>Servidor</td>
+                  </tr>
+                </table>
+              </details>
+            </li>
+          </ul>
+        </li>
+        <li><strong>🚀 CONFIGURACIÓN PRÁCTICA</strong>
+          <ul>
+            <li>
+              <details>
+                <summary>📌 Instalación y Configuración Básica</summary>
+                <ol>
+                  <li>Instalar Postfix:
+                    <pre>apt-get install postfix</pre>
+                    <br> <img src="https://github.com/Beasluna/sentinel/blob/adacf8a365a0470a7e7a26a881711d9387f66305/SENTINELS/ASSETS/Servidor%20de%20correo/Servidor21.png" alt="Instalación Postfix">
+                    <br> <img src="https://github.com/Beasluna/sentinel/blob/adacf8a365a0470a7e7a26a881711d9387f66305/SENTINELS/ASSETS/Servidor%20de%20correo/Servidor5.png" alt="Instalación Postfix">
+                    <br> <img src="https://github.com/Beasluna/sentinel/blob/adacf8a365a0470a7e7a26a881711d9387f66305/SENTINELS/ASSETS/Servidor%20de%20correo/Servidor6.png" alt="Instalación Postfix">
+                  </li>
+                  <li>Configurar /etc/postfix/main.cf</li>
+                  <li>Instalar Dovecot:
+                    <pre>apt-get install dovecot</pre>
+                    <br> <img src="https://github.com/Beasluna/sentinel/blob/adacf8a365a0470a7e7a26a881711d9387f66305/SENTINELS/ASSETS/Servidor%20de%20correo/Servidor8.png" alt="Dovecot">
+                    <br> <img src="https://github.com/Beasluna/sentinel/blob/adacf8a365a0470a7e7a26a881711d9387f66305/SENTINELS/ASSETS/Servidor%20de%20correo/Servidor9.png" alt="Dovecot">
+                    <br> <img src="https://github.com/Beasluna/sentinel/blob/adacf8a365a0470a7e7a26a881711d9387f66305/SENTINELS/ASSETS/Servidor%20de%20correo/Servidor10.png" alt="Dovecot">
+                  </li>
+                </ol>
+              </details>
+            </li>
+            <li>
+              <details>
+                <summary>🔒 Configuración de Seguridad</summary>
+                <ol>
+                  <li>Generar certificados SSL</li>
+                  <li>Configurar Postfix para TLS</li>
+                  <li>Habilitar autenticación SASL</li>
+                </ol>
+              </details>
+            </li>
+            <li>
+              <details>
+                <summary>📨 Pruebas con Mailutils</summary>
+                <pre>echo "Body: Mail de prueba" | mail -s "Mi asunto" email_destinatario</pre>
+                <br> <img src="https://github.com/Beasluna/sentinel/blob/adacf8a365a0470a7e7a26a881711d9387f66305/SENTINELS/ASSETS/Servidor%20de%20correo/Servidor12.png" alt="Prueba Mailutils">
+              </details>
+            </li>
+            <li>
+              <details>
+                <summary>🖥️ Configuración de Thunderbird</summary>
+                <ol>
+                  <li>Configurar cuenta IMAP/SMTP</li>
+                  <li>Especificar puertos seguros</li>
+                  <li>Verificar conexión</li>
+                  <br><img src="https://github.com/Beasluna/sentinel/blob/adacf8a365a0470a7e7a26a881711d9387f66305/SENTINELS/ASSETS/Servidor%20de%20correo/Servidor14.png" alt="Configuración Thunderbird">
+                </ol>
+              </details>
+            </li>
+          </ul>
+        </li>
+       <li>
+  <strong>📊 ANÁLISIS DE CABECERAS</strong>
+  <ul>
+    <li>
+      <details>
+        <summary>🔍 Componentes de un mensaje</summary>
+                  <ul>
+                    <li>
+                      <img src="https://github.com/Beasluna/sentinel/blob/9b8eee26cd1ddcf4335e2ec744134dd95b327617/SENTINELS/ASSETS/Servidor%20de%20correo/Servidor2.png" 
+                           alt="Cabecera" 
+                           style="max-width: 100%; height: auto;">
+                    </li>
+                    <li><strong>Delivered-To</strong>: beasluna13@gmail.com (Dirección del destinatario final)</li>
+                    <li><strong>Received</strong>: Ruta completa del mensaje con servidores y marcas de tiempo</li>
+                    <li><strong>ARC-Seal/ARC-Message-Signature/ARC-Authentication-Results</strong>: Cadena de autenticación para verificación en reenvíos</li>
+                    <li><strong>Return-Path</strong>: bounce@spmail.uber.com (Dirección para rebotes)</li>
+                    <li><strong>Received-SPF</strong>: pass (Verificación SPF exitosa)</li>
+                    <li><strong>Authentication-Results</strong>: mx.google.com; dkim=pass; spf=pass; dmarc=pass (Resultados de autenticación)</li>
+                    <li><strong>DKIM-Signature</strong>: Firma digital para integridad del mensaje</li>
+                    <li><strong>Content-Transfer-Encoding</strong>: quoted-printable (Codificación del contenido)</li>
+                    <li><strong>Content-Type</strong>: text/html; charset="utf-8" (Formato HTML con UTF-8)</li>
+                    <li><strong>Date</strong>: Tue, 15 Apr 2025 10:12:06 +0000 (Fecha/Hora de envío)</li>
+                    <li><strong>From</strong>: "Uber" uber@uber.com (Remitente)</li>
+                    <li><strong>Subject</strong>: Aprovecha la Semana Santa con Uber Teens (Asunto)</li>
+                    <li><strong>To</strong>: beasluna13@gmail.com (Destinatario)</li>
+                    <li><strong>Message-Id</strong>: fc4d4fa7-187d-34d8-a950-0723bc6524a9@mail.uber.com (Identificador único)</li>
+                    <li><strong>List-Unsubscribe</strong>: Enlace para desuscripción</li>
+                    <li>
+                      <strong>🎯 Cuerpo del mensaje (MIME)</strong>
+                      <ul>
+                        <li>Formato HTML con texto enriquecido</li>
+                        <li>Codificación quoted-printable</li>
+                        <li>Soporta imágenes y enlaces incrustados</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>🛡️ Datos de Autenticación</strong>
+                      <ul>
+                        <li><strong>SPF</strong> (Sender Policy Framework): Verifica servidores autorizados</li>
+                        <li><strong>DKIM</strong> (DomainKeys Identified Mail): Firma criptográfica del dominio</li>
+                        <li><strong>DMARC</strong> (Domain-based Message Authentication): Política de autenticación</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>🎯 Estándar MIME</strong>
+                      <ul>
+                        <li>
+                          <details>
+                            <summary>📌 ¿Qué es MIME?</summary>
+                            <p>MIME (Multipurpose Internet Mail Extensions) es un estándar que revolucionó el correo electrónico al permitir:</p>
+                            <ul>
+                              <li>Envío de archivos adjuntos (documentos, imágenes, multimedia)</li>
+                              <li>Texto enriquecido (HTML) con formato</li>
+                              <li>Codificación estandarizada para transmisión segura</li>
+                            </ul>
+                            <p>Antes de MIME, los correos solo soportaban texto ASCII plano. Actualmente permite la comunicación multimedia completa.</p>
+                          </details>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>🌐 Webmail</strong>
+                      <ul>
+                        <li>
+                          <details>
+                            <summary>📌 ¿Qué es Webmail?</summary>
+                            <p>Cliente de correo accesible via navegador web sin necesidad de software instalado.</p>                 
+                            <strong>Casos de uso:</strong>
+                            <ul>
+                              <li>📱 Acceso desde dispositivos públicos o ajenos</li>
+                              <li>⚡ Configuración instantánea sin clientes IMAP/POP3</li>
+                              <li>🌍 Disponibilidad desde cualquier ubicación</li>
+                              <li>🖥️ Compatibilidad con sistemas operativos limitados</li>
+                            </ul>                  
+                            <strong>Ejemplos populares:</strong>
+                            <table>
+                              <tr>
+                                <td>• Gmail</td>
+                                <td>• Yahoo! Mail</td>
+                              </tr>
+                              <tr>
+                                <td>• Outlook.com</td>
+                                <td>• ProtonMail</td>
+                              </tr>
+                              <tr>
+                                <td colspan="2">• Zoho Mail</td>
+                              </tr>
+                            </table>
+                          </details>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>🛡️ Datos de Autenticación</strong>
+                      <ul>
+                        <li><strong>SPF</strong> (Sender Policy Framework): Verifica servidores autorizados</li>
+                        <li><strong>DKIM</strong> (DomainKeys Identified Mail): Firma criptográfica del dominio</li>
+                        <li><strong>DMARC</strong> (Domain-based Message Authentication): Política de autenticación</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </details>
+              </li>
+            </ul>
+          </li>
+        <li><strong>📚 RECURSOS ADICIONALES</strong>
+          <ul>
+            <li>Documentación oficial de Postfix</li>
+            <li>Guías de configuración de Dovecot</li>
+            <li>Ejemplos de configuración DNS MX</li>
+          </ul>
+        </li>
+      </ul>
+  </details> 
+          <details>
               <summary>🎬 Jellyfin: La Alternativa Open-Source para Servidores Multimedia</summary>
               <br> <img src="https://github.com/Beasluna/sentinel/blob/3225d039647ec6a1e9bf23380800a3fcc5f7f576/SENTINELS/ASSETS/JELLYFIN/jellyfin1.png" alt=Jellyfin>
               <ul>
