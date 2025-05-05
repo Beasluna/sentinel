@@ -11,14 +11,58 @@ Combina tecnologías avanzadas con prácticas de seguridad innovadoras para ofre
 
 En el contexto actual de crecientes ciberamenazas, **SENTINEL emerge como una solución de ciberseguridad integral a la vanguardia.** Está diseñada para proteger y monitorizar infraestructuras de redes, combinando tecnologías de avanzada y practicas innovadoras para ofrecer una defense sólida contra amenazadas modernas.
 
-- Desde segmentación de red con VLANs hasta el uso de virtualización con Proxmox VE, configurando la seguridad perimetral con firewall (pFSense) y la monitorización en tiempo real con analisis de amenazas y prevensión de ellas, cada elemento de SENTINEL está pensado para hacer un trabajo en sintonia y proporcionar una defensa exhaustiva.
-- SENTINEL incorpora la implementación de microservicios con Docker, capacidades de sandboxing y análisis de malware, y la utilización de honeypots para la detección proactiva de amenazas. Todo esto se complementa con una gestión avanzada de bases de datos con MySQL y dashboards personalizados para la visualización de la seguridad.
+- Desde el uso de virtualización con Proxmox VE, configurando la seguridad perimetral con firewall (pFSense) y la monitorización en tiempo real con analisis de amenazas y prevensión de ellas, cada elemento de SENTINEL está pensado para hacer un trabajo en sintonia y proporcionar una defensa exhaustiva.
+- SENTINEL incorpora la implementación de microservicios con Docker, y análisis de malware con reflas de JARA. Todo esto se complementa con una gestión avanzada de bases de datos con MySQL y dashboards personalizados para la visualización de la seguridad.
 
 Esta documentación ofrece una visión general, incluyendo su arquitectura, componentes clave, las instrucciones de implementación y sus guias de usos. **Nuestro objetivo es ofrecer una solución que sea no solo eficaz, sino también flexible y adaptable a las necesidades específicas de cada organización**. Acompáñanos en este recorrido por el mundo de la ciberseguridad de vanguardia con SENTINEL.
 
+## 🔍 Visión General
+
+SENTINEL es un ecosistema completo que combina tecnologías enterprise con herramientas open-source para crear infraestructuras:
+- **🔒 Seguras por diseño**
+- **⚡ Altamente disponibles**
+- **🤖 Automatizadas**
+- **📊 Fáciles de monitorizar**
 
 <details>
   <summary>✨ Características Principales</summary>
+  <ul>
+    <li>🖥️ Virtualización avanzada con cluster Proxmox VE (HA, migración en vivo)</li>
+    <li>🛡️ Seguridad perimetral robusta con pfSense (firewall, VPN, balanceo)</li>
+    <li>🐳 Orquestación de contenedores con Docker + Portainer</li>
+    <li>🔀 Enrutamiento inteligente con Traefik (auto-discovery, SSL automático)</li>
+    <li>🚫 Filtrado DNS con Pi-hole (bloqueo de anuncios/malware)</li>
+    <li>📁 Transferencia segura de archivos con FTP (vsftpd)</li>
+    <li>🔍 Monitorización integrada (Prometheus/Grafana)</li>
+    <li>🤖 Automatización completa con Ansible</li>
+    <li>📊 Dashboards unificados en Portainer</li>
+  </ul>
+</details>
+
+<details>
+  <summary>🛠️ Componentes Clave</summary>
+  <ul>
+    <li><strong>Proxmox VE:</strong> Cluster de virtualización con alta disponibilidad</li>
+    <li><strong>pfSense:</strong> Firewall avanzado con VPN integrada</li>
+    <li><strong>Docker:</strong> Plataforma de contenedores para microservicios</li>
+    <li><strong>Traefik:</strong> Reverse proxy con terminación SSL automática</li>
+    <li><strong>Pi-hole:</strong> Filtrado DNS a nivel de red</li>
+    <li><strong>Portainer:</strong> Gestión visual de contenedores</li>
+  </ul>
+</details>
+
+<details>
+  <summary>🚀 Casos de Uso</summary>
+  <ul>
+    <li>🏠 <strong>Homelabs:</strong> Auto-hospedaje de servicios personales</li>
+    <li>💻 <strong>Desarrollo:</strong> Entornos aislados para CI/CD</li>
+    <li>🏢 <strong>PYMES:</strong> Infraestructura corporativa segura</li>
+    <li>🔐 <strong>Seguridad:</strong> Laboratorio de análisis de amenazas</li>
+  </ul>
+</details>
+
+<details>
+  <summary>✨ Características Iniciales </summary>
   <ul>
     <li>🛡️ Arquitectura de red segmentada con VLANs</li>
     <li>🖥️ Virtualización avanzada con Proxmox VE</li>
