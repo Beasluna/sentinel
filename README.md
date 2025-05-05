@@ -34,8 +34,6 @@ SENTINEL es un ecosistema completo que combina tecnologías enterprise con herra
     <li>🚫 Filtrado DNS con Pi-hole (bloqueo de anuncios/malware)</li>
     <li>📁 Transferencia segura de archivos con FTP (vsftpd)</li>
     <li>🔍 Monitorización integrada (Prometheus/Grafana)</li>
-    <li>🤖 Automatización completa con Ansible</li>
-    <li>📊 Dashboards unificados en Portainer</li>
   </ul>
 </details>
 
